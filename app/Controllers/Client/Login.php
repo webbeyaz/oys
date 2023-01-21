@@ -12,8 +12,16 @@ class Login extends Client
 		parent::__construct();
 	}
 
+	/**
+	 * @param $slug
+	 * @return string|void
+	 */
 	public function index($slug)
 	{
+		return $this->view('client.pages.login', $this->data);
+
+		/*$message = [];
+
 		$sql = "
 			UPDATE codes SET
 			status = :status
@@ -60,14 +68,14 @@ class Login extends Client
 				{
 					if ($query->count > 2)
 					{
-						echo 'İkiden fazla giriş çıkış işlemi algılandı.';
-						exit;
+						$message = [
+							'text' => 'İkiden fazla giriş çıkış işlemi algılandı.'
+						];
 					}
 				}
 				else
 				{
 					echo 'Giriş veya çıkış işlemi yapılmadı.';
-					exit;
 				}
 
 				$sql = "
@@ -86,25 +94,25 @@ class Login extends Client
 					if ($insert)
 					{
 						echo 'Giriş işlemi başarılı.';
-						exit;
 					}
 				}
 				else
 				{
 					echo 'Giriş işlemi yapılamadı.';
-					exit;
 				}
 			}
 			else
 			{
 				echo 'Sistemde kayıtlı böyle bir kod yok.';
-				exit;
 			}
 		}
 		else
 		{
 			echo 'Kod durumu güncellenemedi.';
-			exit;
 		}
+
+		$this->data['message'] = $message;
+
+		return $this->view('client.pages.login', $this->data);*/
 	}
 }
