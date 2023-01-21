@@ -65,7 +65,12 @@ class Login extends Client
 					else
 					{
 						// İkiden fazla giriş çıkış işlemi algılandı.
+						exit;
 					}
+				}
+				else
+				{
+					// Giriş veya çıkış işlemi yapılmadı.
 				}
 
 				$sql = "
