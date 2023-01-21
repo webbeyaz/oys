@@ -100,7 +100,9 @@
 				$.getJSON(API_URL + '/login', function (response) {
 					if (response.status === 200) {
 						window.location.href = '{{ site_url('logged') }}';
-					} else if (response.status === 401) {
+					}
+
+					if (response.status === 401) {
 						Swal.fire({
 							title: 'Hata!',
 							text: response.message,
@@ -111,8 +113,6 @@
 							confirmButtonText: 'Tamam',
 							buttonsStyling: false
 						});
-					} else {
-						//
 					}
 				});
 			}, 2000);
