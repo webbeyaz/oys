@@ -27,7 +27,6 @@ class Login extends Api
 		else
 		{
 			$cookie = $_COOKIE['login'];
-			$slug = segments(1);
 
 			$sql = "
 				SELECT id
@@ -43,12 +42,13 @@ class Login extends Api
 			if ($query)
 			{
 				$employee_id = $query->id;
+				$slug = segments(1);
 
 				$sql = "
 					SELECT id
 					FROM codes
 					WHERE
-					    (employee_id = $employee_id AND value = '{$slug}')
+					    (employee_id = '{$employee_id}' AND value = '{$slug}')
 						AND
 					    status = 0
 					ORDER BY id DESC
@@ -68,7 +68,7 @@ class Login extends Api
 				{
 					$text = [
 						'status' => 401,
-						'message' => 'Kullanıcı ve kod bilgileri eşleşmiyor.'
+						'message' => $slug
 					];
 				}
 			}
