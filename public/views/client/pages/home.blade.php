@@ -4,6 +4,12 @@
 @section('description', 'Açıklama.')
 
 @section('styles')
+
+	<!-- BEGIN: Page CSS-->
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/core/menu/menu-types/vertical-menu.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/plugins/extensions/ext-component-sweet-alerts.css') }}">
+	<!-- END: Page CSS-->
+
 @endsection
 
 @section('content')
@@ -83,13 +89,30 @@
 
 @section('scripts')
 
+	<!-- BEGIN: Page Vendor JS-->
+	<script src="{{ asset_url('app/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
+	<script src="{{ asset_url('app/vendors/js/extensions/polyfill.min.js') }}"></script>
+	<!-- END: Page Vendor JS-->
+
 	<script type="text/javascript">
 		$(function () {
 			setInterval(function () {
 				$.getJSON(API_URL + '/login', function (response) {
-					if (response.status === 200)
-					{
+					if (response.status === 200) {
 						window.location.href = '{{ site_url('logged') }}';
+					} else if (response.status === 402) {
+						Swal.fire({
+							title: 'Hata!',
+							text: response.text,
+							icon: 'error',
+							customClass: {
+								confirmButton: 'btn btn-primary'
+							},
+							confirmButtonText: 'Tamam',
+							buttonsStyling: false
+						});
+					} else {
+						clearInterval(this);
 					}
 				});
 			}, 2000);
