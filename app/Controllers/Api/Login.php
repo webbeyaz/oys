@@ -58,10 +58,35 @@ class Login extends Api
 
 				if ($query)
 				{
-					$text = [
-						'status' => 200,
-						'message' => 'Başarıyla giriş yapıldı.'
-					];
+					$sql = "
+						SELECT COUNT(a.id) AS count
+						FROM actions a
+						INNER JOIN codes c ON c.id = a.code_id
+						WHERE
+						    c.employee_id = '{$employee_id}'
+							AND
+						    DATE(a.time) = CURDATE()
+					";
+
+					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+
+					if ($query)
+					{
+						if ($query->count >= 0)
+						{
+							$text = [
+								'status' => 200,
+								'message' => 'Başarıyla giriş yapıldı.'
+							];
+						}
+					}
+					else
+					{
+						$text = [
+							'status' => 201,
+							'message' => 'Başarıyla çıkış yapıldı.'
+						];
+					}
 				}
 				else
 				{
