@@ -87,12 +87,9 @@
 		$(function () {
 			setInterval(function () {
 				$.getJSON(API_URL + '/login', function (response) {
-					JSON.parse(response);
-
 					console.log(response);
-					return;
 
-					if (response['status'] == 500)
+					if (response.status === 500)
 					{
 						window.location.href = '{{ site_url('logged') }}';
 					}
