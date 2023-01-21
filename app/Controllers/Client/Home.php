@@ -5,6 +5,7 @@ namespace App\Controllers\Client;
 use App\Controllers\Client;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
+use PDO;
 
 class Home extends Client
 {
@@ -24,9 +25,56 @@ class Home extends Client
 	 */
 	public function index(): string
 	{
-		$data = site_url('login/' . hashid());
+		$cookie = $_COOKIE['login'];
+		$qrCode = null;
 
-		$this->data['qrCode'] = $this->qrCode($data);
+		$sql = "
+			SELECT
+				id
+			FROM
+			    employees
+			WHERE 
+			    cookie = '{$cookie}'
+			    AND
+				(status = 1 AND deleted_at IS NULL)
+		";
+
+		$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+
+		if ($query)
+		{
+			$employee_id = $query->id;
+
+			$sql = "
+				INSERT INTO codes SET
+				employee_id = ?,
+				value = ?
+			";
+
+			$query = $this->db->prepare($sql);
+
+			$value = hashid();
+
+			$insert = $query->execute([
+				$employee_id,
+				$value
+			]);
+
+			if ($insert)
+			{
+				$qrCode = site_url('login/' . $value);
+			}
+			else
+			{
+				// Kod oluşturulamadı.
+			}
+		}
+		else
+		{
+			// Çerez hatası.
+		}
+
+		$this->data['qrCode'] = $this->qrCode($qrCode);
 
 		return $this->view('client.pages.home', $this->data);
 	}

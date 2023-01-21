@@ -62,7 +62,7 @@
 
 					<!-- QR Code -->
 					<p class="text-center mt-4 mb-4">
-						<img src="{{ $qrCode }}" alt="QR Kod" width="400">
+						<img src="{{ $qrCode }}" alt="QR Kod" width="350">
 					</p>
 					<!-- /QR Code -->
 
@@ -84,18 +84,19 @@
 @section('scripts')
 
 	<script type="text/javascript">
-		const iFrequency = 2000;
-		let qrInterval = 0;
+		$(function () {
+			let stop = false;
 
-		qrInterval = setInterval('qrControl()', iFrequency);
+			setInterval(function () {
+				if (stop) {
+					clearInterval(this);
+				}
 
-		function qrControl() {
-			if (qrInterval > 0) {
-				clearInterval(qrInterval);
-			}
-
-
-		}
+				$.getJSON(API_URL + '/login', function (response) {
+					console.log(response);
+				});
+			}, 2000);
+		});
 	</script>
 
 @endsection

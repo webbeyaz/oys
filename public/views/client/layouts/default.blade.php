@@ -19,6 +19,9 @@
 
 	@yield('styles')
 
+	<script>
+		const API_URL = '{{ site_url('api') }}'
+	</script>
 </head>
 <!-- END: Head -->
 
