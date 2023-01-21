@@ -42,13 +42,12 @@ class Login extends Api
 			if ($query)
 			{
 				$employee_id = $query->id;
-				$slug = segments(2);
 
 				$sql = "
 					SELECT id
 					FROM codes
 					WHERE
-					    (employee_id = '{$employee_id}' AND value = '{$slug}')
+					    (employee_id = '{$employee_id}'
 						AND
 					    status = 1
 					ORDER BY id DESC
