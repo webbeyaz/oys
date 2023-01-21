@@ -58,13 +58,10 @@ class Login extends Api
 
 				if ($query)
 				{
-					/*$text = [
+					$text = [
 						'status' => 500,
 						'message' => 'Başarıyla giriş yapıldı.'
-					];*/
-
-					header('Location: ' . site_url('logged'));
-					exit;
+					];
 				}
 				else
 				{
