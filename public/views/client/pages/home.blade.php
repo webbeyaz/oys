@@ -87,7 +87,7 @@
 		$(function () {
 			setInterval(function () {
 				$.getJSON(API_URL + '/login', function (response) {
-					console.log(response);
+					console.log(response.status);
 
 					if (response.status == 500)
 					{
