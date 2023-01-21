@@ -24,7 +24,7 @@ class Login extends Client
 
 		$update = $query->execute([
 			'status' => 1,
-			'value' => $slug
+			'slug' => $slug
 		]);
 
 		if ($update)
