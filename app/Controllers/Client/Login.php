@@ -85,8 +85,7 @@ class Login extends Client
 
 					if ($insert)
 					{
-						// Giriş işlemi başarılı.
-						header('Location: ' . site_url('logged'));
+						echo 'Giriş işlemi başarılı.';
 						exit;
 					}
 				}
