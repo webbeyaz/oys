@@ -93,7 +93,10 @@
 				}
 
 				$.getJSON(API_URL + '/login', function (response) {
-					console.log(response);
+					if (response.status === 500)
+					{
+						location.href = {{ site_url('logged') }};
+					}
 				});
 			}, 2000);
 		});
