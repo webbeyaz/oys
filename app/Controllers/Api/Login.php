@@ -27,6 +27,7 @@ class Login extends Api
 		else
 		{
 			$cookie = $_COOKIE['login'];
+			$slug = segments(1);
 
 			$sql = "
 				SELECT id
@@ -47,7 +48,7 @@ class Login extends Api
 					SELECT id
 					FROM codes
 					WHERE
-					    (employee_id = $employee_id AND value = '{$cookie}')
+					    (employee_id = $employee_id AND value = '{$slug}')
 						AND
 					    status = 1
 					ORDER BY id DESC
