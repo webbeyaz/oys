@@ -93,13 +93,7 @@
 				}
 
 				$.getJSON(API_URL + '/login', function (response) {
-					if (response.status === 500)
-					{
-						@php
-							header('Location: ' . site_url('logged'));
-							exit;
-						@endphp
-					}
+					console.log(response);
 				});
 			}, 2000);
 		});
