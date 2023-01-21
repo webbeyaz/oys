@@ -49,7 +49,7 @@ class Login extends Client
 				FROM actions a
 				INNER JOIN codes c ON c.id = a.code_id
 				WHERE
-				    c.employee_id = '{$employee}'
+				    c.employee_id = $employee
 					AND
 				    DATE(a.time) = CURDATE()
 			";
