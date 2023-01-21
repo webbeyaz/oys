@@ -68,7 +68,7 @@ class Login extends Api
 				{
 					$text = [
 						'status' => 401,
-						'message' => $slug
+						'message' => 'Kullanıcı ve kod bilgileri eşleşmiyor.'
 					];
 				}
 			}

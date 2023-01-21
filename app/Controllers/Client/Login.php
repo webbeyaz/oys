@@ -24,7 +24,7 @@ class Login extends Client
 
 		$update = $query->execute([
 			'status' => 1,
-			'slug' => $slug
+			'value' => $slug
 		]);
 
 		if ($update)
@@ -49,7 +49,7 @@ class Login extends Client
 				FROM actions a
 				INNER JOIN codes c ON c.id = a.code_id
 				WHERE
-				    c.employee_id = $employee
+				    c.employee_id = '{$employee}'
 					AND
 				    DATE(a.time) = CURDATE()
 			";
@@ -71,6 +71,7 @@ class Login extends Client
 				else
 				{
 					// Giriş veya çıkış işlemi yapılmadı.
+					exit;
 				}
 
 				$sql = "
@@ -89,21 +90,26 @@ class Login extends Client
 					if ($insert)
 					{
 						// Giriş işlemi başarılı.
+						header('Location: ' . site_url('logged'));
+						exit;
 					}
 				}
 				else
 				{
 					// Giriş işlemi yapılamadı.
+					exit;
 				}
 			}
 			else
 			{
 				// Sistemde kayıtlı böyle bir kod yok.
+				exit;
 			}
 		}
 		else
 		{
 			// Kod durumu güncellenemedi.
+			exit;
 		}
 	}
 }
