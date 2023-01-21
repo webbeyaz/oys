@@ -67,11 +67,13 @@ class Home extends Client
 			else
 			{
 				// Kod oluşturulamadı.
+				exit;
 			}
 		}
 		else
 		{
 			// Çerez hatası.
+			exit;
 		}
 
 		$this->data['qrCode'] = $this->qrCode($qrCode);
