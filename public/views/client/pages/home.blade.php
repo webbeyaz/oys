@@ -93,6 +93,7 @@
 				}
 
 				$.getJSON(API_URL + '/login', function (response) {
+					console.log(response);
 					if (response.status === 500)
 					{
 						window.location.replace('{{ site_url('logged') }}');
