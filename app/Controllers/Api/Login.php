@@ -59,7 +59,7 @@ class Login extends Api
 				if ($query)
 				{
 					$sql = "
-						SELECT COUNT(a.id) AS count
+						SELECT COUNT(a.id) AS total
 						FROM actions a
 						INNER JOIN codes c ON c.id = a.code_id
 						WHERE
@@ -70,7 +70,7 @@ class Login extends Api
 
 					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-					if ($query->count > 1)
+					if ($query->total > 1)
 					{
 						$text = [
 							'status' => 201,

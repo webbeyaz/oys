@@ -51,7 +51,7 @@ class Login extends Client
 				$employee = $query->employee_id;
 
 				$sql = "
-					SELECT COUNT(a.id) AS count
+					SELECT COUNT(a.id) AS total
 					FROM actions a
 					INNER JOIN codes c ON c.id = a.code_id
 					WHERE
@@ -64,7 +64,7 @@ class Login extends Client
 
 				if ($query)
 				{
-					if ($query->count > 2)
+					if ($query->total > 2)
 					{
 						$message = [
 							'class' => 'warning',
