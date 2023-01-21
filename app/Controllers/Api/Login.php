@@ -70,7 +70,7 @@ class Login extends Api
 
 					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-					if ($query->count >= 1)
+					if ($query->count > 1)
 					{
 						$text = [
 							'status' => 201,
