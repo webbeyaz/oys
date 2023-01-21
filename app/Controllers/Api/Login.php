@@ -68,11 +68,11 @@ class Login extends Api
 						    DATE(a.time) = CURDATE()
 					";
 
-					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+					$queryCount = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-					if ($query)
+					if ($queryCount)
 					{
-						if ($query->count <= 1)
+						if ($queryCount->count <= 1)
 						{
 							$text = [
 								'status' => 200,
