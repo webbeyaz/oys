@@ -70,18 +70,18 @@ class Login extends Api
 
 					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-					if ($query->count === 0)
+					if ($query->count > 0)
 					{
 						$text = [
-							'status' => 200,
-							'message' => 'Başarıyla giriş yapıldı.'
+							'status' => 201,
+							'message' => 'Başarıyla çıkış yapıldı.'
 						];
 					}
 					else
 					{
 						$text = [
-							'status' => 201,
-							'message' => 'Başarıyla çıkış yapıldı.'
+							'status' => 200,
+							'message' => 'Başarıyla giriş yapıldı.'
 						];
 					}
 				}
