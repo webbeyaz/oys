@@ -47,7 +47,7 @@ class Login extends Api
 					SELECT id
 					FROM codes
 					WHERE
-					    (employee_id = '{$employee_id}' AND value = '{$cookie}')
+					    (employee_id = $employee_id AND value = '{$cookie}')
 						AND
 					    status = 1
 					ORDER BY id DESC
