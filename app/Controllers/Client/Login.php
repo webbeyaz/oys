@@ -60,17 +60,17 @@ class Login extends Client
 				{
 					if ($query->count == 1)
 					{
-						// Çıkış işlemi yapıldı.
+						echo 'Çıkış işlemi yapıldı.';
 					}
 					else
 					{
-						// İkiden fazla giriş çıkış işlemi algılandı.
+						echo 'İkiden fazla giriş çıkış işlemi algılandı.';
 						exit;
 					}
 				}
 				else
 				{
-					// Giriş veya çıkış işlemi yapılmadı.
+					echo 'Giriş veya çıkış işlemi yapılmadı.';
 					exit;
 				}
 
@@ -96,19 +96,19 @@ class Login extends Client
 				}
 				else
 				{
-					// Giriş işlemi yapılamadı.
+					echo 'Giriş işlemi yapılamadı.';
 					exit;
 				}
 			}
 			else
 			{
-				// Sistemde kayıtlı böyle bir kod yok.
+				echo 'Sistemde kayıtlı böyle bir kod yok.';
 				exit;
 			}
 		}
 		else
 		{
-			// Kod durumu güncellenemedi.
+			echo 'Kod durumu güncellenemedi.';
 			exit;
 		}
 	}
