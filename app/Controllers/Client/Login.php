@@ -14,13 +14,11 @@ class Login extends Client
 
 	/**
 	 * @param $slug
-	 * @return string|void
+	 * @return string
 	 */
-	public function index($slug)
+	public function index($slug): string
 	{
-		return $this->view('client.pages.login', $this->data);
-
-		/*$message = [];
+		$message = [];
 
 		$sql = "
 			UPDATE codes SET
@@ -69,13 +67,17 @@ class Login extends Client
 					if ($query->count > 2)
 					{
 						$message = [
-							'text' => 'İkiden fazla giriş çıkış işlemi algılandı.'
+							'class' => 'warning',
+							'text' => 'İkiden fazla giriş çıkış işlemi algılandı!'
 						];
 					}
 				}
 				else
 				{
-					echo 'Giriş veya çıkış işlemi yapılmadı.';
+					$message = [
+						'class' => 'danger',
+						'text' => 'Giriş veya çıkış işlemi yapılmadı!'
+					];
 				}
 
 				$sql = "
@@ -93,26 +95,38 @@ class Login extends Client
 
 					if ($insert)
 					{
-						echo 'Giriş işlemi başarılı.';
+						$message = [
+							'class' => 'success',
+							'text' => 'Başarıyla Giriş Yapıldı!'
+						];
 					}
 				}
 				else
 				{
-					echo 'Giriş işlemi yapılamadı.';
+					$message = [
+						'class' => 'danger',
+						'text' => 'Giriş işlemi yapılamadı!'
+					];
 				}
 			}
 			else
 			{
-				echo 'Sistemde kayıtlı böyle bir kod yok.';
+				$message = [
+					'class' => 'danger',
+					'text' => 'Sistemde kayıtlı böyle bir giriş kodu yok!'
+				];
 			}
 		}
 		else
 		{
-			echo 'Kod durumu güncellenemedi.';
+			$message = [
+				'class' => 'danger',
+				'text' => 'Kod durumu güncellenemedi!'
+			];
 		}
 
 		$this->data['message'] = $message;
 
-		return $this->view('client.pages.login', $this->data);*/
+		return $this->view('client.pages.login', $this->data);
 	}
 }

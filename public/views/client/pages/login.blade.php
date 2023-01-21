@@ -41,13 +41,13 @@
 		</a>
 		<div class="misc-inner p-2 p-sm-3">
 			<div class="w-100 text-center">
-				<h2 class="mb-1 text-success">
-					Başarıyla Giriş Yapıldı!
+				<h2 class="mb-1 text-{{ $message['class'] }}">
+					{{ $message['text'] }}
 				</h2>
 				<p class="mb-2">
 					Bu sayfayı kapatmak, güvenlik açısından akıllıca olabilir.
 				</p>
-				<img class="img-fluid" src="{{ asset_url('app/images/pages/error.svg') }}" alt="Giriş Yapıldı">
+				<img class="img-fluid" src="{{ asset_url('app/images/pages/error.svg') }}" alt="Giriş Sayfası">
 			</div>
 		</div>
 	</div>
