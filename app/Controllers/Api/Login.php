@@ -68,17 +68,14 @@ class Login extends Api
 						    DATE(a.time) = CURDATE()
 					";
 
-					$queryCount = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-					if ($queryCount)
+					if ($query->count === 0)
 					{
-						if ($queryCount->count == 0)
-						{
-							$text = [
-								'status' => 200,
-								'message' => 'Başarıyla giriş yapıldı.'
-							];
-						}
+						$text = [
+							'status' => 200,
+							'message' => 'Başarıyla giriş yapıldı.'
+						];
 					}
 					else
 					{
