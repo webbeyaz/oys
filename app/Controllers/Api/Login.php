@@ -32,7 +32,7 @@ class Login extends Api
 				SELECT id
 				FROM employees
 				WHERE
-				    cookie
+				    cookie = '{$cookie}'
 					AND
 					(status = 1 AND deleted_at IS NULL)
 			";
