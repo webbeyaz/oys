@@ -97,7 +97,12 @@
 
 					if (response.status === 500)
 					{
-						window.location.href = '{{ site_url('logged') }}';
+						//window.location.href = '{{ site_url('logged') }}';
+
+						@php
+							header('Location: ' . site_url('logged'));
+							exit;
+						@endphp
 					}
 				});
 			}, 2000);
