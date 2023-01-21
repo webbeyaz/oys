@@ -85,8 +85,6 @@
 
 	<script type="text/javascript">
 		$(function () {
-			window.location.href = 'https://google.com';
-
 			setInterval(function () {
 				$.getJSON(API_URL + '/login', function (response) {
 					console.log(response);
