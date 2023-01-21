@@ -45,24 +45,20 @@ class Login extends Client
 				$employee = $query->employee_id;
 
 				$sql = "
-				SELECT COUNT(a.id) AS count
-				FROM actions a
-				INNER JOIN codes c ON c.id = a.code_id
-				WHERE
-				    c.employee_id = '{$employee}'
-					AND
-				    DATE(a.time) = CURDATE()
-			";
+					SELECT COUNT(a.id) AS count
+					FROM actions a
+					INNER JOIN codes c ON c.id = a.code_id
+					WHERE
+					    c.employee_id = '{$employee}'
+						AND
+					    DATE(a.time) = CURDATE()
+				";
 
 				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
 				if ($query)
 				{
-					if ($query->count == 1)
-					{
-						echo 'Çıkış işlemi yapıldı.';
-					}
-					else
+					if ($query->count > 2)
 					{
 						echo 'İkiden fazla giriş çıkış işlemi algılandı.';
 						exit;
