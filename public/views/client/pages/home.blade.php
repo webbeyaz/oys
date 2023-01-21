@@ -95,7 +95,7 @@
 				$.getJSON(API_URL + '/login', function (response) {
 					if (response.status === 500)
 					{
-						window.location.href = '{{ site_url('logged') }}';
+						window.location.replace('{{ site_url('logged') }}');
 					}
 				});
 			}, 2000);
