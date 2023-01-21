@@ -100,10 +100,10 @@
 				$.getJSON(API_URL + '/login', function (response) {
 					if (response.status === 200) {
 						window.location.href = '{{ site_url('logged') }}';
-					} else if (response.status === 402) {
+					} else if (response.status === 401) {
 						Swal.fire({
 							title: 'Hata!',
-							text: response.text,
+							text: response.message,
 							icon: 'error',
 							customClass: {
 								confirmButton: 'btn btn-primary'
