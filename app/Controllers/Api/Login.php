@@ -59,7 +59,7 @@ class Login extends Api
 				if ($query)
 				{
 					$text = [
-						'status' => 500,
+						'status' => 200,
 						'message' => 'Başarıyla giriş yapıldı.'
 					];
 				}
