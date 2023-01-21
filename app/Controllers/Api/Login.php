@@ -50,7 +50,7 @@ class Login extends Api
 					WHERE
 					    (employee_id = $employee_id AND value = '{$slug}')
 						AND
-					    status = 1
+					    status = 0
 					ORDER BY id DESC
 					LIMIT 1
 				";
