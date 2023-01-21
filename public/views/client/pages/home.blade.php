@@ -112,7 +112,7 @@
 							buttonsStyling: false
 						});
 					} else {
-						clearInterval(this);
+						//
 					}
 				});
 			}, 2000);
