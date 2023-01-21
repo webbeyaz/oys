@@ -60,7 +60,7 @@ class Login extends Client
 					    DATE(a.time) = CURDATE()
 				";
 
-				$query = $this->db->query($sql, PDO::FETCH_OBJ);
+				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
 				if ($query)
 				{
