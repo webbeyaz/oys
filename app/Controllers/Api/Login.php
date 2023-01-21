@@ -42,7 +42,7 @@ class Login extends Api
 			if ($query)
 			{
 				$employee_id = $query->id;
-				$slug = segments(1);
+				$slug = segments(2);
 
 				$sql = "
 					SELECT id
