@@ -54,5 +54,5 @@ $app->router->group('/admin', function ($router) {
  * API Routes
  */
 $app->router->group('/api', function ($router) {
-	//$router->xget('/preloader', 'Api.Preloader@index');
+	$router->xget('/login', 'Api.Login@index');
 });
