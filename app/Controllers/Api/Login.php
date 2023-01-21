@@ -49,7 +49,7 @@ class Login extends Api
 					WHERE
 					    (employee_id = '{$employee_id}' AND value = '{$cookie}')
 						AND
-					    status = 0
+					    status = 1
 					ORDER BY id DESC
 					LIMIT 1
 				";
