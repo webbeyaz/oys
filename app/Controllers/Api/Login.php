@@ -72,7 +72,7 @@ class Login extends Api
 
 					if ($query)
 					{
-						if ($query->count >= 0)
+						if ($query->count <= 1)
 						{
 							$text = [
 								'status' => 200,
