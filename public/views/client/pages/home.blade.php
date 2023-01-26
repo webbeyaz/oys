@@ -102,10 +102,6 @@
 						window.location.href = '{{ site_url('logged') }}';
 					}
 
-					if (response.status === 201) {
-						window.location.href = '{{ site_url('logout') }}';
-					}
-
 					if (response.status === 401) {
 						Swal.fire({
 							title: 'Hata!',

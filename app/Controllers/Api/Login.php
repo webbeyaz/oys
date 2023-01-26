@@ -74,14 +74,11 @@ class Login extends Api
 					{
 						$text = [
 							'status' => 201,
-							'message' => 'Başarıyla çıkış yapıldı.'
+							'message' => 'Çıkış işlemi bekleniyor.'
 						];
 					}
 					else
 					{
-						echo $query->total;
-						exit;
-
 						$text = [
 							'status' => 200,
 							'message' => 'Başarıyla giriş yapıldı.'
