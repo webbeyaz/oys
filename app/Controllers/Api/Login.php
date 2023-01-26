@@ -58,12 +58,7 @@ class Login extends Api
 
 				if ($query)
 				{
-					$text = [
-						'status' => 200,
-						'message' => 'Başarıyla giriş yapıldı.'
-					];
-
-					/*$sql = "
+					$sql = "
 						SELECT COUNT(a.id) AS total
 						FROM actions a
 						INNER JOIN codes c ON c.id = a.code_id
@@ -75,7 +70,7 @@ class Login extends Api
 
 					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-					if ($query->total > 1)
+					if ($query->total >= 1)
 					{
 						$text = [
 							'status' => 201,
@@ -84,11 +79,14 @@ class Login extends Api
 					}
 					else
 					{
+						echo $query->total;
+						exit;
+
 						$text = [
 							'status' => 200,
 							'message' => 'Başarıyla giriş yapıldı.'
 						];
-					}*/
+					}
 				}
 				else
 				{
