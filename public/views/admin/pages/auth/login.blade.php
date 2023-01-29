@@ -1,4 +1,4 @@
-@extends('panel.layouts.auth')
+@extends('admin.layouts.auth')
 
 @section('title', 'Ofis Yönetim Sistemi')
 
