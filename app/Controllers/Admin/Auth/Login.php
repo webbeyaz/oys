@@ -39,17 +39,16 @@ class Login extends Admin
 						id
 					FROM users
 					WHERE
-					    banned = 0 AND
-					    status = 1 AND
-					    (username = '$username' AND password = '$password')
+						(status = 1 AND deleted_at IS NULL)
+						AND
+						(username = '{$username}' AND password = '{$password}')
 				";
 
 				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
 				if ($query)
 				{
-					session()->segment->set('panel_login', true);
-					session()->segment->set('user_login', true);
+					session()->segment->set('admin_login', true);
 					session()->segment->set('user_id', $query->id);
 
 					header('Location: ' . site_url('admin/dashboard'));
@@ -59,7 +58,7 @@ class Login extends Admin
 				{
 					$error = [
 						'class' => 'danger',
-						'text' => 'Credentials incorrect.'
+						'text' => 'Kullanıcı adı veya şifre hatalı.'
 					];
 				}
 			}

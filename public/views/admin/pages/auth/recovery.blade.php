@@ -1,7 +1,6 @@
 @extends('panel.layouts.auth')
 
-@section('title', 'Recovery Password :: HaxMonster')
-@section('description', 'Description.')
+@section('title', 'Ofis Yönetim Sistemi')
 
 @section('styles')
 @endsection

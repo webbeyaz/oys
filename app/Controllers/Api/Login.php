@@ -70,14 +70,24 @@ class Login extends Api
 
 					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-					if ($query->total >= 1)
+					if ($query->total >= 1) // Çıkış işlemi
 					{
+						// TODO: Düzeltilecek.
+						/*$sql = "
+							SELECT COUNT(id) AS total
+							FROM codes
+							WHERE
+							    employee_id = '{$employee_id}'
+								AND
+
+						";*/
+
 						$text = [
 							'status' => 201,
 							'message' => 'Çıkış işlemi bekleniyor.'
 						];
 					}
-					else
+					else // Giriş işlemi
 					{
 						$text = [
 							'status' => 200,
