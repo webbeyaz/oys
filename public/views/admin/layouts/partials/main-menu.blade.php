@@ -46,7 +46,7 @@
 	<div class="main-menu-content">
 		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 			<li class="nav-item">
-				<a href="{{ site_url('admin/dashboard') }}" class="d-flex align-items-center active">
+				<a href="{{ site_url('admin/dashboard') }}" class="d-flex align-items-center">
 					<i data-feather="home"></i>
 					<span class="menu-title text-truncate">Anasayfa</span>
 				</a>
@@ -55,13 +55,13 @@
 				<span>Uygulama</span>
 				<i data-feather="more-horizontal"></i>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item sidebar-group-active open">
 				<a href="#" class="d-flex align-items-center">
 					<i data-feather="user"></i>
 					<span class="menu-title text-truncate">Personeller</span>
 				</a>
 				<ul class="menu-content">
-					<li>
+					<li class="active">
 						<a href="{{ site_url('admin/employees/add') }}" class="d-flex align-items-center">
 							<i data-feather="plus-circle"></i>
 							<span class="menu-item text-truncate">Personel Ekle</span>
