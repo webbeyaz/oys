@@ -45,7 +45,7 @@ $app->router->group('/admin', function ($router) {
 	$router->group('/recovery', function ($router) {
 		$router->any('/', 'Admin.Auth.Recovery@index');
 		$router->get('/sent', 'Admin.Auth.Recovery@sent');
-		$router->get('/:slug', 'Admin.Auth.Recovery@token');
+		$router->any('/:slug', 'Admin.Auth.Recovery@token');
 	});
 
 	$router->get('/dashboard', 'Admin.Dashboard@index');
