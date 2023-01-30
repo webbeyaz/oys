@@ -2,6 +2,14 @@
 
 @section('title', 'Ofis Yönetim Sistemi')
 
+@section('styles_vendor')
+@endsection
+
+@section('styles_page')
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/core/menu/menu-types/vertical-menu.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/pages/page-misc.css') }}">
+@endsection
+
 @section('styles')
 @endsection
 
@@ -59,4 +67,7 @@
 @endsection
 
 @section('scripts_page')
+@endsection
+
+@section('scripts')
 @endsection

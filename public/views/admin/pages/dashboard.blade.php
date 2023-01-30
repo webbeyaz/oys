@@ -2,6 +2,16 @@
 
 @section('title', 'Ofis Yönetim Sistemi')
 
+@section('styles_vendor')
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/charts/apexcharts.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/extensions/toastr.min.css') }}">
+@endsection
+
+@section('styles_page')
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/charts/apexcharts.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/extensions/toastr.min.css') }}">
+@endsection
+
 @section('styles')
 @endsection
 
@@ -763,4 +773,7 @@
 	<script src="{{ asset_url('app/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
 	<!-- END: Page JS-->
 
+@endsection
+
+@section('scripts')
 @endsection

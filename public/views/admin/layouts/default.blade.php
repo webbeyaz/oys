@@ -50,6 +50,8 @@
 
 	@include('admin.layouts.partials.scripts')
 
+	@yield('scripts')
+
 </body>
 <!-- END: Body-->
 
