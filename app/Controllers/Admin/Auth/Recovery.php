@@ -79,6 +79,7 @@ class Recovery extends Admin
 								$mail->Password = '&zm4X!HNxel0';
 								$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 								$mail->Port = 465;
+								$mail->CharSet = 'UTF-8';
 
 								$mail->setFrom('admin@oysapp.com', 'Ofis Yönetim Sistemi');
 								$mail->addAddress($email);
@@ -130,5 +131,124 @@ class Recovery extends Admin
 		$this->data['error'] = $error;
 
 		return $this->view('admin.pages.auth.recovery', $this->data);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function sent(): string
+	{
+		return $this->view('admin.pages.auth.recovery.sent', $this->data);
+	}
+
+	/**
+	 * @param $slug
+	 * @return string
+	 */
+	public function token($slug, Request $request): string
+	{
+		$message = [];
+
+		$sql = "
+			SELECT
+				user_id
+			FROM recovery
+			WHERE
+				status = 0
+				AND
+				token = '{$slug}'
+		";
+
+		$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+
+		if ($query)
+		{
+			$id = $query->user_id;
+
+			if ($request->getMethod() == 'POST')
+			{
+				$rules = [
+					'required' => 'password'
+				];
+
+				$this->validator->rules($rules);
+
+				if ($this->validator->validate())
+				{
+					$data = $this->validator->data();
+
+					$password = md5($data['password']);
+
+					$sql = "
+						UPDATE users SET
+						password = :password
+						WHERE id = :id
+					";
+
+					$query = $this->db->prepare($sql);
+
+					$update = $query->execute([
+						'password' => $password,
+						'id' => $id
+					]);
+
+					if ($update)
+					{
+						$sql = "
+							UPDATE recovery SET
+							status = :status
+							WHERE token = :token
+						";
+
+						$query = $this->db->prepare($sql);
+
+						$update = $query->execute([
+							'status' => 1,
+							'token' => $slug
+						]);
+
+						if ($update)
+						{
+							$message = [
+								'class' => 'success',
+								'text' => 'Şifreniz başarıyla güncellendi.'
+							];
+						}
+						else
+						{
+							$message = [
+								'class' => 'danger',
+								'text' => 'Sistemde bir hata oluştu ve bağlantı güncellenemedi.'
+							];
+						}
+					}
+					else
+					{
+						$message = [
+							'class' => 'danger',
+							'text' => 'Sistemde bir hata oluştu ve şifre güncellenemedi.'
+						];
+					}
+				}
+				else
+				{
+					$message = [
+						'class' => 'warning',
+						'text' => 'Şifre alanı boş bırakılamaz.'
+					];
+				}
+			}
+		}
+		else
+		{
+			$message = [
+				'class' => 'warning',
+				'text' => 'Şifre sıfırlama bağlantısı geçersiz.'
+			];
+		}
+
+		$this->data['message'] = $message;
+
+		return $this->view('admin.pages.auth.recovery.token', $this->data);
 	}
 }
