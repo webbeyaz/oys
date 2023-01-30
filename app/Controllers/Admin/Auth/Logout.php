@@ -10,7 +10,7 @@ class Logout extends Admin
 	{
 		session()->clear();
 
-		header('Location: ' . site_url('panel/login'));
+		header('Location: ' . site_url('admin/login'));
 		exit;
 	}
 }
