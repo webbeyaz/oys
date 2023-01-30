@@ -81,6 +81,52 @@
 					</li>
 				</ul>
 			</li>
+			<li class="nav-item">
+				<a href="#" class="d-flex align-items-center">
+					<i data-feather="anchor"></i>
+					<span class="menu-title text-truncate">Şoförler</span>
+				</a>
+				<ul class="menu-content">
+					<li>
+						<a href="{{ site_url('admin/driver/add') }}" class="d-flex align-items-center">
+							<i data-feather="plus-circle"></i>
+							<span class="menu-item text-truncate">Şoför Ekle</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ site_url('admin/driver/list') }}" class="d-flex align-items-center">
+							<i data-feather="list"></i>
+							<span class="menu-item text-truncate">Şoför Listesi</span>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="d-flex align-items-center">
+					<i data-feather="truck"></i>
+					<span class="menu-title text-truncate">Araçlar</span>
+				</a>
+				<ul class="menu-content">
+					<li>
+						<a href="{{ site_url('admin/vehicles/add') }}" class="d-flex align-items-center">
+							<i data-feather="plus-circle"></i>
+							<span class="menu-item text-truncate">Araç Ekle</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ site_url('admin/vehicles/list') }}" class="d-flex align-items-center">
+							<i data-feather="list"></i>
+							<span class="menu-item text-truncate">Araç Listesi</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ site_url('admin/vehicles/tracking') }}" class="d-flex align-items-center">
+							<i data-feather="user-check"></i>
+							<span class="menu-item text-truncate">Araç Takibi</span>
+						</a>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 </div>
