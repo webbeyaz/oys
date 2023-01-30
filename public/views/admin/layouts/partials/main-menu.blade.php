@@ -121,7 +121,7 @@
 					</li>
 					<li>
 						<a href="{{ site_url('admin/vehicles/tracking') }}" class="d-flex align-items-center">
-							<i data-feather="user-check"></i>
+							<i data-feather="check"></i>
 							<span class="menu-item text-truncate">Araç Takibi</span>
 						</a>
 					</li>
