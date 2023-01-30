@@ -62,6 +62,12 @@
 				</a>
 				<ul class="menu-content">
 					<li>
+						<a href="{{ site_url('admin/employees/add') }}" class="d-flex align-items-center">
+							<i data-feather="add"></i>
+							<span class="menu-item text-truncate">Personel Ekle</span>
+						</a>
+					</li>
+					<li>
 						<a href="{{ site_url('admin/employees/list') }}" class="d-flex align-items-center">
 							<i data-feather="list"></i>
 							<span class="menu-item text-truncate">Personel Listesi</span>
