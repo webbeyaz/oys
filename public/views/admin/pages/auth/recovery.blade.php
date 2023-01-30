@@ -47,6 +47,18 @@
 					<p class="card-text mb-2">
 						Şifrenizi sıfırlamak için size bir bağlantı içeren e-posta göndereceğiz.
 					</p>
+
+					@if ($error)
+
+						<div class="alert alert-{{ $error['class'] }}" role="alert">
+							<div class="alert-body">
+								<strong>Hata!</strong>
+								{{ $error['text'] }}
+							</div>
+						</div>
+
+					@endif
+
 					<form action="" method="post" class="auth-reset-password-form mt-2">
 						<div class="mb-1">
 							<label for="email" class="form-label">
