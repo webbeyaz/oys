@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.error')
 
 @section('title', 'Ofis Yönetim Sistemi')
 
