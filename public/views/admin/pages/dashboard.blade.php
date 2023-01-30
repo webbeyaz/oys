@@ -8,8 +8,10 @@
 @endsection
 
 @section('styles_page')
-	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/charts/apexcharts.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/extensions/toastr.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/core/menu/menu-types/vertical-menu.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/pages/dashboard-ecommerce.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/plugins/charts/chart-apex.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/plugins/extensions/ext-component-toastr.css') }}">
 @endsection
 
 @section('styles')
