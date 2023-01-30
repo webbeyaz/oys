@@ -55,7 +55,7 @@
 				<span>Uygulama</span>
 				<i data-feather="more-horizontal"></i>
 			</li>
-			<li class="nav-item open">
+			<li class="nav-item">
 				<a href="#" class="d-flex align-items-center">
 					<i data-feather="user"></i>
 					<span class="menu-title text-truncate">Personeller</span>
