@@ -610,7 +610,7 @@ window.colors = {
           $pageList =
             '<li class="d-flex align-items-center">' +
             '<a href="#">' +
-            '<h6 class="section-label mt-75 mb-0">Pages</h6>' +
+            '<h6 class="section-label mt-75 mb-0">Sayfalar</h6>' +
             '</a>' +
             '</li>',
           $activeItemClass = '',
