@@ -45,7 +45,7 @@
 	<div class="shadow-bottom"></div>
 	<div class="main-menu-content">
 		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-			<li class="nav-item">
+			<li class="nav-item {{ segments(0) }}">
 				<a href="{{ site_url('admin/dashboard') }}" class="d-flex align-items-center">
 					<i data-feather="home"></i>
 					<span class="menu-title text-truncate">Anasayfa</span>
@@ -61,19 +61,19 @@
 					<span class="menu-title text-truncate">Personeller</span>
 				</a>
 				<ul class="menu-content">
-					<li class="active">
+					<li class="">
 						<a href="{{ site_url('admin/employees/add') }}" class="d-flex align-items-center">
 							<i data-feather="plus-circle"></i>
 							<span class="menu-item text-truncate">Personel Ekle</span>
 						</a>
 					</li>
-					<li>
+					<li class="">
 						<a href="{{ site_url('admin/employees/list') }}" class="d-flex align-items-center">
 							<i data-feather="list"></i>
 							<span class="menu-item text-truncate">Personel Listesi</span>
 						</a>
 					</li>
-					<li>
+					<li class="">
 						<a href="{{ site_url('admin/employees/tracking') }}" class="d-flex align-items-center">
 							<i data-feather="user-check"></i>
 							<span class="menu-item text-truncate">Personel Takibi</span>
@@ -87,13 +87,13 @@
 					<span class="menu-title text-truncate">Şoförler</span>
 				</a>
 				<ul class="menu-content">
-					<li>
+					<li class="">
 						<a href="{{ site_url('admin/driver/add') }}" class="d-flex align-items-center">
 							<i data-feather="plus-circle"></i>
 							<span class="menu-item text-truncate">Şoför Ekle</span>
 						</a>
 					</li>
-					<li>
+					<li class="">
 						<a href="{{ site_url('admin/driver/list') }}" class="d-flex align-items-center">
 							<i data-feather="list"></i>
 							<span class="menu-item text-truncate">Şoför Listesi</span>
@@ -107,19 +107,19 @@
 					<span class="menu-title text-truncate">Araçlar</span>
 				</a>
 				<ul class="menu-content">
-					<li>
+					<li class="">
 						<a href="{{ site_url('admin/vehicles/add') }}" class="d-flex align-items-center">
 							<i data-feather="plus-circle"></i>
 							<span class="menu-item text-truncate">Araç Ekle</span>
 						</a>
 					</li>
-					<li>
+					<li class="">
 						<a href="{{ site_url('admin/vehicles/list') }}" class="d-flex align-items-center">
 							<i data-feather="list"></i>
 							<span class="menu-item text-truncate">Araç Listesi</span>
 						</a>
 					</li>
-					<li>
+					<li class="">
 						<a href="{{ site_url('admin/vehicles/tracking') }}" class="d-flex align-items-center">
 							<i data-feather="check"></i>
 							<span class="menu-item text-truncate">Araç Takibi</span>
