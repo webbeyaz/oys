@@ -34,7 +34,7 @@
 					<div class="search-input-icon">
 						<i data-feather="search"></i>
 					</div>
-					<input type="text" name="q" placeholder="Ara" class="form-control input" tabindex="-1" data-search="search">
+					<input type="text" placeholder="Ara" class="form-control input" tabindex="-1" data-search="search">
 					<div class="search-input-close">
 						<i data-feather="x"></i>
 					</div>
@@ -124,4 +124,63 @@
 		</ul>
 	</div>
 </nav>
+<ul class="main-search-list-defaultlist d-none">
+	<li class="d-flex align-items-center">
+		<a href="#">
+			<h6 class="section-label mt-75 mb-0">
+				Dosyalar
+			</h6>
+		</a>
+	</li>
+	<li class="auto-suggestion">
+		<a href="#" class="d-flex align-items-center justify-content-between w-100">
+			<div class="d-flex">
+				<div class="me-75">
+					<img src="{{ asset_url('app/images/icons/xls.png') }}" alt="Excel" height="32">
+				</div>
+				<div class="search-data">
+					<p class="search-data-title mb-0">
+						İki yeni öğe gönderildi
+					</p>
+					<small class="text-muted">
+						Muhammed
+					</small>
+				</div>
+			</div>
+			<small class="search-data-size me-50 text-muted">
+				&apos;17kb
+			</small>
+		</a>
+	</li>
+	<li class="auto-suggestion">
+		<a href="#" class="d-flex align-items-center justify-content-between w-100">
+			<div class="d-flex">
+				<div class="me-75">
+					<img src="{{ asset_url('app/images/icons/jpg.png') }}" alt="JPG" height="32">
+				</div>
+				<div class="search-data">
+					<p class="search-data-title mb-0">
+						52 JPG dosyası oluşturuldu
+					</p>
+					<small class="text-muted">
+						Muhammed
+					</small>
+				</div>
+			</div>
+			<small class="search-data-size me-50 text-muted">
+				&apos;11kb
+			</small>
+		</a>
+	</li>
+</ul>
+<ul class="main-search-list-defaultlist-other-list d-none">
+	<li class="auto-suggestion justify-content-between">
+		<a class="d-flex align-items-center justify-content-between w-100 py-50">
+			<div class="d-flex justify-content-start">
+				<span class="me-75" data-feather="alert-circle"></span>
+				<span>Sonuç bulunamadı.</span>
+			</div>
+		</a>
+	</li>
+</ul>
 <!-- END: Header-->
