@@ -10,21 +10,29 @@
 	<!-- Dashboard Ecommerce Starts -->
 	<section id="dashboard-ecommerce">
 		<div class="row match-height">
+
 			<!-- Medal Card -->
 			<div class="col-xl-4 col-md-6 col-12">
 				<div class="card card-congratulation-medal">
 					<div class="card-body">
-						<h5>Congratulations 🎉 John!</h5>
-						<p class="card-text font-small-3">You have won gold medal</p>
+						<h5>
+							Tebrikler 🎉 Muhammed!
+						</h5>
+						<p class="card-text font-small-3">
+							You have won gold medal
+						</p>
 						<h3 class="mb-75 mt-2 pt-50">
 							<a href="#">$48.9k</a>
 						</h3>
-						<button type="button" class="btn btn-primary">View Sales</button>
-						<img src="../../../app-assets/images/illustration/badge.svg" class="congratulation-medal" alt="Medal Pic" />
+						<button type="button" class="btn btn-primary">
+							View Sales
+						</button>
+						<img src="{{ asset_url('app/images/illustration/badge.svg') }}" alt="Madalya"  class="congratulation-medal">
 					</div>
 				</div>
 			</div>
 			<!--/ Medal Card -->
+
 			<!-- Statistics Card -->
 			<div class="col-xl-8 col-md-6 col-12">
 				<div class="card card-statistics">
@@ -93,10 +101,12 @@
 				</div>
 			</div>
 			<!--/ Statistics Card -->
+
 		</div>
 		<div class="row match-height">
 			<div class="col-lg-4 col-12">
 				<div class="row match-height">
+
 					<!-- Bar Chart - Orders -->
 					<div class="col-lg-6 col-md-3 col-6">
 						<div class="card">
@@ -108,6 +118,7 @@
 						</div>
 					</div>
 					<!--/ Bar Chart - Orders -->
+
 					<!-- Line Chart - Profit -->
 					<div class="col-lg-6 col-md-3 col-6">
 						<div class="card card-tiny-line-stats">
@@ -119,6 +130,7 @@
 						</div>
 					</div>
 					<!--/ Line Chart - Profit -->
+
 					<!-- Earnings Card -->
 					<div class="col-lg-12 col-md-6 col-12">
 						<div class="card earnings-card">
@@ -140,8 +152,10 @@
 						</div>
 					</div>
 					<!--/ Earnings Card -->
+
 				</div>
 			</div>
+
 			<!-- Revenue Report Card -->
 			<div class="col-lg-8 col-12">
 				<div class="card card-revenue-budget">
@@ -185,8 +199,10 @@
 				</div>
 			</div>
 			<!--/ Revenue Report Card -->
+
 		</div>
 		<div class="row match-height">
+
 			<!-- Company Table Card -->
 			<div class="col-lg-8 col-12">
 				<div class="card card-company-table">
@@ -476,6 +492,7 @@
 				</div>
 			</div>
 			<!--/ Company Table Card -->
+
 			<!-- Developer Meetup Card -->
 			<div class="col-lg-4 col-md-6 col-12">
 				<div class="card card-developer-meetup">
@@ -537,6 +554,7 @@
 				</div>
 			</div>
 			<!--/ Developer Meetup Card -->
+
 			<!-- Browser States Card -->
 			<div class="col-lg-4 col-md-6 col-12">
 				<div class="card card-browser-states">
@@ -609,6 +627,7 @@
 				</div>
 			</div>
 			<!--/ Browser States Card -->
+
 			<!-- Goal Overview Card -->
 			<div class="col-lg-4 col-md-6 col-12">
 				<div class="card">
@@ -632,6 +651,7 @@
 				</div>
 			</div>
 			<!--/ Goal Overview Card -->
+
 			<!-- Transaction Card -->
 			<div class="col-lg-4 col-md-6 col-12">
 				<div class="card card-transaction">
@@ -721,11 +741,26 @@
 				</div>
 			</div>
 			<!--/ Transaction Card -->
+
 		</div>
 	</section>
 	<!-- Dashboard Ecommerce ends -->
 
 @endsection
 
-@section('scripts')
+@section('scripts_vendor')
+
+	<!-- BEGIN: Page Vendor JS-->
+	<script src="{{ asset_url('app/vendors/js/charts/apexcharts.min.js') }}"></script>
+	<script src="{{ asset_url('app/vendors/js/extensions/toastr.min.js') }}"></script>
+	<!-- END: Page Vendor JS-->
+
+@endsection
+
+@section('scripts_page')
+
+	<!-- BEGIN: Page JS-->
+	<script src="{{ asset_url('app/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
+	<!-- END: Page JS-->
+
 @endsection
