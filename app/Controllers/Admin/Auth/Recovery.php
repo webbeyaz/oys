@@ -6,12 +6,12 @@ use App\Controllers\Admin;
 use Symfony\Component\HttpFoundation\Request;
 use PDO;
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 class Recovery extends Admin
 {
 	/**
+	 * @param Request $request
 	 * @return string
 	 */
 	public function index(Request $request): string
@@ -86,7 +86,7 @@ class Recovery extends Admin
 
 								$mail->isHTML();
 								$mail->Subject = 'Şifre Sıfırlama Bağlantısı';
-								$mail->Body = 'Şifre Sıfırlama Bağlantınız: ' . site_url('admin/recovery/' . $token);
+								$mail->Body = 'Şifre Sıfırlama Bağlantınız: ' . site_url('admin/recovery/sent/' . $token);
 								$mail->AltBody = 'OYS';
 
 								$mail->send();
@@ -143,6 +143,7 @@ class Recovery extends Admin
 
 	/**
 	 * @param $slug
+	 * @param Request $request
 	 * @return string
 	 */
 	public function token($slug, Request $request): string
