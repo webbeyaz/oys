@@ -411,7 +411,7 @@ window.colors = {
   // main menu internationalization
 
   // init i18n and load language file
-  if ($body.attr('data-framework') === 'laravel') {
+  /*if ($body.attr('data-framework') === 'laravel') { // TODO: Dil dosyalarını düzelt.
     // change language according to data-language of dropdown item
     var language = $('html')[0].lang;
     if (language !== null) {
@@ -456,7 +456,7 @@ window.colors = {
         $('.main-menu, .horizontal-menu-wrapper').localize();
       });
     });
-  }
+  }*/
 
   /********************* Bookmark & Search ***********************/
   // This variable is used for mouseenter and mouseleave events of search list
