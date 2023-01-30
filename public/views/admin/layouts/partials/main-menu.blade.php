@@ -46,7 +46,7 @@
 	<div class="main-menu-content">
 		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 			<li class="nav-item">
-				<a href="{{ site_url('admin/dashboard') }}" class="d-flex align-items-center">
+				<a href="{{ site_url('admin/dashboard') }}" class="d-flex align-items-center active">
 					<i data-feather="home"></i>
 					<span class="menu-title text-truncate">Anasayfa</span>
 				</a>
