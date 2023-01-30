@@ -8,5 +8,8 @@ return [
 	'LOCALE' => 'tr_TR',
 	'DEVELOPMENT' => true,
 	'BASE_URL' => '',
-	'BASE_FOLDER' => ''
+	'BASE_FOLDER' => '',
+	'SMTP_HOST' => '',
+	'SMTP_USERNAME' => '',
+	'SMTP_PASSWORD' => ''
 ];

@@ -73,15 +73,15 @@ class Recovery extends Admin
 							{
 								$mail->SMTPDebug = false;
 								$mail->isSMTP();
-								$mail->Host = 'mail.oysapp.com';
+								$mail->Host = config('SMTP_HOST');
 								$mail->SMTPAuth = true;
-								$mail->Username = 'admin@oysapp.com';
-								$mail->Password = '&zm4X!HNxel0';
+								$mail->Username = config('SMTP_USERNAME');
+								$mail->Password = config('SMTP_PASSWORD');
 								$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 								$mail->Port = 465;
 								$mail->CharSet = 'UTF-8';
 
-								$mail->setFrom('admin@oysapp.com', 'Ofis Yönetim Sistemi');
+								$mail->setFrom(config('SMTP_USERNAME'), 'Ofis Yönetim Sistemi');
 								$mail->addAddress($email);
 
 								$mail->isHTML();
