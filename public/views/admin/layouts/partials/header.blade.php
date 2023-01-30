@@ -2,12 +2,12 @@
 <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow container-xxl">
 	<div class="navbar-container d-flex content">
 		<ul class="nav navbar-nav align-items-center ms-auto">
-			<li class="nav-item dropdown dropdown-language">
+			<!--<li class="nav-item dropdown dropdown-language">
 				<a href="#" class="nav-link dropdown-toggle" id="dropdown-flag" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="flag-icon flag-icon-tr"></i>
 					<span class="selected-language">Türkçe</span>
 				</a>
-				<!--<div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-flag">
+				<div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-flag">
 					<a class="dropdown-item" href="#" data-language="en">
 						<i class="flag-icon flag-icon-us"></i>
 						English
@@ -24,8 +24,8 @@
 						<i class="flag-icon flag-icon-pt"></i>
 						Portuguese
 					</a>
-				</div>-->
-			</li>
+				</div>
+			</li>-->
 			<li class="nav-item nav-search">
 				<a class="nav-link nav-link-search">
 					<i class="ficon" data-feather="search"></i>
@@ -52,7 +52,7 @@
 							<h4 class="notification-title mb-0 me-auto">
 								Bildirimler
 							</h4>
-							<div class="badge rounded-pill badge-light-primary">6 New</div>
+							<div class="badge rounded-pill badge-light-primary">6 Yeni</div>
 						</div>
 					</li>
 					<li class="scrollable-container media-list">
@@ -86,31 +86,32 @@
 				<a href="#" class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<div class="user-nav d-sm-flex d-none">
 						<span class="user-name fw-bolder">Muhammed</span>
-						<span class="user-status">Yönetici</span></div>
+						<span class="user-status">Yönetici</span>
+					</div>
 					<span class="avatar">
-							<img class="round" src="{{ asset_url('app/images/portrait/small/avatar-s-11.jpg') }}" alt="Muhammed" height="40" width="40">
-							<span class="avatar-status-online"></span>
-						</span>
+						<img class="round" src="{{ asset_url('app/images/portrait/small/avatar-s-11.jpg') }}" alt="Muhammed" height="40" width="40">
+						<span class="avatar-status-online"></span>
+					</span>
 				</a>
 				<div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-					<a href="page-profile.html" class="dropdown-item">
+					<a href="{{ site_url('admin/users/profile') }}" class="dropdown-item">
 						<i class="me-50" data-feather="user"></i>
 						Profil
 					</a>
-					<a href="app-todo.html" class="dropdown-item">
-						<i class="me-50" data-feather="check-square"></i>
+					<a href="{{ site_url('admin/employees/tracking') }}" class="dropdown-item">
+						<i class="me-50" data-feather="user-check"></i>
 						Personel Takibi
 					</a>
-					<a href="app-chat.html" class="dropdown-item">
-						<i class="me-50" data-feather="message-square"></i>
+					<a href="{{ site_url('admin/vehicles/tracking') }}" class="dropdown-item">
+						<i class="me-50" data-feather="truck"></i>
 						Araç Takibi
 					</a>
 					<div class="dropdown-divider"></div>
-					<a href="page-account-settings-account.html" class="dropdown-item">
+					<a href="{{ site_url('admin/settings') }}" class="dropdown-item">
 						<i class="me-50" data-feather="settings"></i>
 						Ayarlar
 					</a>
-					<a href="page-faq.html" class="dropdown-item">
+					<a href="{{ site_url('admin/faq') }}" class="dropdown-item">
 						<i class="me-50" data-feather="help-circle"></i>
 						SSS
 					</a>
@@ -132,7 +133,7 @@
 		</a>
 	</li>
 	<li class="auto-suggestion">
-		<a href="app-file-manager.html" class="d-flex align-items-center justify-content-between w-100">
+		<a href="#" class="d-flex align-items-center justify-content-between w-100">
 			<div class="d-flex">
 				<div class="me-75">
 					<img src="{{ asset_url('app/images/icons/xls.png') }}" alt="Excel" height="32">
@@ -152,95 +153,33 @@
 		</a>
 	</li>
 	<li class="auto-suggestion">
-		<a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
+		<a href="#" class="d-flex align-items-center justify-content-between w-100">
 			<div class="d-flex">
-				<div class="me-75"><img src="../../../app-assets/images/icons/jpg.png" alt="png" height="32"></div>
+				<div class="me-75">
+					<img src="{{ asset_url('app/images/icons/jpg.png') }}" alt="JPG" height="32">
+				</div>
 				<div class="search-data">
-					<p class="search-data-title mb-0">52 JPG file Generated</p>
-					<small class="text-muted">FontEnd Developer</small>
+					<p class="search-data-title mb-0">
+						52 JPG dosyası oluşturuldu
+					</p>
+					<small class="text-muted">
+						Muhammed
+					</small>
 				</div>
 			</div>
-			<small class="search-data-size me-50 text-muted">&apos;11kb</small>
-		</a>
-	</li>
-	<li class="auto-suggestion">
-		<a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
-			<div class="d-flex">
-				<div class="me-75"><img src="../../../app-assets/images/icons/pdf.png" alt="png" height="32"></div>
-				<div class="search-data">
-					<p class="search-data-title mb-0">25 PDF File Uploaded</p>
-					<small class="text-muted">Digital Marketing Manager</small>
-				</div>
-			</div>
-			<small class="search-data-size me-50 text-muted">&apos;150kb</small>
-		</a>
-	</li>
-	<li class="auto-suggestion">
-		<a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
-			<div class="d-flex">
-				<div class="me-75"><img src="../../../app-assets/images/icons/doc.png" alt="png" height="32"></div>
-				<div class="search-data">
-					<p class="search-data-title mb-0">Anna_Strong.doc</p>
-					<small class="text-muted">Web Designer</small>
-				</div>
-			</div>
-			<small class="search-data-size me-50 text-muted">&apos;256kb</small>
-		</a>
-	</li>
-	<li class="d-flex align-items-center">
-		<a href="#">
-			<h6 class="section-label mt-75 mb-0">Members</h6>
-		</a>
-	</li>
-	<li class="auto-suggestion">
-		<a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view-account.html">
-			<div class="d-flex align-items-center">
-				<div class="avatar me-75"><img src="../../../app-assets/images/portrait/small/avatar-s-8.jpg" alt="png" height="32"></div>
-				<div class="search-data">
-					<p class="search-data-title mb-0">John Doe</p>
-					<small class="text-muted">UI designer</small>
-				</div>
-			</div>
-		</a>
-	</li>
-	<li class="auto-suggestion">
-		<a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view-account.html">
-			<div class="d-flex align-items-center">
-				<div class="avatar me-75"><img src="../../../app-assets/images/portrait/small/avatar-s-1.jpg" alt="png" height="32"></div>
-				<div class="search-data">
-					<p class="search-data-title mb-0">Michal Clark</p>
-					<small class="text-muted">FontEnd Developer</small>
-				</div>
-			</div>
-		</a>
-	</li>
-	<li class="auto-suggestion">
-		<a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view-account.html">
-			<div class="d-flex align-items-center">
-				<div class="avatar me-75"><img src="../../../app-assets/images/portrait/small/avatar-s-14.jpg" alt="png" height="32"></div>
-				<div class="search-data">
-					<p class="search-data-title mb-0">Milena Gibson</p>
-					<small class="text-muted">Digital Marketing Manager</small>
-				</div>
-			</div>
-		</a>
-	</li>
-	<li class="auto-suggestion">
-		<a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view-account.html">
-			<div class="d-flex align-items-center">
-				<div class="avatar me-75"><img src="../../../app-assets/images/portrait/small/avatar-s-6.jpg" alt="png" height="32"></div>
-				<div class="search-data">
-					<p class="search-data-title mb-0">Anna Strong</p>
-					<small class="text-muted">Web Designer</small>
-				</div>
-			</div>
+			<small class="search-data-size me-50 text-muted">
+				&apos;11kb
+			</small>
 		</a>
 	</li>
 </ul>
 <ul class="main-search-list-defaultlist-other-list d-none">
 	<li class="auto-suggestion justify-content-between">
 		<a class="d-flex align-items-center justify-content-between w-100 py-50">
-			<div class="d-flex justify-content-start"><span class="me-75" data-feather="alert-circle"></span><span>No results found.</span></div>
+			<div class="d-flex justify-content-start">
+				<span class="me-75" data-feather="alert-circle"></span>
+				<span>Sonuç bulunamadı.</span>
+			</div>
 		</a>
 	</li>
 </ul>
