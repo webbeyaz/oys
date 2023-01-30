@@ -34,7 +34,7 @@
 					<div class="search-input-icon">
 						<i data-feather="search"></i>
 					</div>
-					<input type="text" name="q" placeholder="Ara" class="form-control input" tabindex="-1">
+					<input type="text" name="q" placeholder="Ara" class="form-control input" tabindex="-1" data-search="search">
 					<div class="search-input-close">
 						<i data-feather="x"></i>
 					</div>
