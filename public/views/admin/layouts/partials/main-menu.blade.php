@@ -63,7 +63,7 @@
 				<ul class="menu-content">
 					<li>
 						<a href="{{ site_url('admin/employees/add') }}" class="d-flex align-items-center">
-							<i data-feather="add"></i>
+							<i data-feather="plus-circle"></i>
 							<span class="menu-item text-truncate">Personel Ekle</span>
 						</a>
 					</li>
