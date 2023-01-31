@@ -58,24 +58,29 @@
 
 					@endif
 
-					<form action="" method="post" class="auth-reset-password-form mt-2">
-						<div class="mb-1">
-							<div class="d-flex justify-content-between">
-								<label for="password" class="form-label">
-									Yeni Şifre
-								</label>
+					@if ($message['class'] != 'success')
+
+						<form action="" method="post" class="auth-reset-password-form mt-2">
+							<div class="mb-1">
+								<div class="d-flex justify-content-between">
+									<label for="password" class="form-label">
+										Yeni Şifre
+									</label>
+								</div>
+								<div class="input-group input-group-merge form-password-toggle">
+									<input type="password" name="password" placeholder="Yeni Şifre" class="form-control form-control-merge" id="password" aria-describedby="password" tabindex="1" autofocus="">
+									<span class="input-group-text cursor-pointer">
+										<i data-feather="eye"></i>
+									</span>
+								</div>
 							</div>
-							<div class="input-group input-group-merge form-password-toggle">
-								<input type="password" name="password" placeholder="Yeni Şifre" class="form-control form-control-merge" id="password" aria-describedby="password" tabindex="1" autofocus="">
-								<span class="input-group-text cursor-pointer">
-									<i data-feather="eye"></i>
-								</span>
-							</div>
-						</div>
-						<button type="submit" class="btn btn-primary w-100" tabindex="2">
-							Şifremi Güncelle
-						</button>
-					</form>
+							<button type="submit" class="btn btn-primary w-100" tabindex="2">
+								Şifremi Güncelle
+							</button>
+						</form>
+
+					@endif
+
 				</div>
 			</div>
 			<!-- /Reset Password basic -->

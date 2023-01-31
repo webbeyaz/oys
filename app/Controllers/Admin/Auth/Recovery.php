@@ -148,7 +148,10 @@ class Recovery extends Admin
 	 */
 	public function token($slug, Request $request): string
 	{
-		$message = [];
+		$message = [
+			'class' => null,
+			'text' => null
+		];
 
 		$sql = "
 			SELECT
@@ -212,8 +215,10 @@ class Recovery extends Admin
 						{
 							$message = [
 								'class' => 'success',
-								'text' => 'Şifreniz başarıyla güncellendi.'
+								'text' => 'Şifreniz başarıyla güncellendi. 5 saniye sonra yönlendirileceksiniz.'
 							];
+
+							header('Refresh: 5; URL=' . site_url('admin/login'));
 						}
 						else
 						{
