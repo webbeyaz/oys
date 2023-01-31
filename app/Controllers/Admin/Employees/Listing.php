@@ -24,7 +24,7 @@ class Listing extends Admin
 			    status,
 			    created_at
 			FROM employees
-			WHERE deletet_at IS NULL
+			WHERE deleted_at IS NULL
 			ORDER BY created_at DESC, id DESC
 		";
 
