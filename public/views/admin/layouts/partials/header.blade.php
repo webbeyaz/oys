@@ -60,7 +60,7 @@
 							<div class="list-item d-flex align-items-start">
 								<div class="me-1">
 									<div class="avatar">
-										<img src="{{ asset_url('app/images/portrait/small/avatar-s-15.jpg') }}" alt="Emin Arif" width="32" height="32">
+										<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="Emin Arif Pirinç" width="32" height="32">
 									</div>
 								</div>
 								<div class="list-item-body flex-grow-1">
@@ -85,11 +85,11 @@
 			<li class="nav-item dropdown dropdown-user">
 				<a href="#" class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<div class="user-nav d-sm-flex d-none">
-						<span class="user-name fw-bolder">Muhammed</span>
+						<span class="user-name fw-bolder">{{ $user->firstname . ' ' . $user->lastname }}</span>
 						<span class="user-status">Yönetici</span>
 					</div>
 					<span class="avatar">
-						<img class="round" src="{{ asset_url('app/images/portrait/small/avatar-s-11.jpg') }}" alt="Muhammed" height="40" width="40">
+						<img class="round" src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="{{ $user->firstname . ' ' . $user->lastname }}" height="40" width="40">
 						<span class="avatar-status-online"></span>
 					</span>
 				</a>
