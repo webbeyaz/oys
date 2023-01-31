@@ -40,11 +40,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+		<!--<div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
 			<div class="mb-1 breadcrumb-right">
 				tarih filtreleme
 			</div>
-		</div>
+		</div>-->
 	</div>
 	<div class="content-body">
 
@@ -84,38 +84,46 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>
-										<img src="{{ asset_url('app/images/icons/angular.svg') }}" alt="Angular" width="20" height="20" class="me-75">
-										<span class="fw-bold">Kullanıcı Adı</span>
-									</td>
-									<td>
-										Personel
-									</td>
-									<td>
-										<span class="badge rounded-pill badge-light-primary me-1">Active</span>
-									</td>
-									<td>
-										Tarih
-									</td>
-									<td>
-										<div class="dropdown">
-											<button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-												<i data-feather="more-vertical"></i>
-											</button>
-											<div class="dropdown-menu dropdown-menu-end">
-												<a href="#" class="dropdown-item">
-													<i data-feather="edit-2" class="me-50"></i>
-													<span>Düzenle</span>
-												</a>
-												<a href="#" class="dropdown-item">
-													<i data-feather="trash" class="me-50"></i>
-													<span>Sil</span>
-												</a>
+
+								@foreach ($employees as $employee)
+
+									<tr>
+										<td>
+											<img src="{{ asset_url('app/images/icons/angular.svg') }}" alt="Angular" width="20" height="20" class="me-75">
+											<span class="fw-bold">{{ $employee->username }}</span>
+										</td>
+										<td>
+											{{ $employee->firstname . ' ' . $employee->lastname }}
+										</td>
+										<td>
+											<span class="badge rounded-pill badge-light-{{ $employee->status == 1 ? 'success' : 'danger' }} me-1">
+												{{ $employee->status == 1 ? 'Aktif' : 'Pasif' }}
+											</span>
+										</td>
+										<td>
+											{{ $employee->created_at }}
+										</td>
+										<td>
+											<div class="dropdown">
+												<button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
+													<i data-feather="more-vertical"></i>
+												</button>
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="{{ site_url('admin/employees/edit/' . $employee->id) }}" class="dropdown-item">
+														<i data-feather="edit-2" class="me-50"></i>
+														<span>Düzenle</span>
+													</a>
+													<a href="{{ site_url('admin/employees/delete/' . $employee->id) }}" class="dropdown-item">
+														<i data-feather="trash" class="me-50"></i>
+														<span>Sil</span>
+													</a>
+												</div>
 											</div>
-										</div>
-									</td>
-								</tr>
+										</td>
+									</tr>
+
+								@endforeach
+
 							</tbody>
 						</table>
 					</div>
