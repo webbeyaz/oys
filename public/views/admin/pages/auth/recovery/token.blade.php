@@ -58,7 +58,7 @@
 
 					@endif
 
-					@if ($message['class'] != 'success')
+					@if ($message['class'] == 'success')
 
 						<form action="" method="post" class="auth-reset-password-form mt-2">
 							<div class="mb-1">
