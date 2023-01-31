@@ -766,20 +766,12 @@
 @endsection
 
 @section('scripts_vendor')
-
-	<!-- BEGIN: Page Vendor JS-->
 	<script src="{{ asset_url('app/vendors/js/charts/apexcharts.min.js') }}"></script>
 	<script src="{{ asset_url('app/vendors/js/extensions/toastr.min.js') }}"></script>
-	<!-- END: Page Vendor JS-->
-
 @endsection
 
 @section('scripts_page')
-
-	<!-- BEGIN: Page JS-->
 	<script src="{{ asset_url('app/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
-	<!-- END: Page JS-->
-
 @endsection
 
 @section('scripts')

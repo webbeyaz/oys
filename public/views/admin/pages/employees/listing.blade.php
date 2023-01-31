@@ -136,7 +136,7 @@
 @endsection
 
 @section('scripts_page')
-	<script src="{{ asset_url('app/js/scripts/tables/table-datatables-basic.js') }}"></script>
+	<!--<script src="{{ asset_url('app/js/scripts/tables/table-datatables-basic.js') }}"></script>-->
 @endsection
 
 @section('scripts')
