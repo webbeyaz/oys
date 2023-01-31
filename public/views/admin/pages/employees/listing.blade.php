@@ -101,7 +101,7 @@
 											</span>
 										</td>
 										<td>
-											{{ timeConvert($employee->created_at, 'd F Y') }}
+											{{ timeConvert($employee->created_at, 'd F Y H:i') }}
 										</td>
 										<td>
 											<div class="dropdown">
