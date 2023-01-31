@@ -127,6 +127,28 @@
 					</li>
 				</ul>
 			</li>
+			<li class="navigation-header">
+				<span>Yönetim</span>
+				<i data-feather="more-horizontal"></i>
+			</li>
+			<li class="nav-item {{ segments(1) == 'settimgs' ? 'active' : null }}">
+				<a href="{{ site_url('admin/settimgs') }}" class="d-flex align-items-center">
+					<i data-feather="settings"></i>
+					<span class="menu-title text-truncate">Ayarlar</span>
+				</a>
+			</li>
+			<li class="nav-item {{ segments(1) == 'faq' ? 'active' : null }}">
+				<a href="{{ site_url('admin/faq') }}" class="d-flex align-items-center">
+					<i data-feather="help-circle"></i>
+					<span class="menu-title text-truncate">SSS</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="{{ site_url('admin/logout') }}" class="d-flex align-items-center">
+					<i data-feather="power"></i>
+					<span class="menu-title text-truncate">Çıkış Yap</span>
+				</a>
+			</li>
 		</ul>
 	</div>
 </div>
