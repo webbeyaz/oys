@@ -50,6 +50,12 @@ $app->router->group('/admin', function ($router) {
 
 	$router->get('/dashboard', 'Admin.Dashboard@index');
 
+	$router->group('/employees', function ($router) {
+		$router->get('/list', 'Admin.Employees.Listing@index');
+		$router->get('/tracking', 'Admin.Employees.Tracking@index');
+		$router->any('/add', 'Admin.Employees.Add@index');
+	});
+
 	$router->group('/users', function ($router) {
 		$router->get('/', 'Admin.Users@index');
 	});
