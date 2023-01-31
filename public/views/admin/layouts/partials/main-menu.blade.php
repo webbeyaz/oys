@@ -131,6 +131,12 @@
 				<span>Yönetim</span>
 				<i data-feather="more-horizontal"></i>
 			</li>
+			<li class="nav-item {{ segments(1) == 'logs' ? 'active' : null }}">
+				<a href="{{ site_url('admin/logs') }}" class="d-flex align-items-center">
+					<i data-feather="git-merge"></i>
+					<span class="menu-title text-truncate">Kayıtlar</span>
+				</a>
+			</li>
 			<li class="nav-item {{ segments(1) == 'settimgs' ? 'active' : null }}">
 				<a href="{{ site_url('admin/settimgs') }}" class="d-flex align-items-center">
 					<i data-feather="settings"></i>
