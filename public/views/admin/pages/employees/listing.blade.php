@@ -89,7 +89,7 @@
 
 									<tr>
 										<td>
-											<img src="{{ asset_url('app/images/icons/angular.svg') }}" alt="Angular" width="20" height="20" class="me-75">
+											<img src="{{ $employee->photo ? upload_url('images/cache/employees/20x20/' . $employee->photo) : asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee->username }}" width="20" height="20" class="me-75">
 											<span class="fw-bold">{{ $employee->username }}</span>
 										</td>
 										<td>
