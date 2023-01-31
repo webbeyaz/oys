@@ -60,18 +60,25 @@
 					<div class="card">
 						<table class="datatables-basic table">
 							<thead>
-							<tr>
-								<th></th>
-								<th></th>
-								<th>id</th>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Date</th>
-								<th>Salary</th>
-								<th>Status</th>
-								<th>Action</th>
-							</tr>
+								<tr>
+									<th>
+										Name
+									</th>
+									<th>
+										Email
+									</th>
+								</tr>
 							</thead>
+							<tbody>
+								<tr>
+									<td>
+										deneme 1
+									</td>
+									<td>
+										denemee 2
+									</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>
