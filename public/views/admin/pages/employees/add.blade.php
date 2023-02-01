@@ -98,7 +98,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="row mt-1">
+								<!--<div class="row mt-1">
 									<div class="col-xl-6 col-12">
 										<div class="mb-1">
 											<label class="form-label mb-1" for="photo">
@@ -117,7 +117,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div>-->
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary waves-effect waves-float waves-light">
