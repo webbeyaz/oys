@@ -54,6 +54,7 @@ $app->router->group('/admin', function ($router) {
 		$router->get('/list', 'Admin.Employees.Listing@index');
 		$router->get('/tracking', 'Admin.Employees.Tracking@index');
 		$router->any('/add', 'Admin.Employees.Add@index');
+		$router->any('/edit', 'Admin.Employees.Edit@index');
 	});
 
 	$router->group('/users', function ($router) {
