@@ -122,7 +122,7 @@ class Edit extends Admin
 			}
 		}
 
-		$this->data['employee'] = $driver;
+		$this->data['driver'] = $driver;
 		$this->data['message'] = $message;
 
 		return $this->view('admin.pages.drivers.edit', $this->data);
