@@ -71,6 +71,7 @@ class Tracking extends Admin
 				if ($rowOut->time < $time)
 				{
 					unset($tracking[$i]);
+					break;
 				}
 			}
 
