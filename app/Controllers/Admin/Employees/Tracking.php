@@ -24,42 +24,15 @@ class Tracking extends Admin
 			FROM actions a
 			INNER JOIN codes c ON c.id = a.code_id
 			INNER JOIN employees e ON e.id = c.employee_id
-			GROUP BY a.time
-			ORDER BY a.time ASC
 		";
 
-		$queryIn = $this->db->query($sql, PDO::FETCH_OBJ);
+		$query = $this->db->query($sql, PDO::FETCH_OBJ);
 
-		if ($queryIn)
+		if ($query)
 		{
-			foreach ($queryIn as $rowIn)
+			foreach ($query as $row)
 			{
-				$i = $rowIn->id;
-
-				$tracking[$i] = [
-					'username' => $rowIn->username,
-					'firstname' => $rowIn->firstname,
-					'lastname' => $rowIn->lastname,
-					'time_in' => $rowIn->time
-				];
-
-				 $sql = "
-				    SELECT
-					    a.time AS time
-					FROM actions a
-					INNER JOIN codes c ON c.id = a.code_id
-					INNER JOIN employees e ON e.id = c.employee_id
-					WHERE c.id > $i
-					GROUP BY a.time
-					ORDER BY a.time ASC
-				 ";
-
-				$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
-
-				foreach ($queryOut as $rowOut)
-				{
-					$tracking[$i]['time_out'] = $rowOut->time;
-				}
+				$tracking[] = $row;
 			}
 		}
 
