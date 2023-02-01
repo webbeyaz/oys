@@ -105,7 +105,8 @@
 											{{ timeConvert($employee['time_out'], 'H:i') }}
 										</td>
 										<td>
-											{{ timeDifference($employee['time_in'], $employee['time_out']) }}
+											{{ timeDiffHours($employee['time_in'], $employee['time_out']) }} saat
+											({{ timeDiffMinutes($employee['time_in'], $employee['time_out']) }} dakika)
 										</td>
 										<td>
 											{{ timeConvert($employee['date'], 'd.m.Y') }}

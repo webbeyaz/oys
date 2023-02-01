@@ -26,9 +26,19 @@ function timeConvert($date, $format): string
  * @param $end
  * @return string
  */
-function timeDifference($start, $end): string
+function timeDiffMinutes($start, $end): string
 {
 	return Carbon::parse($start)->diffInMinutes($end);
+}
+
+/**
+ * @param $start
+ * @param $end
+ * @return string
+ */
+function timeDiffHours($start, $end): string
+{
+	return Carbon::parse($start)->diffInHours($end);
 }
 
 /**
