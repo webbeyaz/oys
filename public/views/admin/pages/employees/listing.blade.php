@@ -50,11 +50,6 @@
 				</div>
 			</div>
 		</div>
-		<!--<div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
-			<div class="mb-1 breadcrumb-right">
-				tarih filtreleme
-			</div>
-		</div>-->
 	</div>
 	<div class="content-body">
 
@@ -72,9 +67,9 @@
 									<th>
 										Ad Soyad
 									</th>
-									<th>
+									<!--<th>
 										Durum
-									</th>
+									</th>-->
 									<th>
 										Oluşturulma Tarihi
 									</th>
@@ -95,11 +90,11 @@
 										<td>
 											{{ $employee->firstname . ' ' . $employee->lastname }}
 										</td>
-										<td>
+										<!--<td>
 											<span class="badge rounded-pill badge-light-{{ $employee->status == 1 ? 'success' : 'danger' }} me-1">
 												{{ $employee->status == 1 ? 'Aktif' : 'Pasif' }}
 											</span>
-										</td>
+										</td>-->
 										<td>
 											{{ timeConvert($employee->created_at, 'd F Y H:i') }}
 										</td>
