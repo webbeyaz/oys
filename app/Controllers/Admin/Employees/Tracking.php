@@ -17,7 +17,6 @@ class Tracking extends Admin
 		$sql = "
 			SELECT
 			    a.id AS id,
-			    e.id AS eid,
 			    e.username AS username,
 			    e.firstname AS firstname,
 			    e.lastname AS lastname,
@@ -25,6 +24,7 @@ class Tracking extends Admin
 			FROM actions a
 			INNER JOIN codes c ON c.id = a.code_id
 			INNER JOIN employees e ON e.id = c.employee_id
+			ORDER BY a.time ASC
 		";
 
 		$queryIn = $this->db->query($sql, PDO::FETCH_OBJ);
@@ -44,12 +44,12 @@ class Tracking extends Admin
 
 				 $sql = "
 				    SELECT
-				        e.id AS id,
 					    a.time AS time
 					FROM actions a
 					INNER JOIN codes c ON c.id = a.code_id
 					INNER JOIN employees e ON e.id = c.employee_id
 					WHERE c.id > $i
+					ORDER BY a.time ASC
 				 ";
 
 				$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
