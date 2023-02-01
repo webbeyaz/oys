@@ -52,10 +52,36 @@
 		<div class="row" id="basic-table">
 			<div class="col-12">
 				<div class="card">
-					<div class="card-header">
-						<h4 class="card-title">
+					<div class="card-header border-bottom p-1">
+						<div class="card-title">
 							Personeller
-						</h4>
+						</div>
+						<div class="text-end">
+							<div class="d-inline-flex">
+								<div class="btn-group">
+									<button class="btn btn-outline-secondary dropdown-toggle" type="button" id="exportMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+										<span>
+											<i data-feather="share" class="font-small-4 me-50"></i>
+											Dışarı Aktar
+										</span>
+									</button>
+									<div class="dropdown-menu" aria-labelledby="exportMenuButton">
+										<a href="#" class="dropdown-item">
+											<span>
+												<i data-feather="printer" class="font-small-4 me-50"></i>
+											</span>
+											Yazdır
+										</a>
+										<a href="#" class="dropdown-item">
+											<span>
+												<i data-feather="file-text" class="font-small-4 me-50"></i>
+											</span>
+											CSV
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="card-body">
 						<p class="card-text">
