@@ -25,6 +25,7 @@ class Tracking extends Admin
 			INNER JOIN codes c ON c.id = a.code_id
 			INNER JOIN employees e ON e.id = c.employee_id
 			ORDER BY a.time ASC
+			GROUP BY a.time
 		";
 
 		$queryIn = $this->db->query($sql, PDO::FETCH_OBJ);
@@ -50,6 +51,7 @@ class Tracking extends Admin
 					INNER JOIN employees e ON e.id = c.employee_id
 					WHERE c.id > $i
 					ORDER BY a.time ASC
+					GROUP BY a.time
 				 ";
 
 				$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
