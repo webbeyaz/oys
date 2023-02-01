@@ -59,6 +59,7 @@ class Tracking extends Admin
 					if ($rowIn->eid == $rowOut->id)
 					{
 						$tracking[$i]['time_out'] = $rowOut->time;
+						break;
 					}
 				}
 			}
