@@ -16,7 +16,6 @@ class Tracking extends Admin
 
 		$sql = "
 			SELECT
-			    a.id AS id,
 			    e.username AS username,
 			    e.firstname AS firstname,
 			    e.lastname AS lastname,
@@ -26,13 +25,46 @@ class Tracking extends Admin
 			INNER JOIN employees e ON e.id = c.employee_id
 		";
 
-		$query = $this->db->query($sql, PDO::FETCH_OBJ);
+		$queryIn = $this->db->query($sql, PDO::FETCH_OBJ);
 
-		if ($query)
+		if ($queryIn)
 		{
-			foreach ($query as $row)
+			$i = 0;
+
+			foreach ($queryIn as $rowIn)
 			{
-				$tracking[] = $row;
+				$tracking[$i] = [
+					'username' => $rowIn->username,
+					'firstname' => $rowIn->firstname,
+					'lastname' => $rowIn->lastname,
+					'time_in' => $rowIn->time
+				];
+
+				$sql = "
+					SELECT
+					    a.time AS time
+					FROM actions a
+					INNER JOIN codes c ON c.id = a.code_id
+					INNER JOIN employees e ON e.id = c.employee_id
+				";
+
+				$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
+
+				if ($queryOut)
+				{
+					foreach ($queryOut as $rowOut)
+					{
+						$explodeIn = explode(' ', $rowIn->time);
+						$explodeOut = explode(' ', $rowOut->time);
+
+						if ($explodeIn[0] == $explodeOut[0])
+						{
+							$tracking[$i]['time_out'] = $rowOut->time;
+						}
+					}
+				}
+
+				$i++;
 			}
 		}
 
