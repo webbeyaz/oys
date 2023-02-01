@@ -73,7 +73,7 @@ class Tracking extends Admin
 			}
 			else
 			{
-				break;
+				continue;
 			}
 
 			$i++;
