@@ -23,7 +23,7 @@
 					<div class="breadcrumb-wrapper">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item">
-								<a href="{{ site_url('admin') }}">
+								<a href="{{ site_url('admin/dashboard') }}">
 									Anasayfa
 								</a>
 							</li>
