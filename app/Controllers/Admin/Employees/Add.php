@@ -11,6 +11,11 @@ class Add extends Admin
 	 */
 	public function index(): string
 	{
+		$message = [];
+		
+
+		$this->data['message'] = $message;
+
 		return $this->view('admin.pages.employees.add', $this->data);
 	}
 }
