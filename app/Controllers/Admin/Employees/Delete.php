@@ -42,6 +42,6 @@ class Delete extends Admin
 
 		$this->data['message'] = $message;
 
-		return $this->view('admin.pages.employees.edit', $this->data);
+		return $this->view('admin.pages.employees.delete', $this->data);
 	}
 }
