@@ -45,27 +45,29 @@
 
 		<!-- Basic Inputs start -->
 		<section id="basic-input">
-			<div class="row">
-				<div class="col-md-12">
 
-					@if ($message)
+			<form action="" method="post">
 
-						<div class="alert alert-{{ $message['class'] }}" role="alert">
-							<div class="alert-body">
-								{{ $message['text'] }}
+				<div class="row">
+					<div class="col-md-12">
+
+						@if ($message)
+
+							<div class="alert alert-{{ $message['class'] }}" role="alert">
+								<div class="alert-body">
+									{{ $message['text'] }}
+								</div>
 							</div>
-						</div>
 
-					@endif
+						@endif
 
-					<div class="card">
-						<div class="card-header">
-							<h4 class="card-title">
-								Personel Ekle
-							</h4>
-						</div>
-						<div class="card-body">
-							<form action="" method="post">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">
+									Personel Ekle
+								</h4>
+							</div>
+							<div class="card-body">
 								<div class="row">
 									<div class="col-xl-6 col-12">
 										<div class="mb-1">
@@ -116,11 +118,14 @@
 										</div>
 									</div>
 								</div>
-							</form>
+							</div>
 						</div>
+						<button type="submit" class="btn btn-primary waves-effect waves-float waves-light">
+							Personel Ekle
+						</button>
 					</div>
 				</div>
-			</div>
+			</form>
 		</section>
 		<!-- Basic Inputs end -->
 
