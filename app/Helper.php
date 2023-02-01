@@ -24,11 +24,11 @@ function timeConvert($date, $format): string
 /**
  * @param $start
  * @param $end
- * @return DateInterval
+ * @return string
  */
-function timeDifference($start, $end)
+function timeDifference($start, $end): string
 {
-	return Carbon::parse($start)->diff($end);
+	return Carbon::parse($start)->diff($end)->format('%H:%I:%S');
 }
 
 /**
