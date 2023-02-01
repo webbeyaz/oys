@@ -56,11 +56,7 @@ class Tracking extends Admin
 
 				foreach ($queryOut as $rowOut)
 				{
-					if ($rowIn->eid == $rowOut->id)
-					{
-						$tracking[$i]['time_out'] = $rowOut->time;
-						break;
-					}
+					$tracking[$i]['time_out'] = $rowOut->time;
 				}
 			}
 		}
