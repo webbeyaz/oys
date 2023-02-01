@@ -47,6 +47,7 @@ class Tracking extends Admin
 				        e.id AS id,
 					    a.time AS time
 					FROM actions a
+					INNER JOIN codes c ON c.id = a.code_id
 					INNER JOIN employees e ON e.id = c.employee_id
 					WHERE c.id > $i
 				 ";
