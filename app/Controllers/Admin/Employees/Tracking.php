@@ -72,8 +72,7 @@ class Tracking extends Admin
 			}
 			else
 			{
-				unset($tracking[$i]);
-				break;
+				$tracking[$i] = null;
 			}
 
 			$i++;
