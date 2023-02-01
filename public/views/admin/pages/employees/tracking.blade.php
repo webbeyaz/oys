@@ -99,16 +99,16 @@
 											{{ $employee['firstname'] . ' ' . $employee['lastname'] }}
 										</td>
 										<td>
-											{{ $employee['time_in'] }}
+											{{ timeConvert($employee['time_in'], 'H:i') }}
 										</td>
 										<td>
-											{{ $employee['time_out'] }}
+											{{ timeConvert($employee['time_out'], 'H:i') }}
 										</td>
 										<td>
 											null
 										</td>
 										<td>
-											{{ $employee['date'] }}
+											{{ timeConvert($employee['date'], 'd.m.Y') }}
 										</td>
 									</tr>
 
