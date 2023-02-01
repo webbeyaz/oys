@@ -16,17 +16,17 @@ class Listing extends Admin
 
 		$sql = "
 			SELECT
-				id,
-			    firstname,
-			    lastname,
-			    email,
-			    phone,
-			    plate,
-			    created_at
-			FROM drivers
-			INNER JOIN vehicles ON vehicles.id = drivers.vehicle_id
-			WHERE deleted_at IS NULL
-			ORDER BY updated_at DESC, id DESC
+				d.id AS id,
+			    d.firstname AS firstname,
+			    d.lastname AS lastname,
+			    d.email AS email,
+			    d.phone AS phone,
+			    v.plate AS plate,
+			    d.created_at AS created_at
+			FROM drivers d
+			INNER JOIN vehicles v ON v.id = d.vehicle_id
+			WHERE d.deleted_at IS NULL
+			ORDER BY d.updated_at DESC, d.id DESC
 		";
 
 		$query = $this->db->query($sql, PDO::FETCH_OBJ);
