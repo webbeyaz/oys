@@ -63,7 +63,7 @@ class Tracking extends Admin
 
 			$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
 
-			if ($queryOut)
+			if ($queryOut->rowCount())
 			{
 				foreach ($queryOut as $rowOut)
 				{
@@ -72,7 +72,8 @@ class Tracking extends Admin
 			}
 			else
 			{
-				$tracking[$i] = null;
+				unset($tracking[$i]);
+				break;
 			}
 
 			$i++;
