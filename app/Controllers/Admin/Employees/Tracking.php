@@ -58,7 +58,7 @@ class Tracking extends Admin
 					AND
 				    e.id = $employee_id
 					AND
-				    DATE(a.time) = $date
+				    DATE(a.time) = '$date'
 			";
 
 			$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
