@@ -55,6 +55,8 @@ class Tracking extends Admin
 				INNER JOIN codes c ON c.id = a.code_id
 				INNER JOIN employees e ON e.id = c.employee_id
 				WHERE
+				    a.id > $action_id
+					AND
 				    e.id = $employee_id
 					AND
 				    DATE(a.time) = '$date'
@@ -66,7 +68,8 @@ class Tracking extends Admin
 			{
 				foreach ($queryOut as $rowOut)
 				{
-					$tracking[$i]['time_out'] = $rowOut->time;
+					print_r($rowOut);
+					exit;
 				}
 			}
 			else
