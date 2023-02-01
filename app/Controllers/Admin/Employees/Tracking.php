@@ -68,10 +68,12 @@ class Tracking extends Admin
 			{
 				if ($time > $rowOut->time)
 				{
+					$tracking[$i]['time_in'] = $rowOut->time;
 					$tracking[$i]['time_out'] = $time;
 				}
 				else
 				{
+					$tracking[$i]['time_in'] = $time;
 					$tracking[$i]['time_out'] =  $rowOut->time;
 				}
 			}
