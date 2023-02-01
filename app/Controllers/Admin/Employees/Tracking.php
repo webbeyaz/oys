@@ -71,6 +71,10 @@ class Tracking extends Admin
 					$tracking[$i]['time_out'] = $rowOut->time;
 				}
 			}
+			else
+			{
+				unset($tracking[$i]);
+			}
 
 			$i++;
 		}
