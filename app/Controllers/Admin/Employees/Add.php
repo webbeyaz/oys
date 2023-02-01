@@ -12,7 +12,7 @@ class Add extends Admin
 	public function index(): string
 	{
 		$message = [];
-		
+
 
 		$this->data['message'] = $message;
 

@@ -96,7 +96,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="row">
+								<div class="row mt-1">
 									<div class="col-xl-6 col-12">
 										<div class="mb-1">
 											<label class="form-label mb-1" for="photo">
