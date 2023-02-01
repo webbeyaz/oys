@@ -6,6 +6,10 @@ use App\Controllers\Admin;
 
 class Delete extends Admin
 {
+	/**
+	 * @param $id
+	 * @return string
+	 */
 	public function index($id): string
 	{
 		$message = [];
