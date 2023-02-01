@@ -40,6 +40,14 @@ class Tracking extends Admin
 			$explode = explode(' ', $time);
 			$date = $explode[0];
 
+			$tracking[$i] = [
+				'username' => $rowIn->username,
+				'firstname' => $rowIn->firstname,
+				'lastname' => $rowIn->lastname,
+				'time_in' => $rowIn->time,
+				'time_out' => null
+			];
+
 			$sql = "
 				SELECT
 				    a.time AS time
@@ -47,12 +55,11 @@ class Tracking extends Admin
 				INNER JOIN codes c ON c.id = a.code_id
 				INNER JOIN employees e ON e.id = c.employee_id
 				WHERE
-				    a.id > $action_id
+				    a.id <> $action_id
 					AND
 				    e.id = $employee_id
 					AND
 				    DATE(a.time) = '$date'
-				ORDER BY a.id DESC
 			";
 
 			$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
@@ -61,13 +68,7 @@ class Tracking extends Admin
 			{
 				foreach ($queryOut as $rowOut)
 				{
-					$tracking[$i] = [
-						'username' => $rowIn->username,
-						'firstname' => $rowIn->firstname,
-						'lastname' => $rowIn->lastname,
-						'time_in' => $rowIn->time,
-						'time_out' => $rowOut->time
-					];
+					$tracking[$i]['time_out'] = $rowOut->time;
 				}
 			}
 			else
