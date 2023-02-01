@@ -40,14 +40,6 @@ class Tracking extends Admin
 			$explode = explode(' ', $time);
 			$date = $explode[0];
 
-			$tracking[$i] = [
-				'username' => $rowIn->username,
-				'firstname' => $rowIn->firstname,
-				'lastname' => $rowIn->lastname,
-				'time_in' => $rowIn->time,
-				'time_out' => null
-			];
-
 			$sql = "
 				SELECT
 				    a.time AS time
@@ -69,7 +61,13 @@ class Tracking extends Admin
 			{
 				foreach ($queryOut as $rowOut)
 				{
-					$tracking[$i]['time_out'] = $rowOut->time;
+					$tracking[$i] = [
+						'username' => $rowIn->username,
+						'firstname' => $rowIn->firstname,
+						'lastname' => $rowIn->lastname,
+						'time_in' => $rowIn->time,
+						'time_out' => $rowOut->time
+					];
 				}
 			}
 			else
