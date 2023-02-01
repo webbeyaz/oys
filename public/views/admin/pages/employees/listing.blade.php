@@ -195,7 +195,11 @@
 
 	<script type="text/javascript">
 		$(function () {
-			$('.datatables-basic').DataTable();
+			$('.datatables-basic').DataTable({
+				language: {
+					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
+				}
+			});
 		});
 	</script>
 
