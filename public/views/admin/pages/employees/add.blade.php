@@ -88,11 +88,8 @@
 								<div class="row">
 									<div class="col-xl-4 col-md-6 col-12">
 										<div class="mb-1">
-											<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="Fotoğraf" width="60" height="60" class="avatar">
-										</div>
-										<div class="mb-1">
 											<label class="form-label" for="photo">
-												Fotoğraf
+												<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="Fotoğraf" width="60" height="60" class="avatar">
 											</label>
 											<input type="file" name="photo" class="form-control" id="photo">
 										</div>
