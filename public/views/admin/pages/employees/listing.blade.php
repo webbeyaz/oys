@@ -15,6 +15,12 @@
 @endsection
 
 @section('styles')
+	<style type="text/css">
+		.dataTables_wrapper .row:first-child,
+		.dataTables_wrapper .row:last-child {
+			margin: 0 auto;
+		}
+	</style>
 @endsection
 
 @section('content')
