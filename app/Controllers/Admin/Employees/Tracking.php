@@ -63,9 +63,16 @@ class Tracking extends Admin
 
 			$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
 
-			foreach ($queryOut as $rowOut)
+			if ($queryOut)
 			{
-				$tracking[$i]['time_out'] = $rowOut->time;
+				foreach ($queryOut as $rowOut)
+				{
+					$tracking[$i]['time_out'] = $rowOut->time;
+				}
+			}
+			else
+			{
+				unset($tracking[$i]);
 			}
 
 			$i++;
