@@ -102,7 +102,7 @@
 											<label class="form-label mb-1" for="photo">
 												<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="Fotoğraf" width="60" height="60" class="avatar">
 											</label>
-											<input type="file" name="photo" class="form-control" id="photo">
+											<input type="file" name="photo" accept="image/jpeg, image/png" class="form-control" id="photo">
 										</div>
 									</div>
 									<div class="col-xl-6 col-12 d-flex align-items-end">
