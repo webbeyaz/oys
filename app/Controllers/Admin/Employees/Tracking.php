@@ -36,16 +36,18 @@ class Tracking extends Admin
 			$action_id = $rowIn->action_id;
 			$employee_id = $rowIn->employee_id;
 
-			$time = $rowIn->time;
-			$explode = explode(' ', $time);
+			$timeIn = $rowIn->time;
+			$explode = explode(' ', $timeIn);
+
 			$date = $explode[0];
+			$time = $explode[1];
 
 			$tracking[$i] = [
 				'username' => $rowIn->username,
 				'firstname' => $rowIn->firstname,
 				'lastname' => $rowIn->lastname,
-				'time_in' => $rowIn->time,
-				'time_out' => null
+				'time_in' => strtotime($time) < strtotime('17:30:00') ? $timeIn : null,
+				'time_out' => strtotime($time) < strtotime('17:30:00') ? null : $timeIn
 			];
 
 			$sql = "
@@ -60,6 +62,8 @@ class Tracking extends Admin
 				    e.id = $employee_id
 					AND
 				    DATE(a.time) = '$date'
+					AND
+				    TIME(a.time) > '$time'
 			";
 
 			$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
@@ -68,7 +72,7 @@ class Tracking extends Admin
 			{
 				$tracking[$i]['time_out'] = $rowOut->time;
 
-				if ($rowOut->time < $time)
+				if ($rowOut->time < $timeIn)
 				{
 					unset($tracking[$i]);
 				}
