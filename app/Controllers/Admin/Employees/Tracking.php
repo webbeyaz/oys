@@ -44,7 +44,8 @@ class Tracking extends Admin
 				'username' => $rowIn->username,
 				'firstname' => $rowIn->firstname,
 				'lastname' => $rowIn->lastname,
-				'time_in' => $rowIn->time
+				'time_in' => $rowIn->time,
+				'time_out' => null
 			];
 
 			$sql = "
@@ -68,13 +69,6 @@ class Tracking extends Admin
 				foreach ($queryOut as $rowOut)
 				{
 					$tracking[$i]['time_out'] = $rowOut->time;
-				}
-			}
-			else
-			{
-				if (!$time)
-				{
-					unset($tracking[$i]);
 				}
 			}
 
