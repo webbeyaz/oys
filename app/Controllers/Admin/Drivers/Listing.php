@@ -38,6 +38,6 @@ class Listing extends Admin
 
 		$this->data['drivers'] = $drivers;
 
-		return $this->view('admin.pages.employees.listing', $this->data);
+		return $this->view('admin.pages.drivers.listing', $this->data);
 	}
 }

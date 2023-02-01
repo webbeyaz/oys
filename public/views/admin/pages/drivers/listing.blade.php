@@ -107,11 +107,11 @@
 													<i data-feather="more-vertical"></i>
 												</button>
 												<div class="dropdown-menu dropdown-menu-end">
-													<a href="{{ site_url('admin/employees/edit/' . $driver->id) }}" class="dropdown-item">
+													<a href="{{ site_url('admin/drivers/edit/' . $driver->id) }}" class="dropdown-item">
 														<i data-feather="edit-2" class="me-50"></i>
 														<span>Düzenle</span>
 													</a>
-													<a href="{{ site_url('admin/employees/delete/' . $driver->id) }}" class="dropdown-item">
+													<a href="{{ site_url('admin/drivers/delete/' . $driver->id) }}" class="dropdown-item">
 														<i data-feather="trash" class="me-50"></i>
 														<span>Sil</span>
 													</a>
