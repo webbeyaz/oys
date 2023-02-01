@@ -55,6 +55,7 @@ $app->router->group('/admin', function ($router) {
 		$router->get('/tracking', 'Admin.Employees.Tracking@index');
 		$router->any('/add', 'Admin.Employees.Add@index');
 		$router->any('/edit/:id', 'Admin.Employees.Edit@index');
+		$router->any('/delete/:id', 'Admin.Employees.Edit@index');
 	});
 
 	$router->group('/users', function ($router) {
