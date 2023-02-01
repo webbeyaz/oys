@@ -47,6 +47,17 @@
 		<section id="basic-input">
 			<div class="row">
 				<div class="col-md-12">
+
+					@if ($message)
+
+						<div class="alert alert-{{ $message['class'] }}" role="alert">
+							<div class="alert-body">
+								{{ $message['text'] }}
+							</div>
+						</div>
+
+					@endif
+
 					<div class="card">
 						<div class="card-header">
 							<h4 class="card-title">
@@ -88,16 +99,16 @@
 								<div class="row">
 									<div class="col-xl-6 col-12">
 										<div class="mb-1">
-											<label class="form-label" for="photo">
+											<label class="form-label mb-1" for="photo">
 												<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="Fotoğraf" width="60" height="60" class="avatar">
 											</label>
 											<input type="file" name="photo" class="form-control" id="photo">
 										</div>
 									</div>
-									<div class="col-xl-6 col-12">
+									<div class="col-xl-6 col-12 d-flex align-items-end">
 										<div class="mb-1">
 											<div class="form-check form-switch">
-												<input type="checkbox" name="status" class="form-check-input" id="status">
+												<input type="checkbox" name="status" checked class="form-check-input" id="status">
 												<label class="form-check-label" for="status">
 													Durum
 												</label>
