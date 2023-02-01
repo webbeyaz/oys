@@ -53,7 +53,7 @@
 	<div class="content-body">
 
 		<!-- Basic table -->
-		<section id="classic-datatable">
+		<section id="basic-datatable">
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
@@ -189,7 +189,7 @@
 
 	<script type="text/javascript">
 		$(function () {
-			$('#classic-datatable').DataTable();
+			$('.datatables-basic').DataTable();
 		});
 	</script>
 
