@@ -58,7 +58,7 @@ class Login extends Api
 
 				if ($query)
 				{
-					$sql = "
+					/*$sql = "
 						SELECT COUNT(a.id) AS total
 						FROM actions a
 						INNER JOIN codes c ON c.id = a.code_id
@@ -73,27 +73,32 @@ class Login extends Api
 					if ($query->total >= 1) // Çıkış işlemi
 					{
 						// TODO: Düzeltilecek.
-						/*$sql = "
+						$sql = "
 							SELECT COUNT(id) AS total
 							FROM codes
 							WHERE
 							    employee_id = '{$employee_id}'
 								AND
 
-						";*/
+						";
 
 						$text = [
 							'status' => 201,
 							'message' => 'Çıkış işlemi bekleniyor.'
 						];
 					}
-					else // Giriş işlemi
+					else
 					{
 						$text = [
 							'status' => 200,
 							'message' => 'Başarıyla giriş yapıldı.'
 						];
-					}
+					}*/
+
+					$text = [
+						'status' => 200,
+						'message' => 'Başarıyla giriş yapıldı.'
+					];
 				}
 				else
 				{
