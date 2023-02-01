@@ -47,6 +47,7 @@ class Tracking extends Admin
 				    e.id = $employeeIn
 					AND
 				    DATE(a.time) = '$timeIn'
+				GROUP BY DATE(a.time)
 			";
 
 			$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
