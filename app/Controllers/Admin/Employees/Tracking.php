@@ -55,7 +55,7 @@ class Tracking extends Admin
 				INNER JOIN codes c ON c.id = a.code_id
 				INNER JOIN employees e ON e.id = c.employee_id
 				WHERE
-				    a.id > $action_id
+				    a.id != $action_id
 					AND
 				    e.id = $employee_id
 					AND
@@ -66,12 +66,15 @@ class Tracking extends Admin
 
 			foreach ($queryOut as $rowOut)
 			{
-				$tracking[$i]['time_out'] = $rowOut->time;
-
-				if ($rowOut->time < $time)
+				if ($time > $rowOut->time)
 				{
-					unset($tracking[$i]);
-					break;
+					$tracking[$i]['time_in'] = $rowOut->time;
+					$tracking[$i]['time_out'] = $time;
+				}
+				else
+				{
+					$tracking[$i]['time_in'] = $time;
+					$tracking[$i]['time_out'] =  $rowOut->time;
 				}
 			}
 
