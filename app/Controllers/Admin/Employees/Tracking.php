@@ -68,13 +68,12 @@ class Tracking extends Admin
 			{
 				foreach ($queryOut as $rowOut)
 				{
-					print_r($rowOut);
-					exit;
+					$tracking[$i]['time_out'] = $rowOut->time;
 				}
 			}
 			else
 			{
-				unset($tracking[$i]);
+				break;
 			}
 
 			$i++;
