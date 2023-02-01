@@ -105,7 +105,7 @@
 											{{ timeConvert($employee['time_out'], 'H:i') }}
 										</td>
 										<td>
-											null
+											{{ timeDifference($employee['time_in'], $employee['time_out']) }}
 										</td>
 										<td>
 											{{ timeConvert($employee['date'], 'd.m.Y') }}

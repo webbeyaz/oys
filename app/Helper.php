@@ -22,6 +22,16 @@ function timeConvert($date, $format): string
 }
 
 /**
+ * @param $start
+ * @param $end
+ * @return DateInterval
+ */
+function timeDifference($start, $end): DateInterval
+{
+	return Carbon::parse($start)->diff($end);
+}
+
+/**
  * @param int|null $index
  * @return mixed
  */
