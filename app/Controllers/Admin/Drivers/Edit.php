@@ -31,8 +31,7 @@ class Edit extends Admin
 			    lastname,
 			    email,
 			    phone,
-			    vehicle_id,
-			    plate
+			    vehicle_id
 			FROM drivers
 			WHERE id = '{$id}'
 		";
