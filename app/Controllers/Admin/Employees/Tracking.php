@@ -72,7 +72,7 @@ class Tracking extends Admin
 			}
 			else
 			{
-				unset($tracking[$i]['time_out']);
+				unset($tracking[$i]);
 			}
 
 			$i++;
