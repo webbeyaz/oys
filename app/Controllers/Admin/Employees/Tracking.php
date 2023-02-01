@@ -53,7 +53,7 @@ class Tracking extends Admin
 				WHERE
 				    e.id = $employeeIn
 					AND
-				    DATE(time) = '{$timeIn}'
+				    DATE(a.time) = '{$timeIn}'
 			";
 
 			$queryOut = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
