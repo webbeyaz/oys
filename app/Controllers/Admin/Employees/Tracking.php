@@ -47,7 +47,8 @@ class Tracking extends Admin
 				'firstname' => $rowIn->firstname,
 				'lastname' => $rowIn->lastname,
 				'time_in' => strtotime($time) < strtotime('17:30:00') ? $timeIn : null,
-				'time_out' => strtotime($time) < strtotime('17:30:00') ? null : $timeIn
+				'time_out' => strtotime($time) < strtotime('17:30:00') ? null : $timeIn,
+				'date' => $date
 			];
 
 			$sql = "
@@ -79,11 +80,7 @@ class Tracking extends Admin
 			$i++;
 		}
 
-		echo '<pre>';
-		print_r($tracking);
-		exit;
-
-		$this->data['tracking'] = $tracking;
+		$this->data['tracking'] = (object) $tracking;
 
 		return $this->view('admin.pages.employees.tracking', $this->data);
 	}

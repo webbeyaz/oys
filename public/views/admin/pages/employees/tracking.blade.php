@@ -88,84 +88,35 @@
 							</thead>
 							<tbody>
 
-							@foreach ($employees as $employee)
+								@foreach ($tracking as $employee)
+	
+									<tr>
+										<td>
+											<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee->username }}" width="20" height="20" class="me-75 avatar">
+											<span class="fw-bold">{{ $employee->username }}</span>
+										</td>
+										<td>
+											{{ $employee->firstname . ' ' . $employee->lastname }}
+										</td>
+										<td>
+											{{ $employee->time_in }}
+										</td>
+										<td>
+											{{ $employee->time_out }}
+										</td>
+										<td>
+											null
+										</td>
+										<td>
+											{{ $employee->date }}
+										</td>
+									</tr>
 
-								<tr>
-									<td>
-										<img src="{{ $employee->photo ? upload_url('images/cache/employees/20x20/' . $employee->photo) : asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee->username }}" width="20" height="20" class="me-75 avatar">
-										<span class="fw-bold">{{ $employee->username }}</span>
-									</td>
-									<td>
-										{{ $employee->firstname . ' ' . $employee->lastname }}
-									</td>
-									<td>
-											<span class="badge rounded-pill badge-light-{{ $employee->status == 1 ? 'success' : 'danger' }} me-1">
-												{{ $employee->status == 1 ? 'Aktif' : 'Pasif' }}
-											</span>
-									</td>
-									<td>
-										{{ timeConvert($employee->created_at, 'd F Y H:i') }}
-									</td>
-									<td>
-										<div class="dropdown">
-											<button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-												<i data-feather="more-vertical"></i>
-											</button>
-											<div class="dropdown-menu dropdown-menu-end">
-												<a href="{{ site_url('admin/employees/edit/' . $employee->id) }}" class="dropdown-item">
-													<i data-feather="edit-2" class="me-50"></i>
-													<span>Düzenle</span>
-												</a>
-												<a href="{{ site_url('admin/employees/delete/' . $employee->id) }}" class="dropdown-item">
-													<i data-feather="trash" class="me-50"></i>
-													<span>Sil</span>
-												</a>
-											</div>
-										</div>
-									</td>
-								</tr>
-
-							@endforeach
+								@endforeach
 
 							</tbody>
 						</table>
 					</div>
-				</div>
-			</div>
-			<!-- Modal to add new record -->
-			<div class="modal modal-slide-in fade" id="modals-slide-in">
-				<div class="modal-dialog sidebar-sm">
-					<form class="add-new-record modal-content pt-0">
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">×</button>
-						<div class="modal-header mb-1">
-							<h5 class="modal-title" id="exampleModalLabel">New Record</h5>
-						</div>
-						<div class="modal-body flex-grow-1">
-							<div class="mb-1">
-								<label class="form-label" for="basic-icon-default-fullname">Full Name</label>
-								<input type="text" class="form-control dt-full-name" id="basic-icon-default-fullname" placeholder="John Doe" aria-label="John Doe" />
-							</div>
-							<div class="mb-1">
-								<label class="form-label" for="basic-icon-default-post">Post</label>
-								<input type="text" id="basic-icon-default-post" class="form-control dt-post" placeholder="Web Developer" aria-label="Web Developer" />
-							</div>
-							<div class="mb-1">
-								<label class="form-label" for="basic-icon-default-email">Email</label>
-								<input type="text" id="basic-icon-default-email" class="form-control dt-email" placeholder="john.doe@example.com" aria-label="john.doe@example.com" />
-								<small class="form-text"> You can use letters, numbers & periods </small>
-							</div>
-							<div class="mb-1">
-								<label class="form-label" for="basic-icon-default-date">Joining Date</label>
-								<input type="text" class="form-control dt-date" id="basic-icon-default-date" placeholder="MM/DD/YYYY" aria-label="MM/DD/YYYY" />
-							</div>
-							<div class="mb-4">
-								<label class="form-label" for="basic-icon-default-salary">Salary</label>
-								<input type="text" id="basic-icon-default-salary" class="form-control dt-salary" placeholder="$12000" aria-label="$12000" />
-							</div>
-							<button type="button" class="btn btn-primary data-submit me-1">Submit</button>
-							<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-						</div>
-					</form>
 				</div>
 			</div>
 		</section>
