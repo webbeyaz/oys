@@ -26,7 +26,7 @@ function timeConvert($date, $format): string
  * @param $end
  * @return DateInterval
  */
-function timeDifference($start, $end): DateInterval
+function timeDifference($start, $end)
 {
 	return Carbon::parse($start)->diff($end);
 }
