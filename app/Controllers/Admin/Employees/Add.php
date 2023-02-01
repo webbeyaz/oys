@@ -33,10 +33,10 @@ class Add extends Admin
 				$data = $this->validator->data();
 
 				$username = $data['username'];
-				$password = $data['password'];
+				$password = md5($data['password']);
 				$firstname = $data['firstname'];
 				$lastname = $data['lastname'];
-				$status = $data['status'];
+				// $status = $data['status']; TODO: İleride aktif edilebilir.
 
 				$sql = "
 					INSERT INTO employees SET
@@ -44,7 +44,8 @@ class Add extends Admin
 					password = ?,
 					firstname = ?,
 					lastname = ?,
-					status = ?
+					created_by = ?,
+					updated_by = ?
 				";
 
 				$query = $this->db->prepare($sql);
@@ -54,7 +55,8 @@ class Add extends Admin
 					$password,
 					$firstname,
 					$lastname,
-					$status
+					$this->data['user']->id,
+					$this->data['user']->id
 				]);
 
 				if ($insert)
