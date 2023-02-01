@@ -28,7 +28,7 @@ function timeConvert($date, $format): string
  */
 function timeDiffMinutes($start, $end): string
 {
-	return Carbon::parse($start)->diffInMinutes($end);
+	return Carbon::parse($start)->diffInMinutes($end) - 30;
 }
 
 /**
