@@ -56,7 +56,7 @@
 						<div class="card-body">
 							<form action="" method="post">
 								<div class="row">
-									<div class="col-xl-4 col-md-6 col-12">
+									<div class="col-xl-6 col-12">
 										<div class="mb-1">
 											<label class="form-label" for="username">
 												Kullanıcı Adı
@@ -70,7 +70,7 @@
 											<input type="password" name="password" placeholder="Şifre" class="form-control" id="password">
 										</div>
 									</div>
-									<div class="col-xl-4 col-md-6 col-12">
+									<div class="col-xl-6 col-12">
 										<div class="mb-1">
 											<label class="form-label" for="firstname">
 												Ad
@@ -86,7 +86,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-xl-4 col-md-6 col-12">
+									<div class="col-xl-6 col-12">
 										<div class="mb-1">
 											<label class="form-label" for="photo">
 												<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="Fotoğraf" width="60" height="60" class="avatar">
@@ -94,7 +94,7 @@
 											<input type="file" name="photo" class="form-control" id="photo">
 										</div>
 									</div>
-									<div class="col-xl-4 col-md-6 col-12">
+									<div class="col-xl-6 col-12">
 										<div class="mb-1">
 											<div class="form-check form-switch">
 												<input type="checkbox" name="status" class="form-check-input" id="status">
