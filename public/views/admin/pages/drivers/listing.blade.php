@@ -30,7 +30,7 @@
 			<div class="row breadcrumbs-top">
 				<div class="col-12">
 					<h2 class="content-header-title float-start mb-0">
-						Personel Listesi
+						Şoför Listesi
 					</h2>
 					<div class="breadcrumb-wrapper">
 						<ol class="breadcrumb">
@@ -40,10 +40,10 @@
 								</a>
 							</li>
 							<li class="breadcrumb-item">
-								Personeller
+								Şoförler
 							</li>
 							<li class="breadcrumb-item active">
-								Personel Listesi
+								Şoför Listesi
 							</li>
 						</ol>
 					</div>
@@ -62,14 +62,17 @@
 							<thead>
 								<tr>
 									<th>
-										Personel
-									</th>
-									<th>
 										Ad Soyad
 									</th>
-									<!--<th>
-										Durum
-									</th>-->
+									<th>
+										E-posta Adresi
+									</th>
+									<th>
+										Telefon Numarası
+									</th>
+									<th>
+										Araç Plakası
+									</th>
 									<th>
 										Oluşturulma Tarihi
 									</th>
@@ -80,23 +83,23 @@
 							</thead>
 							<tbody>
 
-								@foreach ($employees as $employee)
+								@foreach ($drivers as $driver)
 
 									<tr>
 										<td>
-											<img src="{{ $employee->photo ? upload_url('images/cache/employees/20x20/' . $employee->photo) : asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee->username }}" width="20" height="20" class="me-75 avatar">
-											<span class="fw-bold">{{ $employee->username }}</span>
+											{{ $driver->firstname . ' ' . $driver->lastname }}
 										</td>
 										<td>
-											{{ $employee->firstname . ' ' . $employee->lastname }}
+											{{ $driver->email }}
 										</td>
-										<!--<td>
-											<span class="badge rounded-pill badge-light-{{ $employee->status == 1 ? 'success' : 'danger' }} me-1">
-												{{ $employee->status == 1 ? 'Aktif' : 'Pasif' }}
-											</span>
-										</td>-->
 										<td>
-											{{ timeConvert($employee->created_at, 'd F Y H:i') }}
+											{{ $driver->phone }}
+										</td>
+										<td>
+											{{ $driver->plate }}
+										</td>
+										<td>
+											{{ timeConvert($driver->created_at, 'd F Y H:i') }}
 										</td>
 										<td>
 											<div class="dropdown">
@@ -104,11 +107,11 @@
 													<i data-feather="more-vertical"></i>
 												</button>
 												<div class="dropdown-menu dropdown-menu-end">
-													<a href="{{ site_url('admin/employees/edit/' . $employee->id) }}" class="dropdown-item">
+													<a href="{{ site_url('admin/employees/edit/' . $driver->id) }}" class="dropdown-item">
 														<i data-feather="edit-2" class="me-50"></i>
 														<span>Düzenle</span>
 													</a>
-													<a href="{{ site_url('admin/employees/delete/' . $employee->id) }}" class="dropdown-item">
+													<a href="{{ site_url('admin/employees/delete/' . $driver->id) }}" class="dropdown-item">
 														<i data-feather="trash" class="me-50"></i>
 														<span>Sil</span>
 													</a>

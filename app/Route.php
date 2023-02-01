@@ -58,8 +58,19 @@ $app->router->group('/admin', function ($router) {
 		$router->get('/delete/:id', 'Admin.Employees.Delete@index');
 	});
 
-	$router->group('/users', function ($router) {
-		$router->get('/', 'Admin.Users@index');
+	$router->group('/drivers', function ($router) {
+		$router->get('/list', 'Admin.Drivers.Listing@index');
+		$router->any('/add', 'Admin.Drivers.Add@index');
+		$router->any('/edit/:id', 'Admin.Drivers.Edit@index');
+		$router->get('/delete/:id', 'Admin.Drivers.Delete@index');
+	});
+
+	$router->group('/vehicles', function ($router) {
+		$router->get('/list', 'Admin.Vehicles.Listing@index');
+		$router->get('/tracking', 'Admin.Vehicles.Tracking@index');
+		$router->any('/add', 'Admin.Vehicles.Add@index');
+		$router->any('/edit/:id', 'Admin.Vehicles.Edit@index');
+		$router->get('/delete/:id', 'Admin.Vehicles.Delete@index');
 	});
 }, ['before' => 'AdminCheckAuth']);
 

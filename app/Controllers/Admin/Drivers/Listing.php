@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin\Employees;
+namespace App\Controllers\Admin\Drivers;
 
 use App\Controllers\Admin;
 use PDO;
@@ -12,18 +12,19 @@ class Listing extends Admin
 	 */
 	public function index(): string
 	{
-		$employees = [];
+		$drivers = [];
 
 		$sql = "
 			SELECT
-			    id,
-			    photo,
-			    username,
+				id,
 			    firstname,
 			    lastname,
-			    status,
+			    email,
+			    phone,
+			    plate,
 			    created_at
-			FROM employees
+			FROM drivers
+			INNER JOIN vehicles ON vehicles.id = drivers.vehicle_id
 			WHERE deleted_at IS NULL
 			ORDER BY updated_at DESC, id DESC
 		";
@@ -32,10 +33,10 @@ class Listing extends Admin
 
 		if ($query->rowCount())
 		{
-			$employees = $query;
+			$drivers = $query;
 		}
 
-		$this->data['employees'] = $employees;
+		$this->data['drivers'] = $drivers;
 
 		return $this->view('admin.pages.employees.listing', $this->data);
 	}
