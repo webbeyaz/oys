@@ -32,13 +32,6 @@ class Tracking extends Admin
 
 		foreach ($queryIn as $rowIn)
 		{
-			$tracking[$i] = [
-				'username' => $rowIn->username,
-				'firstname' => $rowIn->firstname,
-				'lastname' => $rowIn->lastname,
-				'time_in' => $rowIn->time
-			];
-
 			$employeeIn = $rowIn->id;
 
 			$explode = explode(' ', $rowIn->time);
@@ -60,7 +53,13 @@ class Tracking extends Admin
 
 			foreach ($queryOut as $rowOut)
 			{
-				$tracking[$i]['time_out'] = $rowOut->time;
+				$tracking[$i] = [
+					'username' => $rowIn->username,
+					'firstname' => $rowIn->firstname,
+					'lastname' => $rowIn->lastname,
+					'time_in' => $rowIn->time,
+					'time_out' => $rowOut->time
+				];
 			}
 
 			$i++;
