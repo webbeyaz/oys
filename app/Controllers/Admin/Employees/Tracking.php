@@ -80,7 +80,7 @@ class Tracking extends Admin
 			$i++;
 		}
 
-		$this->data['tracking'] = (object) $tracking;
+		$this->data['tracking'] = $tracking;
 
 		return $this->view('admin.pages.employees.tracking', $this->data);
 	}

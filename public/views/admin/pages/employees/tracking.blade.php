@@ -65,50 +65,50 @@
 					<div class="card">
 						<table class="datatables-basic table">
 							<thead>
-							<tr>
-								<th>
-									Personel
-								</th>
-								<th>
-									Ad Soyad
-								</th>
-								<th>
-									Giriş Saati
-								</th>
-								<th>
-									Çıkış Saati
-								</th>
-								<th>
-									Çalışma Süresi
-								</th>
-								<th>
-									Tarih
-								</th>
-							</tr>
+								<tr>
+									<th>
+										Personel
+									</th>
+									<th>
+										Ad Soyad
+									</th>
+									<th>
+										Giriş Saati
+									</th>
+									<th>
+										Çıkış Saati
+									</th>
+									<th>
+										Çalışma Süresi
+									</th>
+									<th>
+										Tarih
+									</th>
+								</tr>
 							</thead>
 							<tbody>
 
 								@foreach ($tracking as $employee)
-	
+
 									<tr>
 										<td>
-											<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee->username }}" width="20" height="20" class="me-75 avatar">
-											<span class="fw-bold">{{ $employee->username }}</span>
+											<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee['username'] }}" width="20" height="20" class="me-75 avatar">
+											<span class="fw-bold">{{ $employee['username'] }}</span>
 										</td>
 										<td>
-											{{ $employee->firstname . ' ' . $employee->lastname }}
+											{{ $employee['firstname'] . ' ' . $employee['lastname'] }}
 										</td>
 										<td>
-											{{ $employee->time_in }}
+											{{ $employee['time_in'] }}
 										</td>
 										<td>
-											{{ $employee->time_out }}
+											{{ $employee['time_out'] }}
 										</td>
 										<td>
 											null
 										</td>
 										<td>
-											{{ $employee->date }}
+											{{ $employee['date'] }}
 										</td>
 									</tr>
 
