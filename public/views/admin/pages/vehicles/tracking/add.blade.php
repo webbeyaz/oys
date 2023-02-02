@@ -100,7 +100,7 @@
 											<label class="form-label" for="text">
 												Resimler
 											</label>
-											<input type="file" name="images[]" accept="image/*" multiple required class="form-control">
+											<input type="file" name="images[]" accept="image/*" multiple class="form-control">
 										</div>
 									</div>
 								</div>
