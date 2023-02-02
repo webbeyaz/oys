@@ -52,7 +52,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content-header-right col-md-3 col-12 mb-2">
+		<div class="content-header-right col-md-3 col-12 mb-2 d-flex justify-content-end">
 			<a href="{{ site_url('admin/vehicles/tracking/add') }}" class="btn btn-primary">
 				Kayıt Ekle
 			</a>
