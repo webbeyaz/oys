@@ -69,12 +69,6 @@ class Tracking extends Admin
 		$this->data['events'] = $events;
 		$this->data['images'] = $images;
 
-		echo '<pre>';
-		print_r($event);
-		echo '<hr>';
-		print_r($images);
-		exit;
-
 		return $this->view('admin.pages.vehicles.tracking.list', $this->data);
 	}
 }
