@@ -122,13 +122,11 @@ class Tracking extends Admin
 
 		$query = $this->db->query($sql, PDO::FETCH_OBJ);
 
-		if ($query->rowCount())
-		{
+		if ($query->rowCount()) {
 			$drivers = $query;
 		}
 
-		if ($request->getMethod() == 'POST')
-		{
+		if ($request->getMethod() == 'POST') {
 			$rules = [
 				'required' => [
 					'driver_id',
@@ -140,8 +138,7 @@ class Tracking extends Admin
 
 			$data = $this->validator->data();
 
-			if ($this->validator->validate())
-			{
+			if ($this->validator->validate()) {
 				$driver_id = $data['driver_id'];
 				$text = $data['text'];
 				// $status = $data['status']; TODO: İleride aktif edilebilir.
@@ -163,25 +160,21 @@ class Tracking extends Admin
 					$this->data['user']->id
 				]);
 
-				if ($insert)
-				{
-					if (!empty($_FILES['images']['name']))
-					{
-						$files = [];
+				if ($insert) {
+					$files = [];
 
-						foreach ($_FILES['images'] as $k => $l)
-						{
-							foreach ($l as $i => $v)
-							{
-								if (!array_key_exists($i, $files))
-								{
-									$files[$i] = array();
-								}
-
-								$files[$i][$k] = $v;
+					foreach ($_FILES['images'] as $k => $l) {
+						foreach ($l as $i => $v) {
+							if (!array_key_exists($i, $files)) {
+								$files[$i] = array();
 							}
-						}
 
+							$files[$i][$k] = $v;
+						}
+					}
+
+					if ($files[0]['name'])
+					{
 						$images = [];
 						$error = false;
 
@@ -244,8 +237,8 @@ class Tracking extends Admin
 							foreach ($images as $image)
 							{
 								$sql = "INSERT INTO images SET
-								image = ?,
-								event_id = ?";
+							image = ?,
+							event_id = ?";
 
 								$query = $this->db->prepare($sql);
 
