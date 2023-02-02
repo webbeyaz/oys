@@ -115,11 +115,11 @@
 															<img src="{{ upload_url('images/cache/events/400x400/' . $image->image) }}" alt="{{ $image->id }}" class="img-fluid card-img-top">
 														</div>
 														<div class="item-options text-center">
-															<a href="{{ upload_url('images/cache/events/400x400/' . $image->image) }}" target="_blank" class="btn btn-light btn-wishlist">
+															<a href="{{ upload_url('images/original/events/' . $image->image) }}" target="_blank" class="btn btn-light btn-wishlist">
 																<i data-feather="eye"></i>
 																<span>Görüntüle</span>
 															</a>
-															<a href="{{ upload_url('images/cache/events/400x400/' . $image->image) }}" download class="btn btn-primary btn-cart">
+															<a href="{{ upload_url('images/original/events/' . $image->image) }}" download class="btn btn-primary btn-cart">
 																<i data-feather="download"></i>
 																<span class="add-to-cart">İndir</span>
 															</a>
