@@ -49,7 +49,7 @@ class Add extends Admin
 				// $status = $data['status']; TODO: İleride aktif edilebilir.
 
 				$sql = "
-					INSERT INTO employees SET
+					INSERT INTO drivers SET
 					firstname = ?,
 					lastname = ?,
 					email = ?,
