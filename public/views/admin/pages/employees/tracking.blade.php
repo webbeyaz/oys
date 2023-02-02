@@ -58,70 +58,86 @@
 	</div>
 	<div class="content-body">
 
-		<!-- Basic table -->
-		<section id="basic-datatable">
+		@if ($tracking)
+
+			<!-- Basic table -->
+			<section id="basic-datatable">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<table class="datatables-basic table">
+								<thead>
+									<tr>
+										<th>
+											Personel
+										</th>
+										<th>
+											Ad Soyad
+										</th>
+										<th>
+											Giriş Saati
+										</th>
+										<th>
+											Çıkış Saati
+										</th>
+										<th>
+											Çalışma Süresi
+										</th>
+										<th>
+											Tarih
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									@foreach ($tracking as $employee)
+
+										<tr>
+											<td>
+												<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee['username'] }}" width="20" height="20" class="me-75 avatar">
+												<span class="fw-bold">{{ $employee['username'] }}</span>
+											</td>
+											<td>
+												{{ $employee['firstname'] . ' ' . $employee['lastname'] }}
+											</td>
+											<td>
+												{{ timeConvert($employee['time_in'], 'H:i') }}
+											</td>
+											<td>
+												{{ timeConvert($employee['time_out'], 'H:i') }}
+											</td>
+											<td>
+												{{ timeDiffHours($employee['time_in'], $employee['time_out']) }} saat
+												({{ timeDiffMinutes($employee['time_in'], $employee['time_out']) }} dakika)
+											</td>
+											<td>
+												{{ timeConvert($employee['date'], 'd.m.Y') }}
+											</td>
+										</tr>
+
+									@endforeach
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--/ Basic table -->
+
+		@else
+
 			<div class="row">
 				<div class="col-12">
-					<div class="card">
-						<table class="datatables-basic table">
-							<thead>
-								<tr>
-									<th>
-										Personel
-									</th>
-									<th>
-										Ad Soyad
-									</th>
-									<th>
-										Giriş Saati
-									</th>
-									<th>
-										Çıkış Saati
-									</th>
-									<th>
-										Çalışma Süresi
-									</th>
-									<th>
-										Tarih
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-
-								@foreach ($tracking as $employee)
-
-									<tr>
-										<td>
-											<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee['username'] }}" width="20" height="20" class="me-75 avatar">
-											<span class="fw-bold">{{ $employee['username'] }}</span>
-										</td>
-										<td>
-											{{ $employee['firstname'] . ' ' . $employee['lastname'] }}
-										</td>
-										<td>
-											{{ timeConvert($employee['time_in'], 'H:i') }}
-										</td>
-										<td>
-											{{ timeConvert($employee['time_out'], 'H:i') }}
-										</td>
-										<td>
-											{{ timeDiffHours($employee['time_in'], $employee['time_out']) }} saat
-											({{ timeDiffMinutes($employee['time_in'], $employee['time_out']) }} dakika)
-										</td>
-										<td>
-											{{ timeConvert($employee['date'], 'd.m.Y') }}
-										</td>
-									</tr>
-
-								@endforeach
-
-							</tbody>
-						</table>
+					<div class="alert alert-info" role="alert">
+						<div class="alert-body">
+							Sistemde kayıtlı giriş ve çıkış bulunamadı.
+						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<!--/ Basic table -->
+
+		@endif
 
 	</div>
 

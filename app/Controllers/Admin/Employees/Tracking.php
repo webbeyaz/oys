@@ -29,55 +29,61 @@ class Tracking extends Admin
 
 		$queryIn = $this->db->query($sql, PDO::FETCH_OBJ);
 
-		$i = 0;
-
-		foreach ($queryIn as $rowIn)
+		if ($queryIn->rowCount())
 		{
-			$action_id = $rowIn->action_id;
-			$employee_id = $rowIn->employee_id;
+			$i = 0;
 
-			$timeIn = $rowIn->time;
-			$explode = explode(' ', $timeIn);
-
-			$date = $explode[0];
-			$time = $explode[1];
-
-			$tracking[$i] = [
-				'username' => $rowIn->username,
-				'firstname' => $rowIn->firstname,
-				'lastname' => $rowIn->lastname,
-				'time_in' => strtotime($time) < strtotime('17:30:00') ? $timeIn : null,
-				'time_out' => strtotime($time) < strtotime('17:30:00') ? null : $timeIn,
-				'date' => $date
-			];
-
-			$sql = "
-				SELECT
-				    a.time AS time
-				FROM actions a
-				INNER JOIN codes c ON c.id = a.code_id
-				INNER JOIN employees e ON e.id = c.employee_id
-				WHERE
-				    a.id != $action_id
-					AND
-				    e.id = $employee_id
-					AND
-				    DATE(a.time) = '$date'
-			";
-
-			$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
-
-			foreach ($queryOut as $rowOut)
+			foreach ($queryIn as $rowIn)
 			{
-				$tracking[$i]['time_out'] = $rowOut->time;
+				$action_id = $rowIn->action_id;
+				$employee_id = $rowIn->employee_id;
 
-				if ($rowOut->time < $timeIn)
+				$timeIn = $rowIn->time;
+				$explode = explode(' ', $timeIn);
+
+				$date = $explode[0];
+				$time = $explode[1];
+
+				$tracking[$i] = [
+					'username' => $rowIn->username,
+					'firstname' => $rowIn->firstname,
+					'lastname' => $rowIn->lastname,
+					'time_in' => strtotime($time) < strtotime('17:30:00') ? $timeIn : null,
+					'time_out' => strtotime($time) < strtotime('17:30:00') ? null : $timeIn,
+					'date' => $date
+				];
+
+				$sql = "
+					SELECT
+					    a.time AS time
+					FROM actions a
+					INNER JOIN codes c ON c.id = a.code_id
+					INNER JOIN employees e ON e.id = c.employee_id
+					WHERE
+					    a.id != $action_id
+						AND
+					    e.id = $employee_id
+						AND
+					    DATE(a.time) = '$date'
+				";
+
+				$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
+
+				if ($queryOut->rowCount())
 				{
-					unset($tracking[$i]);
-				}
-			}
+					foreach ($queryOut as $rowOut)
+					{
+						$tracking[$i]['time_out'] = $rowOut->time;
 
-			$i++;
+						if ($rowOut->time < $timeIn)
+						{
+							unset($tracking[$i]);
+						}
+					}
+				}
+
+				$i++;
+			}
 		}
 
 		$this->data['tracking'] = $tracking;
