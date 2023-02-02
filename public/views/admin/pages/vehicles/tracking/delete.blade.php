@@ -18,7 +18,7 @@
 			<div class="row breadcrumbs-top">
 				<div class="col-12">
 					<h2 class="content-header-title float-start mb-0">
-						Araç Silme
+						Kayıt Silme
 					</h2>
 					<div class="breadcrumb-wrapper">
 						<ol class="breadcrumb">
@@ -28,12 +28,12 @@
 								</a>
 							</li>
 							<li class="breadcrumb-item">
-								<a href="{{ site_url('admin/vehicles/list') }}">
-									Araçlar
+								<a href="{{ site_url('admin/vehicles/tracking') }}">
+									Araç Takibi
 								</a>
 							</li>
 							<li class="breadcrumb-item active">
-								Araç Silme
+								Kayıt Silme
 							</li>
 						</ol>
 					</div>

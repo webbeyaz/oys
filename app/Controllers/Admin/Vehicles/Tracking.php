@@ -108,23 +108,9 @@ class Tracking extends Admin
 	 */
 	public function add(Request $request): string
 	{
+		$this->drivers();
+
 		$message = [];
-		$drivers = [];
-
-		$sql = "
-			SELECT
-			    id,
-			    firstname,
-			    lastname
-			FROM drivers
-			ORDER BY firstname ASC, lastname ASC
-		";
-
-		$query = $this->db->query($sql, PDO::FETCH_OBJ);
-
-		if ($query->rowCount()) {
-			$drivers = $query;
-		}
 
 		if ($request->getMethod() == 'POST') {
 			$rules = [
@@ -160,7 +146,8 @@ class Tracking extends Admin
 					$this->data['user']->id
 				]);
 
-				if ($insert) {
+				if ($insert)
+				{
 					$files = [];
 
 					foreach ($_FILES['images'] as $k => $l) {
@@ -290,7 +277,6 @@ class Tracking extends Admin
 		}
 
 		$this->data['message'] = $message;
-		$this->data['drivers'] = $drivers;
 
 		return $this->view('admin.pages.vehicles.tracking.add', $this->data);
 	}
@@ -302,8 +288,11 @@ class Tracking extends Admin
 	 */
 	public function edit($id, Request $request): string
 	{
+		$this->drivers();
+		$this->images($id);
+
 		$message = [];
-		$event = null;
+		$event = [];
 
 		$sql = "
 			SELECT
@@ -366,10 +355,114 @@ class Tracking extends Admin
 
 				if ($update)
 				{
-					$message = [
-						'class' => 'success',
-						'text' => 'Kayıt başarılı bir şekilde güncellendi.'
-					];
+					$files = [];
+
+					foreach ($_FILES['images'] as $k => $l) {
+						foreach ($l as $i => $v) {
+							if (!array_key_exists($i, $files)) {
+								$files[$i] = array();
+							}
+
+							$files[$i][$k] = $v;
+						}
+					}
+
+					if ($files[0]['name'])
+					{
+						$images = [];
+						$error = false;
+
+						foreach ($files as $file)
+						{
+							$handle = new Upload($file);
+
+							if ($handle->uploaded)
+							{
+								$name = hashid();
+								$images[] = $name . '.jpg';
+
+								$handle->allowed = ['image/*'];
+								$handle->file_new_name_body = $name;
+								$handle->image_convert = 'jpg';
+								$handle->process('./uploads/images/original/events');
+
+								$handle->allowed = ['image/*'];
+								$handle->file_new_name_body = $name;
+								$handle->image_convert = 'jpg';
+								$handle->image_resize = true;
+								$handle->image_x = 400;
+								$handle->image_y = 400;
+								$handle->image_ratio_crop = true;
+								$handle->process('./uploads/images/cache/events/400x400');
+
+								$handle->allowed = ['image/*'];
+								$handle->file_new_name_body = $name;
+								$handle->image_convert = 'jpg';
+								$handle->image_resize = true;
+								$handle->image_x = 40;
+								$handle->image_y = 40;
+								$handle->image_ratio_crop = true;
+								$handle->process('./uploads/images/cache/events/40x40');
+
+								if (!$handle->processed)
+								{
+									$error = true;
+								}
+							}
+							else
+							{
+								$error = true;
+							}
+
+							$handle->clean();
+						}
+
+						if ($error)
+						{
+							$message = [
+								'class' => 'danger',
+								'text' => 'Bir hata oluştu ve resim(ler) yüklenemedi.'
+							];
+						}
+						else
+						{
+							foreach ($images as $image)
+							{
+								$sql = "INSERT INTO images SET
+								image = ?,
+								event_id = ?";
+
+								$query = $this->db->prepare($sql);
+
+								$insert = $query->execute([
+									$image,
+									$id
+								]);
+
+								if ($insert)
+								{
+									$message = [
+										'class' => 'success',
+										'text' => 'Kayıt başarılı bir şekilde güncellendi.'
+									];
+								}
+								else
+								{
+									$message = [
+										'class' => 'danger',
+										'text' => 'Sistemde bir hata oluştu ve resim(ler) kayıt edilemedi.'
+									];
+								}
+							}
+						}
+					}
+					else
+					{
+						$message = [
+							'class' => 'success',
+							'text' => 'Kayıt başarılı bir şekilde güncellendi.'
+						];
+					}
 				}
 				else
 				{
@@ -435,5 +528,57 @@ class Tracking extends Admin
 		$this->data['message'] = $message;
 
 		return $this->view('admin.pages.vehicles.tracking.delete', $this->data);
+	}
+
+	/**
+	 * @return void
+	 */
+	public function drivers(): void
+	{
+		$drivers = [];
+
+		$sql = "
+			SELECT
+			    id,
+			    firstname,
+			    lastname
+			FROM drivers
+			ORDER BY firstname ASC, lastname ASC
+		";
+
+		$query = $this->db->query($sql, PDO::FETCH_OBJ);
+
+		if ($query->rowCount())
+		{
+			$drivers = $query;
+		}
+
+		$this->data['drivers'] = $drivers;
+	}
+
+	/**
+	 * @param $event
+	 * @return void
+	 */
+	public function images($event): void
+	{
+		$images = [];
+
+		$sql = "
+			SELECT
+			    id,
+			    image
+			FROM images
+			WHERE event_id = $event
+		";
+
+		$query = $this->db->query($sql, PDO::FETCH_OBJ);
+
+		if ($query->rowCount())
+		{
+			$images = $query;
+		}
+
+		$this->data['images'] = $images;
 	}
 }

@@ -20,7 +20,7 @@
 			<div class="row breadcrumbs-top">
 				<div class="col-12">
 					<h2 class="content-header-title float-start mb-0">
-						Kayıt Ekle
+						Kayıt Düzenle
 					</h2>
 					<div class="breadcrumb-wrapper">
 						<ol class="breadcrumb">
@@ -35,7 +35,7 @@
 								</a>
 							</li>
 							<li class="breadcrumb-item active">
-								Kayıt Ekle
+								Kayıt Düzenle
 							</li>
 						</ol>
 					</div>
@@ -66,7 +66,7 @@
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title">
-									Kayıt Ekle
+									Kayıt Düzenle
 								</h4>
 							</div>
 							<div class="card-body">
@@ -80,7 +80,7 @@
 
 												@foreach ($drivers as $driver)
 
-													<option value="{{ $driver->id }}">
+													<option value="{{ $driver->id }}" {{ $driver->id == $event->driver_id ? 'selected' : null }}>
 														{{ $driver->firstname . ' ' . $driver->lastname }}
 													</option>
 
@@ -92,7 +92,7 @@
 											<label class="form-label" for="text">
 												Açıklama
 											</label>
-											<textarea name="text" placeholder="Açıklama" class="form-control" id="text"></textarea>
+											<textarea name="text" placeholder="Açıklama" class="form-control" id="text">{{ $event->text }}</textarea>
 										</div>
 									</div>
 									<div class="col-xl-6 col-12">
@@ -102,12 +102,41 @@
 											</label>
 											<input type="file" name="images[]" accept="image/*" multiple class="form-control">
 										</div>
+
+										@if ($images)
+
+											<div class="mb-1 grid-view">
+
+												@foreach ($images as $image)
+
+													<div class="card ecommerce-card">
+														<div class="item-img text-center">
+															<img src="{{ upload_url('images/cache/events/400x400/' . $image->image) }}" alt="{{ $image->id }}" class="img-fluid card-img-top">
+														</div>
+														<div class="item-options text-center">
+															<a href="{{ upload_url('images/cache/events/400x400/' . $image->image) }}" target="_blank" class="btn btn-light btn-wishlist">
+																<i data-feather="eye"></i>
+																<span>Görüntüle</span>
+															</a>
+															<a href="{{ upload_url('images/cache/events/400x400/' . $image->image) }}" download class="btn btn-primary btn-cart">
+																<i data-feather="download"></i>
+																<span class="add-to-cart">İndir</span>
+															</a>
+														</div>
+													</div>
+
+												@endforeach
+
+											</div>
+
+										@endif
+
 									</div>
 								</div>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary waves-effect waves-float waves-light">
-							Kayıt Ekle
+							Kaydı Kaydet
 						</button>
 					</div>
 				</div>
