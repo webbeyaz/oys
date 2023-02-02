@@ -70,95 +70,95 @@
 						<div class="card">
 							<table class="datatables-basic table">
 								<thead>
-								<tr>
-									<th>
-										Şoför
-									</th>
-									<th>
-										Araç Plakası
-									</th>
-									<th>
-										Açıklama
-									</th>
-									<th>
-										Resimler
-									</th>
-									<th>
-										Oluşturulma Tarihi
-									</th>
-									<th>
-										İşlem
-									</th>
-								</tr>
+									<tr>
+										<th>
+											Şoför
+										</th>
+										<th>
+											Araç Plakası
+										</th>
+										<th>
+											Açıklama
+										</th>
+										<th>
+											Resimler
+										</th>
+										<th>
+											Oluşturulma Tarihi
+										</th>
+										<th>
+											İşlem
+										</th>
+									</tr>
 								</thead>
 								<tbody>
 
-								@foreach ($events as $event)
+									@foreach ($events as $event)
 
-									<tr>
-										<td>
-											{{ $event->firstname . ' ' . $event->lastname }}
-										</td>
-										<td>
-											{{ $event->plate }}
-										</td>
-										<td>
-											{{ $event->text }}
-										</td>
-										<td>
+										<tr>
+											<td>
+												{{ $event->firstname . ' ' . $event->lastname }}
+											</td>
+											<td>
+												{{ $event->plate }}
+											</td>
+											<td>
+												{{ $event->text }}
+											</td>
+											<td>
 
-											@if ($images)
+												@if ($images)
 
-												<div class="avatar-group">
+													<div class="avatar-group">
 
-													@foreach ($images[$event->id] as $key => $value)
+														@foreach ($images[$event->id] as $key => $value)
 
-														<div title="{{ $key + 1 }}" class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom">
-															<img src="{{ upload_url('images/cache/events/33x33/' . $value) }}" alt="{{ $key + 1 }}" width="33" height="33">
-														</div>
+															<div title="{{ $key + 1 }}" class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom">
+																<img src="{{ upload_url('images/cache/events/33x33/' . $value) }}" alt="{{ $key + 1 }}" width="33" height="33">
+															</div>
 
-													@endforeach
+														@endforeach
 
-													@if (count($images) > 4)
+														@if (count($images) > 4)
 
-														<h6 class="align-self-center cursor-pointer ms-50 mb-0">
-															+{{ count($images) - 4 }}
-														</h6>
+															<h6 class="align-self-center cursor-pointer ms-50 mb-0">
+																+{{ count($images) - 4 }}
+															</h6>
 
-													@endif
+														@endif
 
+													</div>
+
+												@else
+
+													Resim yüklenmemiş.
+
+												@endif
+
+											</td>
+											<td>
+												{{ timeConvert($event->created_at, 'd F Y H:i') }}
+											</td>
+											<td>
+												<div class="dropdown">
+													<button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
+														<i data-feather="more-vertical"></i>
+													</button>
+													<div class="dropdown-menu dropdown-menu-end">
+														<a href="{{ site_url('admin/vehicles/tracking/edit/' . $event->id) }}" class="dropdown-item">
+															<i data-feather="edit-2" class="me-50"></i>
+															<span>Düzenle</span>
+														</a>
+														<a href="{{ site_url('admin/vehicles/tracking/delete/' . $event->id) }}" class="dropdown-item">
+															<i data-feather="trash" class="me-50"></i>
+															<span>Sil</span>
+														</a>
+													</div>
 												</div>
+											</td>
+										</tr>
 
-											@else
-
-												Resim yüklenmemiş.
-
-											@endif
-
-										</td>
-										<td>
-											{{ timeConvert($event->created_at, 'd F Y H:i') }}
-										</td>
-										<td>
-											<div class="dropdown">
-												<button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-													<i data-feather="more-vertical"></i>
-												</button>
-												<div class="dropdown-menu dropdown-menu-end">
-													<a href="{{ site_url('admin/vehicles/tracking/edit/' . $event->id) }}" class="dropdown-item">
-														<i data-feather="edit-2" class="me-50"></i>
-														<span>Düzenle</span>
-													</a>
-													<a href="{{ site_url('admin/vehicles/tracking/delete/' . $event->id) }}" class="dropdown-item">
-														<i data-feather="trash" class="me-50"></i>
-														<span>Sil</span>
-													</a>
-												</div>
-											</div>
-										</td>
-									</tr>
-
-								@endforeach
+									@endforeach
 
 								</tbody>
 							</table>

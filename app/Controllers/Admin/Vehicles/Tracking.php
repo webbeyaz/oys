@@ -7,13 +7,6 @@ use PDO;
 
 class Tracking extends Admin
 {
-	public function __construct()
-	{
-		parent::__construct();
-
-
-	}
-
 	/**
 	 * @return string
 	 */
