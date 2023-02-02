@@ -3,10 +3,16 @@
 namespace App\Controllers\Admin\Vehicles;
 
 use App\Controllers\Admin;
+use Symfony\Component\HttpFoundation\Request;
 use PDO;
 
 class Tracking extends Admin
 {
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
 	/**
 	 * @return string
 	 */
@@ -64,7 +70,6 @@ class Tracking extends Admin
 
 		return $this->view('admin.pages.vehicles.tracking.list', $this->data);
 	}
-}
 
 /*
 @if ($images)
@@ -95,3 +100,237 @@ class Tracking extends Admin
 
 @endif
 */
+
+	/**
+	 * @param Request $request
+	 * @return string
+	 */
+	public function add(Request $request): string
+	{
+		$message = [];
+		$drivers = [];
+
+		$sql = "
+			SELECT
+			    id,
+			    firstname,
+			    lastname
+			FROM drivers
+			ORDER BY firstname ASC, lastname ASC
+		";
+
+		$query = $this->db->query($sql, PDO::FETCH_OBJ);
+
+		if ($query->rowCount())
+		{
+			$drivers = $query;
+		}
+
+		if ($request->getMethod() == 'POST')
+		{
+			$rules = [
+				'required' => [
+					'driver_id',
+					'text'
+				]
+			];
+
+			$this->validator->rules($rules);
+
+			if ($this->validator->validate())
+			{
+				$data = $this->validator->data();
+
+				$driver_id = $data['driver_id'];
+				$text = $data['text'];
+				// $status = $data['status']; TODO: İleride aktif edilebilir.
+
+				$sql = "
+					INSERT INTO events SET
+					driver_id = ?,
+					text = ?,
+					created_by = ?,
+					updated_by = ?
+				";
+
+				$query = $this->db->prepare($sql);
+
+				$insert = $query->execute([
+					$driver_id,
+					$text,
+					$this->data['user']->id,
+					$this->data['user']->id
+				]);
+
+				if ($insert)
+				{
+					$message = [
+						'class' => 'success',
+						'text' => 'Kayıt başarılı bir şekilde eklendi.'
+					];
+				}
+				else
+				{
+					$message = [
+						'class' => 'danger',
+						'text' => 'Sistemde bir hata oluştu ve kayıt eklenemedi.'
+					];
+				}
+			}
+			else
+			{
+				$message = [
+					'class' => 'warning',
+					'text' => 'Lütfen boş alan bırakmayın.'
+				];
+			}
+		}
+
+		$this->data['message'] = $message;
+		$this->data['drivers'] = $drivers;
+
+		return $this->view('admin.pages.vehicles.tracking.add', $this->data);
+	}
+
+	/**
+	 * @param $id
+	 * @param Request $request
+	 * @return string
+	 */
+	public function edit($id, Request $request): string
+	{
+		$message = [];
+		$event = null;
+
+		$sql = "
+			SELECT
+			    driver_id,
+			    text,
+			    created_at
+			FROM events
+			WHERE id = '{$id}'
+		";
+
+		$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+
+		if ($query)
+		{
+			$event = $query;
+		}
+		else
+		{
+			header('Location: ' . site_url('admin/vehicles/tracking'));
+			exit;
+		}
+
+		if ($request->getMethod() == 'POST')
+		{
+			$rules = [
+				'required' => [
+					'driver_id',
+					'text'
+				]
+			];
+
+			$this->validator->rules($rules);
+
+			if ($this->validator->validate())
+			{
+				$data = $this->validator->data();
+
+				$driver_id = $data['driver_id'];
+				$text = $data['text'];
+				// $status = $data['status']; TODO: İleride aktif edilebilir.
+
+				$sql = "
+					UPDATE vehicles SET
+					driver_id = :driver_id,
+					text = :text,
+					updated_by = :updated_by,
+					updated_at = :updated_at
+					WHERE id = :id
+				";
+
+				$query = $this->db->prepare($sql);
+
+				$update = $query->execute([
+					'driver_id' => $driver_id,
+					'text' => $text,
+					'updated_by' => $this->data['user']->id,
+					'updated_at' => date('Y-m-d H:i:s'),
+					'id' => $id
+				]);
+
+				if ($update)
+				{
+					$message = [
+						'class' => 'success',
+						'text' => 'Kayıt başarılı bir şekilde güncellendi.'
+					];
+				}
+				else
+				{
+					$message = [
+						'class' => 'danger',
+						'text' => 'Sistemde bir hata oluştu ve kayıt güncellenemedi.'
+					];
+				}
+			}
+			else
+			{
+				$message = [
+					'class' => 'warning',
+					'text' => 'Lütfen boş alan bırakmayın.'
+				];
+			}
+		}
+
+		$this->data['event'] = $event;
+		$this->data['message'] = $message;
+
+		return $this->view('admin.pages.vehicles.tracking.edit', $this->data);
+	}
+
+	/**
+	 * @param $id
+	 * @return string
+	 */
+	public function delete($id): string
+	{
+		$message = [];
+
+		$sql = "
+			UPDATE events SET
+			deleted_by = :deleted_by,
+			deleted_at = :deleted_at
+			WHERE id = :id
+		";
+
+		$query = $this->db->prepare($sql);
+
+		$update = $query->execute([
+			'deleted_by' => $this->data['user']->id,
+			'deleted_at' => date('Y-m-d H:i:s'),
+			'id' => $id
+		]);
+
+		if ($update)
+		{
+			$message = [
+				'class' => 'success',
+				'text' => 'Kayıt silme işlemi başarılı ile gerçekleşti.'
+			];
+		}
+		else
+		{
+			$message = [
+				'class' => 'danger',
+				'text' => 'Sistemde bir hata oluştu ve kayıt silinemedi.'
+			];
+		}
+
+		$this->data['message'] = $message;
+
+		return $this->view('admin.pages.vehicles.tracking.delete', $this->data);
+	}
+}
