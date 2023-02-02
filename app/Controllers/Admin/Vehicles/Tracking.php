@@ -42,7 +42,7 @@ class Tracking extends Admin
 			$events = $query;
 		}
 
-		$this->data['vehicles'] = $events;
+		$this->data['events'] = $events;
 
 		return $this->view('admin.pages.vehicles.tracking.list', $this->data);
 	}
