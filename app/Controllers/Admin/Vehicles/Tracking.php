@@ -52,16 +52,14 @@ class Tracking extends Admin
 					    image
 					FROM images
 					WHERE event_id = $id
+					LIMIT 1
 				";
 
-				$query = $this->db->query($sql, PDO::FETCH_OBJ);
+				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-				if ($query->rowCount())
+				if ($query)
 				{
-					foreach ($query as $row)
-					{
-						$images[$id][] = $row->image;
-					}
+					$images = $query;
 				}
 			}
 		}
