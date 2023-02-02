@@ -335,7 +335,7 @@ class Tracking extends Admin
 				// $status = $data['status']; TODO: İleride aktif edilebilir.
 
 				$sql = "
-					UPDATE vehicles SET
+					UPDATE events SET
 					driver_id = :driver_id,
 					text = :text,
 					updated_by = :updated_by,
