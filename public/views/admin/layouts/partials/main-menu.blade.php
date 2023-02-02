@@ -131,7 +131,7 @@
 				<span>Yönetim</span>
 				<i data-feather="more-horizontal"></i>
 			</li>
-			<li class="nav-item {{ segments(1) == 'logs' ? 'active' : null }}">
+			<!--<li class="nav-item {{ segments(1) == 'logs' ? 'active' : null }}">
 				<a href="{{ site_url('admin/logs') }}" class="d-flex align-items-center">
 					<i data-feather="git-merge"></i>
 					<span class="menu-title text-truncate">Kayıtlar</span>
@@ -148,7 +148,7 @@
 					<i data-feather="help-circle"></i>
 					<span class="menu-title text-truncate">SSS</span>
 				</a>
-			</li>
+			</li>-->
 			<li class="nav-item">
 				<a href="{{ site_url('admin/logout') }}" class="d-flex align-items-center">
 					<i data-feather="power"></i>

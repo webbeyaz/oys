@@ -26,7 +26,7 @@
 					</a>
 				</div>
 			</li>-->
-			<li class="nav-item nav-search">
+			<!--<li class="nav-item nav-search">
 				<a class="nav-link nav-link-search">
 					<i class="ficon" data-feather="search"></i>
 				</a>
@@ -40,8 +40,8 @@
 					</div>
 					<ul class="search-list search-list-main"></ul>
 				</div>
-			</li>
-			<li class="nav-item dropdown dropdown-notification me-25">
+			</li>-->
+			<!--<li class="nav-item dropdown dropdown-notification me-25">
 				<a href="#" class="nav-link" data-bs-toggle="dropdown">
 					<i class="ficon" data-feather="bell"></i>
 					<span class="badge rounded-pill bg-danger badge-up">5</span>
@@ -81,7 +81,7 @@
 						</a>
 					</li>
 				</ul>
-			</li>
+			</li>-->
 			<li class="nav-item dropdown dropdown-user">
 				<a href="#" class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<div class="user-nav d-sm-flex d-none">
@@ -107,14 +107,14 @@
 						Araç Takibi
 					</a>
 					<div class="dropdown-divider"></div>
-					<a href="{{ site_url('admin/settings') }}" class="dropdown-item">
+					<!--<a href="{{ site_url('admin/settings') }}" class="dropdown-item">
 						<i class="me-50" data-feather="settings"></i>
 						Ayarlar
 					</a>
 					<a href="{{ site_url('admin/faq') }}" class="dropdown-item">
 						<i class="me-50" data-feather="help-circle"></i>
 						SSS
-					</a>
+					</a>-->
 					<a href="{{ site_url('admin/logout') }}" class="dropdown-item">
 						<i class="me-50" data-feather="power"></i>
 						Çıkış Yap
@@ -124,7 +124,7 @@
 		</ul>
 	</div>
 </nav>
-<ul class="main-search-list-defaultlist d-none">
+<!--<ul class="main-search-list-defaultlist d-none">
 	<li class="d-flex align-items-center">
 		<a href="#">
 			<h6 class="section-label mt-75 mb-0">
@@ -182,5 +182,5 @@
 			</div>
 		</a>
 	</li>
-</ul>
+</ul>-->
 <!-- END: Header-->
