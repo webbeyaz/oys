@@ -165,7 +165,7 @@ class Tracking extends Admin
 
 				if ($insert)
 				{
-					if ($_FILES['images'])
+					if (file_exists($_FILES['images']['tmp_name']))
 					{
 						$files = [];
 
