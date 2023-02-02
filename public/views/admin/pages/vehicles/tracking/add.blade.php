@@ -48,7 +48,7 @@
 		<!-- Basic Inputs start -->
 		<section id="basic-input">
 
-			<form action="" method="post">
+			<form action="" method="post" enctype="multipart/form-data">
 
 				<div class="row">
 					<div class="col-md-12">
