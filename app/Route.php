@@ -67,10 +67,16 @@ $app->router->group('/admin', function ($router) {
 
 	$router->group('/vehicles', function ($router) {
 		$router->get('/list', 'Admin.Vehicles.Listing@index');
-		$router->get('/tracking', 'Admin.Vehicles.Tracking@index');
 		$router->any('/add', 'Admin.Vehicles.Add@index');
 		$router->any('/edit/:id', 'Admin.Vehicles.Edit@index');
 		$router->get('/delete/:id', 'Admin.Vehicles.Delete@index');
+
+		$router->group('/tracking', function ($router) {
+			$router->get('/', 'Admin.Vehicles.Tracking@list');
+			$router->any('/add', 'Admin.Vehicles.Tracking@add');
+			$router->any('/edit', 'Admin.Vehicles.Tracking@edit');
+			$router->any('/delete', 'Admin.Vehicles.Tracking@delete');
+		});
 	});
 }, ['before' => 'AdminCheckAuth']);
 
