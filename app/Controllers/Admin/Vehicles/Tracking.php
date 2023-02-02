@@ -253,7 +253,14 @@ class Tracking extends Admin
 								$id
 							]);
 
-							if (!$insert)
+							if ($insert)
+							{
+								$message = [
+									'class' => 'success',
+									'text' => 'Kayıt başarılı bir şekilde eklendi.'
+								];
+							}
+							else
 							{
 								$message = [
 									'class' => 'danger',
