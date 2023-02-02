@@ -62,10 +62,6 @@ class Tracking extends Admin
 					{
 						$images[$id][] = $row->image;
 					}
-
-					echo '<pre>';
-					print_r($images);
-					exit;
 				}
 			}
 		}

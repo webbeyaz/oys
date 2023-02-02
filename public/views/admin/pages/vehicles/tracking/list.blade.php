@@ -127,14 +127,6 @@
 
 														@endforeach
 
-														@if (count($images) > 4)
-
-															<h6 class="align-self-center cursor-pointer ms-50 mb-0">
-																+{{ count($images) - 4 }}
-															</h6>
-
-														@endif
-
 													</div>
 
 												@else
