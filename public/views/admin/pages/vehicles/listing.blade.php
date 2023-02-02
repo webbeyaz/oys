@@ -53,70 +53,86 @@
 	</div>
 	<div class="content-body">
 
-		<!-- Basic table -->
-		<section id="basic-datatable">
+		@if ($vehicles)
+
+			<!-- Basic table -->
+			<section id="basic-datatable">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<table class="datatables-basic table">
+								<thead>
+									<tr>
+										<th>
+											Plaka
+										</th>
+										<th>
+											Şase (Şasi)
+										</th>
+										<th>
+											Oluşturulma Tarihi
+										</th>
+										<th>
+											İşlem
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									@foreach ($vehicles as $vehicle)
+
+										<tr>
+											<td>
+												{{ $vehicle->plate }}
+											</td>
+											<td>
+												{{ $vehicle->chassis }}
+											</td>
+											<td>
+												{{ timeConvert($vehicle->created_at, 'd F Y H:i') }}
+											</td>
+											<td>
+												<div class="dropdown">
+													<button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
+														<i data-feather="more-vertical"></i>
+													</button>
+													<div class="dropdown-menu dropdown-menu-end">
+														<a href="{{ site_url('admin/vehicles/edit/' . $vehicle->id) }}" class="dropdown-item">
+															<i data-feather="edit-2" class="me-50"></i>
+															<span>Düzenle</span>
+														</a>
+														<a href="{{ site_url('admin/vehicles/delete/' . $vehicle->id) }}" class="dropdown-item">
+															<i data-feather="trash" class="me-50"></i>
+															<span>Sil</span>
+														</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+
+									@endforeach
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--/ Basic table -->
+
+		@else
+
 			<div class="row">
 				<div class="col-12">
-					<div class="card">
-						<table class="datatables-basic table">
-							<thead>
-								<tr>
-									<th>
-										Plaka
-									</th>
-									<th>
-										Şase (Şasi)
-									</th>
-									<th>
-										Oluşturulma Tarihi
-									</th>
-									<th>
-										İşlem
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-
-								@foreach ($vehicles as $vehicle)
-
-									<tr>
-										<td>
-											{{ $vehicle->plate }}
-										</td>
-										<td>
-											{{ $vehicle->chassis }}
-										</td>
-										<td>
-											{{ timeConvert($vehicle->created_at, 'd F Y H:i') }}
-										</td>
-										<td>
-											<div class="dropdown">
-												<button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-													<i data-feather="more-vertical"></i>
-												</button>
-												<div class="dropdown-menu dropdown-menu-end">
-													<a href="{{ site_url('admin/vehicles/edit/' . $vehicle->id) }}" class="dropdown-item">
-														<i data-feather="edit-2" class="me-50"></i>
-														<span>Düzenle</span>
-													</a>
-													<a href="{{ site_url('admin/vehicles/delete/' . $vehicle->id) }}" class="dropdown-item">
-														<i data-feather="trash" class="me-50"></i>
-														<span>Sil</span>
-													</a>
-												</div>
-											</div>
-										</td>
-									</tr>
-
-								@endforeach
-
-							</tbody>
-						</table>
+					<div class="alert alert-info" role="alert">
+						<div class="alert-body">
+							Sistemde kayıtlı araç bulunamadı.
+						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<!--/ Basic table -->
+
+		@endif
 
 	</div>
 
