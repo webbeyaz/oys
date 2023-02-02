@@ -54,13 +54,13 @@ class Tracking extends Admin
 					WHERE event_id = $id
 				";
 
-				$query = $this->db->query($sql, PDO::FETCH_OBJ);
+				$queryImage = $this->db->query($sql, PDO::FETCH_OBJ);
 
 				if ($query->rowCount())
 				{
-					foreach ($query as $row)
+					foreach ($queryImage as $rowImage)
 					{
-						$images[$id][] = $row->image;
+						$images[$id][] = $rowImage->image;
 					}
 				}
 			}

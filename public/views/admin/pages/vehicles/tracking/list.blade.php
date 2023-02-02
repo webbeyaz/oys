@@ -107,7 +107,41 @@
 											</td>
 											<td>
 
-												
+												@if ($images)
+
+													<div class="avatar-group">
+
+														@php
+															$i = 1;
+														@endphp
+
+														@foreach ($images[$event->id] as $image)
+
+															<div title="{{ $i }}" class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom">
+																<img src="{{ upload_url('images/cache/events/33x33/' . $image) }}" alt="{{ $i }}" width="33" height="33">
+															</div>
+
+															@php
+																$i++;
+															@endphp
+
+														@endforeach
+
+														@if (count($images) > 4)
+
+															<h6 class="align-self-center cursor-pointer ms-50 mb-0">
+																+{{ count($images) - 4 }}
+															</h6>
+
+														@endif
+
+													</div>
+
+												@else
+
+													Resim yüklenmemiş.
+
+												@endif
 
 											</td>
 											<td>
