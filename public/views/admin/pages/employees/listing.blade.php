@@ -26,7 +26,7 @@
 @section('content')
 
 	<div class="content-header row">
-		<div class="content-header-left col-md-9 col-12 mb-2">
+		<div class="content-header-left col-12 mb-2">
 			<div class="row breadcrumbs-top">
 				<div class="col-12">
 					<h2 class="content-header-title float-start mb-0">
@@ -53,79 +53,95 @@
 	</div>
 	<div class="content-body">
 
-		<!-- Basic table -->
-		<section id="basic-datatable">
+		@if ($employees)
+
+			<!-- Basic table -->
+			<section id="basic-datatable">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<table class="datatables-basic table">
+								<thead>
+									<tr>
+										<th>
+											Personel
+										</th>
+										<th>
+											Ad Soyad
+										</th>
+										<!--<th>
+											Durum
+										</th>-->
+										<th>
+											Oluşturulma Tarihi
+										</th>
+										<th>
+											İşlem
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									@foreach ($employees as $employee)
+
+										<tr>
+											<td>
+												<img src="{{ $employee->photo ? upload_url('images/cache/employees/20x20/' . $employee->photo) : asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee->username }}" width="20" height="20" class="me-75 avatar">
+												<span class="fw-bold">{{ $employee->username }}</span>
+											</td>
+											<td>
+												{{ $employee->firstname . ' ' . $employee->lastname }}
+											</td>
+											<!--<td>
+												<span class="badge rounded-pill badge-light-{{ $employee->status == 1 ? 'success' : 'danger' }} me-1">
+													{{ $employee->status == 1 ? 'Aktif' : 'Pasif' }}
+												</span>
+											</td>-->
+											<td>
+												{{ timeConvert($employee->created_at, 'd F Y H:i') }}
+											</td>
+											<td>
+												<div class="dropdown">
+													<button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
+														<i data-feather="more-vertical"></i>
+													</button>
+													<div class="dropdown-menu dropdown-menu-end">
+														<a href="{{ site_url('admin/employees/edit/' . $employee->id) }}" class="dropdown-item">
+															<i data-feather="edit-2" class="me-50"></i>
+															<span>Düzenle</span>
+														</a>
+														<a href="{{ site_url('admin/employees/delete/' . $employee->id) }}" class="dropdown-item">
+															<i data-feather="trash" class="me-50"></i>
+															<span>Sil</span>
+														</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+
+									@endforeach
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--/ Basic table -->
+
+		@else
+
 			<div class="row">
 				<div class="col-12">
-					<div class="card">
-						<table class="datatables-basic table">
-							<thead>
-								<tr>
-									<th>
-										Personel
-									</th>
-									<th>
-										Ad Soyad
-									</th>
-									<!--<th>
-										Durum
-									</th>-->
-									<th>
-										Oluşturulma Tarihi
-									</th>
-									<th>
-										İşlem
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-
-								@foreach ($employees as $employee)
-
-									<tr>
-										<td>
-											<img src="{{ $employee->photo ? upload_url('images/cache/employees/20x20/' . $employee->photo) : asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee->username }}" width="20" height="20" class="me-75 avatar">
-											<span class="fw-bold">{{ $employee->username }}</span>
-										</td>
-										<td>
-											{{ $employee->firstname . ' ' . $employee->lastname }}
-										</td>
-										<!--<td>
-											<span class="badge rounded-pill badge-light-{{ $employee->status == 1 ? 'success' : 'danger' }} me-1">
-												{{ $employee->status == 1 ? 'Aktif' : 'Pasif' }}
-											</span>
-										</td>-->
-										<td>
-											{{ timeConvert($employee->created_at, 'd F Y H:i') }}
-										</td>
-										<td>
-											<div class="dropdown">
-												<button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-													<i data-feather="more-vertical"></i>
-												</button>
-												<div class="dropdown-menu dropdown-menu-end">
-													<a href="{{ site_url('admin/employees/edit/' . $employee->id) }}" class="dropdown-item">
-														<i data-feather="edit-2" class="me-50"></i>
-														<span>Düzenle</span>
-													</a>
-													<a href="{{ site_url('admin/employees/delete/' . $employee->id) }}" class="dropdown-item">
-														<i data-feather="trash" class="me-50"></i>
-														<span>Sil</span>
-													</a>
-												</div>
-											</div>
-										</td>
-									</tr>
-
-								@endforeach
-
-							</tbody>
-						</table>
+					<div class="alert alert-info" role="alert">
+						<div class="alert-body">
+							Sistemde kayıtlı personel bulunamadı.
+						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<!--/ Basic table -->
+
+		@endif
 
 	</div>
 
