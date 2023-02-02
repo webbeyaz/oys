@@ -12,6 +12,14 @@
 @endsection
 
 @section('styles')
+
+	<style>
+		.ecommerce-application .grid-view:not(.wishlist-items),
+		.ecommerce-application .list-view:not(.wishlist-items) {
+			margin-top: 0;
+		}
+	</style>
+
 @endsection
 
 @section('content')
@@ -107,7 +115,6 @@
 										@if ($images)
 
 											<div class="mb-1">
-
 												<div class="ecommerce-application">
 													<div class="grid-view">
 
@@ -132,9 +139,7 @@
 														@endforeach
 
 													</div>
-
 												</div>
-
 											</div>
 
 										@endif
