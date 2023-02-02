@@ -8,6 +8,7 @@
 
 @section('styles_page')
 	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/core/menu/menu-types/vertical-menu.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/pages/app-ecommerce.css') }}">
 @endsection
 
 @section('styles')
