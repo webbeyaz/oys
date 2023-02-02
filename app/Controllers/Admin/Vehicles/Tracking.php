@@ -17,7 +17,7 @@ class Tracking extends Admin
 	/**
 	 * @return string
 	 */
-	public function index(): string
+	public function list(): string
 	{
 		$events = [];
 
