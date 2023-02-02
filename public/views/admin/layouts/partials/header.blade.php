@@ -94,10 +94,10 @@
 					</span>
 				</a>
 				<div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-					<a href="{{ site_url('admin/users/profile') }}" class="dropdown-item">
+					<!--<a href="{{ site_url('admin/users/profile') }}" class="dropdown-item">
 						<i class="me-50" data-feather="user"></i>
 						Profil
-					</a>
+					</a>-->
 					<a href="{{ site_url('admin/employees/tracking') }}" class="dropdown-item">
 						<i class="me-50" data-feather="user-check"></i>
 						Personel Takibi
