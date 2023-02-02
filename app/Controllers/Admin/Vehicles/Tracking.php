@@ -52,20 +52,28 @@ class Tracking extends Admin
 					    image
 					FROM images
 					WHERE event_id = $id
-					LIMIT 1
 				";
 
-				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+				$query = $this->db->query($sql, PDO::FETCH_OBJ);
 
-				if ($query)
+				if ($query->rowCount())
 				{
-					$images = $query;
+					foreach ($query as $row)
+					{
+						$images[$id][] = $row->image;
+					}
 				}
 			}
 		}
 
 		$this->data['events'] = $events;
 		$this->data['images'] = $images;
+
+		echo '<pre>';
+		print_r($event);
+		echo '<hr>';
+		print_r($images);
+		exit;
 
 		return $this->view('admin.pages.vehicles.tracking.list', $this->data);
 	}
