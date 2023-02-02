@@ -60,7 +60,8 @@ class Tracking extends Admin
 				{
 					foreach ($query as $row)
 					{
-						$images[][$id] = $row->image;
+						print_r($row);
+						exit;
 					}
 				}
 			}
