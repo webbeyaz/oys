@@ -30,7 +30,7 @@
 								</a>
 							</li>
 							<li class="breadcrumb-item">
-								<a href="{{ site_url('admin/vehicles/tracking/list') }}">
+								<a href="{{ site_url('admin/vehicles/tracking') }}">
 									Araç Takibi
 								</a>
 							</li>
