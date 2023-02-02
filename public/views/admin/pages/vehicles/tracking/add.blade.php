@@ -3,9 +3,11 @@
 @section('title', 'Ofis Yönetim Sistemi')
 
 @section('styles_vendor')
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/file-uploaders/dropzone.min.css') }}">
 @endsection
 
 @section('styles_page')
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/css/core/menu/menu-types/vertical-menu.css') }}">
 @endsection
 
 @section('styles')
@@ -86,13 +88,19 @@
 
 											</select>
 										</div>
-									</div>
-									<div class="col-xl-6 col-12">
 										<div class="mb-1">
 											<label class="form-label" for="text">
 												Açıklama
 											</label>
 											<textarea name="text" placeholder="Açıklama" class="form-control" id="text"></textarea>
+										</div>
+									</div>
+									<div class="col-xl-6 col-12">
+										<div class="mb-1">
+											<label class="form-label" for="text">
+												Resimler
+											</label>
+											<input type="file" name="images[]" accept="image/*" multiple required class="form-control">
 										</div>
 									</div>
 								</div>

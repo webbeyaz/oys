@@ -85,4 +85,5 @@ $app->router->group('/admin', function ($router) {
  */
 $app->router->group('/api', function ($router) {
 	$router->xget('/login', 'Api.Login@index');
+	$router->xget('/image', 'Api.Image@index');
 });

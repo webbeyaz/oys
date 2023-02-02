@@ -4,6 +4,7 @@ namespace App\Controllers\Admin\Vehicles;
 
 use App\Controllers\Admin;
 use Symfony\Component\HttpFoundation\Request;
+use Verot\Upload\Upload;
 use PDO;
 
 class Tracking extends Admin
@@ -137,10 +138,10 @@ class Tracking extends Admin
 
 			$this->validator->rules($rules);
 
+			$data = $this->validator->data();
+
 			if ($this->validator->validate())
 			{
-				$data = $this->validator->data();
-
 				$driver_id = $data['driver_id'];
 				$text = $data['text'];
 				// $status = $data['status']; TODO: İleride aktif edilebilir.
@@ -164,10 +165,114 @@ class Tracking extends Admin
 
 				if ($insert)
 				{
-					$message = [
-						'class' => 'success',
-						'text' => 'Kayıt başarılı bir şekilde eklendi.'
-					];
+					if ($_FILES['images'])
+					{
+						$files = [];
+
+						foreach ($_FILES['images'] as $k => $l)
+						{
+							foreach ($l as $i => $v)
+							{
+								if (!array_key_exists($i, $files))
+								{
+									$files[$i] = array();
+								}
+
+								$files[$i][$k] = $v;
+							}
+						}
+
+						$images = [];
+						$error = false;
+
+						foreach ($files as $file)
+						{
+							$handle = new Upload($file);
+
+							if ($handle->uploaded)
+							{
+								$name = hashid();
+								$images[] = $name . '.jpg';
+
+								$handle->allowed = ['image/*'];
+								$handle->file_new_name_body = $name;
+								$handle->image_convert = 'jpg';
+								$handle->process('./uploads/images/original/events');
+
+								$handle->allowed = ['image/*'];
+								$handle->file_new_name_body = $name;
+								$handle->image_convert = 'jpg';
+								$handle->image_resize = true;
+								$handle->image_x = 400;
+								$handle->image_y = 400;
+								$handle->image_ratio_crop = true;
+								$handle->process('./uploads/images/cache/events/400x400');
+
+								$handle->allowed = ['image/*'];
+								$handle->file_new_name_body = $name;
+								$handle->image_convert = 'jpg';
+								$handle->image_resize = true;
+								$handle->image_x = 40;
+								$handle->image_y = 40;
+								$handle->image_ratio_crop = true;
+								$handle->process('./uploads/images/cache/events/40x40');
+
+								if (!$handle->processed)
+								{
+									$error = true;
+								}
+							}
+							else
+							{
+								$error = true;
+							}
+
+							$handle->clean();
+						}
+
+						if ($error)
+						{
+							$message = [
+								'class' => 'danger',
+								'text' => 'Bir hata oluştu ve resim(ler) yüklenemedi.'
+							];
+						}
+
+						$id = $this->db->lastInsertId();
+
+						$i = 0;
+
+						foreach ($images as $image)
+						{
+							$i++;
+
+							$sql = "INSERT INTO images SET
+							image = ?,
+							event_id = ?";
+
+							$query = $this->db->prepare($sql);
+
+							$insert = $query->execute([
+								$image,
+								$id
+							]);
+
+							if (!$insert)
+							{
+								$message = [
+									'class' => 'danger',
+									'text' => 'Sistemde bir hata oluştu ve resimler kayıt edilemedi.'
+								];
+							}
+						}
+					}
+					else
+					{
+						$message = [
+							'class' => 'success',
+							'text' => 'Kayıt başarılı bir şekilde eklendi.'
+						];
+					}
 				}
 				else
 				{
