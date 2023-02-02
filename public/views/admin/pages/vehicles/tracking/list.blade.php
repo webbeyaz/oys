@@ -111,11 +111,19 @@
 
 												<div class="avatar-group">
 
-													@foreach ($images[$event->id] as $key => $value)
+													@php
+														$i = 1;
+													@endphp
 
-														<div title="{{ $key }}" class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom">
-															<img src="{{ upload_url('images/cache/events/33x33/' . $value) }}" alt="{{ $key }}" width="33" height="33">
+													@foreach ($images[$event->id] as $image)
+
+														<div title="{{ $i }}" class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom">
+															<img src="{{ upload_url('images/cache/events/33x33/' . $image) }}" alt="{{ $i }}" width="33" height="33">
 														</div>
+
+														@php
+															$i++;
+														@endphp
 
 													@endforeach
 

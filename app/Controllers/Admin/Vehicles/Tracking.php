@@ -56,9 +56,12 @@ class Tracking extends Admin
 
 				$query = $this->db->query($sql, PDO::FETCH_OBJ);
 
-				foreach ($query as $row)
+				if ($query->rowCount())
 				{
-					$images[$id][] = $row->image;
+					foreach ($query as $row)
+					{
+						$images[$id][] = $row->image;
+					}
 				}
 			}
 		}
