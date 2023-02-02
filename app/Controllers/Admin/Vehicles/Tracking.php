@@ -20,6 +20,7 @@ class Tracking extends Admin
 	public function list(): string
 	{
 		$events = [];
+		$images = [];
 
 		$sql = "
 			SELECT
@@ -28,7 +29,6 @@ class Tracking extends Admin
 			    d.lastname AS lastname,
 			    v.plate AS plate,
 			    e.text AS text,
-			    e.images AS images,
 			    e.created_at AS created_at
 			FROM events e
 			INNER JOIN drivers d ON d.id = e.driver_id
@@ -42,9 +42,29 @@ class Tracking extends Admin
 		if ($query->rowCount())
 		{
 			$events = $query;
+
+			foreach ($events as $event)
+			{
+				$id = $event->id;
+
+				$sql = "
+					SELECT
+					    image
+					FROM images
+					WHERE event_id = $id
+				";
+
+				$query = $this->db->query($sql, PDO::FETCH_OBJ);
+
+				foreach ($query as $row)
+				{
+					$images[$id][] = $row->image;
+				}
+			}
 		}
 
 		$this->data['events'] = $events;
+		$this->data['images'] = $images;
 
 		return $this->view('admin.pages.vehicles.tracking.list', $this->data);
 	}
