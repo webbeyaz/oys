@@ -37,15 +37,15 @@ class Tracking extends Admin
 			ORDER BY e.updated_at DESC, e.id DESC
 		";
 
-		$query = $this->db->query($sql, PDO::FETCH_OBJ);
+		$queryEvent = $this->db->query($sql, PDO::FETCH_OBJ);
 
-		if ($query->rowCount())
+		if ($queryEvent->rowCount())
 		{
-			$events = $query;
+			$events = $queryEvent;
 
-			foreach ($events as $event)
+			foreach ($queryEvent as $rowEvent)
 			{
-				$id = $event->id;
+				$id = $rowEvent->id;
 
 				$sql = "
 					SELECT
@@ -54,13 +54,13 @@ class Tracking extends Admin
 					WHERE event_id = $id
 				";
 
-				$query = $this->db->query($sql, PDO::FETCH_OBJ);
+				$queryImage = $this->db->query($sql, PDO::FETCH_OBJ);
 
-				if ($query->rowCount())
+				if ($queryImage->rowCount())
 				{
-					foreach ($query as $row)
+					foreach ($queryImage as $rowImage)
 					{
-						$images[$id][] = $row->image;
+						$images[$id][] = $rowImage->image;
 					}
 				}
 			}
