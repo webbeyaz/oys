@@ -165,7 +165,7 @@ class Tracking extends Admin
 
 				if ($insert)
 				{
-					if ($_FILES)
+					if (!empty($_FILES))
 					{
 						$files = [];
 
@@ -240,12 +240,8 @@ class Tracking extends Admin
 
 						$id = $this->db->lastInsertId();
 
-						$i = 0;
-
 						foreach ($images as $image)
 						{
-							$i++;
-
 							$sql = "INSERT INTO images SET
 							image = ?,
 							event_id = ?";
@@ -261,7 +257,7 @@ class Tracking extends Admin
 							{
 								$message = [
 									'class' => 'danger',
-									'text' => 'Sistemde bir hata oluştu ve resimler kayıt edilemedi.'
+									'text' => 'Sistemde bir hata oluştu ve resim(ler) kayıt edilemedi.'
 								];
 							}
 						}
