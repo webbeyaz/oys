@@ -31,6 +31,8 @@ class Tracking extends Admin
 			    e.images AS images,
 			    e.created_at AS created_at
 			FROM events e
+			INNER JOIN drivers d ON d.id = e.driver_id
+			INNER JOIN vehicles v ON v.id = d.vehicle_id
 			WHERE e.deleted_at IS NULL
 			ORDER BY e.updated_at DESC, e.id DESC
 		";
