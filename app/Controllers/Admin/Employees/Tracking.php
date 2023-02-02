@@ -69,7 +69,10 @@ class Tracking extends Admin
 
 			foreach ($queryOut as $rowOut)
 			{
-				$tracking[$i]['time_out'] = $rowOut->time;
+				$explode = explode('', $rowOut->time);
+				$time = $explode[1];
+
+				$tracking[$i]['time_out'] = strtotime($time) > strtotime('17:30:00') ? date('Y-m-d H:i:s', strtotime('17:30:00')) : $rowOut->time;
 
 				if ($rowOut->time < $timeIn)
 				{
