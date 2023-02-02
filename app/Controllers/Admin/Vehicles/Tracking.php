@@ -165,7 +165,7 @@ class Tracking extends Admin
 
 				if ($insert)
 				{
-					if (!empty($_FILES))
+					if ($_FILES[0])
 					{
 						$files = [];
 
