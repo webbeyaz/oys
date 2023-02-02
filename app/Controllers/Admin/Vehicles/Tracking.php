@@ -165,7 +165,7 @@ class Tracking extends Admin
 
 				if ($insert)
 				{
-					if (array_key_exists('images', $_FILES))
+					if ($_FILES)
 					{
 						$files = [];
 
@@ -237,35 +237,37 @@ class Tracking extends Admin
 								'text' => 'Bir hata oluştu ve resim(ler) yüklenemedi.'
 							];
 						}
-
-						$id = $this->db->lastInsertId();
-
-						foreach ($images as $image)
+						else
 						{
-							$sql = "INSERT INTO images SET
-							image = ?,
-							event_id = ?";
+							$id = $this->db->lastInsertId();
 
-							$query = $this->db->prepare($sql);
-
-							$insert = $query->execute([
-								$image,
-								$id
-							]);
-
-							if ($insert)
+							foreach ($images as $image)
 							{
-								$message = [
-									'class' => 'success',
-									'text' => 'Kayıt başarılı bir şekilde eklendi.'
-								];
-							}
-							else
-							{
-								$message = [
-									'class' => 'danger',
-									'text' => 'Sistemde bir hata oluştu ve resim(ler) kayıt edilemedi.'
-								];
+								$sql = "INSERT INTO images SET
+								image = ?,
+								event_id = ?";
+
+								$query = $this->db->prepare($sql);
+
+								$insert = $query->execute([
+									$image,
+									$id
+								]);
+
+								if ($insert)
+								{
+									$message = [
+										'class' => 'success',
+										'text' => 'Kayıt başarılı bir şekilde eklendi.'
+									];
+								}
+								else
+								{
+									$message = [
+										'class' => 'danger',
+										'text' => 'Sistemde bir hata oluştu ve resim(ler) kayıt edilemedi.'
+									];
+								}
 							}
 						}
 					}
