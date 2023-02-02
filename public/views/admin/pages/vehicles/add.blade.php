@@ -76,6 +76,8 @@
 											</label>
 											<input type="text" name="plate" placeholder="Plaka" class="form-control" id="plate">
 										</div>
+									</div>
+									<div class="col-xl-6 col-12">
 										<div class="mb-1">
 											<label class="form-label" for="chassis">
 												Şase (Şasi)
