@@ -50,12 +50,12 @@
 						</ol>
 					</div>
 				</div>
-				<div class="col-4">
-					<a href="{{ site_url('admin/vehicles/tracking/add') }}" class="btn btn-primary">
-						Kayıt Ekle
-					</a>
-				</div>
 			</div>
+		</div>
+		<div class="content-header-right col-md-3 col-12 mb-2">
+			<a href="{{ site_url('admin/vehicles/tracking/add') }}" class="btn btn-primary">
+				Kayıt Ekle
+			</a>
 		</div>
 	</div>
 	<div class="content-body">

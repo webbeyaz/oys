@@ -74,8 +74,8 @@ $app->router->group('/admin', function ($router) {
 		$router->group('/tracking', function ($router) {
 			$router->get('/', 'Admin.Vehicles.Tracking@list');
 			$router->any('/add', 'Admin.Vehicles.Tracking@add');
-			$router->any('/edit', 'Admin.Vehicles.Tracking@edit');
-			$router->any('/delete', 'Admin.Vehicles.Tracking@delete');
+			$router->any('/edit/:id', 'Admin.Vehicles.Tracking@edit');
+			$router->any('/delete/:id', 'Admin.Vehicles.Tracking@delete');
 		});
 	});
 }, ['before' => 'AdminCheckAuth']);
