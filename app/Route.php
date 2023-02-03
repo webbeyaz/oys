@@ -57,7 +57,7 @@ $app->router->group('/admin', function ($router) {
 		$router->any('/edit/:id', 'Admin.Employees.Edit@index');
 		$router->get('/delete/:id', 'Admin.Employees.Delete@index');
 
-		$router->get('/holiday', function ($router) {
+		$router->group('/holiday', function ($router) {
 			$router->get('/', 'Admin.Employees.Holiday.Listing@index');
 			$router->any('/add', 'Admin.Employees.Holiday.Add@index');
 			$router->any('/edit/:id', 'Admin.Employees.Holiday.Edit@index');
