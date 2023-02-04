@@ -98,10 +98,10 @@
 												{{ $holiday->firstname . ' ' . $holiday->lastname }}
 											</td>
 											<td>
-												{{ timeConvert($holiday->date_start, 'd/m/Y') }}
+												{{ timeConvert($holiday->date_start, 'd.m.Y') }}
 											</td>
 											<td>
-												{{ timeConvert($holiday->date_end, 'd/m/Y') }}
+												{{ timeConvert($holiday->date_end, 'd.m.Y') }}
 											</td>
 											<td>
 												{{ timeConvert($holiday->created_at, 'd F Y H:i') }}
