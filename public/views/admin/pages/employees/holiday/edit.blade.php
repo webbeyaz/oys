@@ -3,6 +3,7 @@
 @section('title', 'Ofis Yönetim Sistemi')
 
 @section('styles_vendor')
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/pickers/flatpickr/flatpickr.min.css') }}">
 @endsection
 
 @section('styles_page')
@@ -18,7 +19,7 @@
 			<div class="row breadcrumbs-top">
 				<div class="col-12">
 					<h2 class="content-header-title float-start mb-0">
-						Personel Düzenle
+						Personel İzni Düzenle
 					</h2>
 					<div class="breadcrumb-wrapper">
 						<ol class="breadcrumb">
@@ -28,12 +29,12 @@
 								</a>
 							</li>
 							<li class="breadcrumb-item">
-								<a href="{{ site_url('admin/employees/list') }}">
-									Personeller
+								<a href="{{ site_url('admin/employees/holiday') }}">
+									Personel İzinleri
 								</a>
 							</li>
 							<li class="breadcrumb-item active">
-								Personel Düzenle
+								Personel İzni Düzenle
 							</li>
 						</ol>
 					</div>
@@ -64,64 +65,54 @@
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title">
-									Personel Düzenle
+									Personel İzni Düzenle
 								</h4>
 							</div>
 							<div class="card-body">
 								<div class="row">
-									<div class="col-xl-6 col-12">
+									<div class="col-12">
 										<div class="mb-1">
-											<label class="form-label" for="username">
-												Kullanıcı Adı
+											<label class="form-label" for="employee_id">
+												Personel
 											</label>
-											<input type="text" name="username" placeholder="Kullanıcı Adı" value="{{ $employee->username }}" class="form-control" id="username">
-										</div>
-										<div class="mb-1">
-											<label class="form-label" for="password">
-												Şifre
-											</label>
-											<input type="password" name="password" placeholder="Şifre" class="form-control" id="password">
-										</div>
-									</div>
-									<div class="col-xl-6 col-12">
-										<div class="mb-1">
-											<label class="form-label" for="firstname">
-												Ad
-											</label>
-											<input type="text" name="firstname" placeholder="Ad" value="{{ $employee->firstname }}" class="form-control" id="firstname">
-										</div>
-										<div class="mb-1">
-											<label class="form-label" for="lastname">
-												Soyad
-											</label>
-											<input type="text" name="lastname" placeholder="Soyad" value="{{ $employee->lastname }}" class="form-control" id="lastname">
+											<select name="employee_id" class="form-control" id="employee_id">
+
+												@foreach ($empyees as $employee)
+
+													<option value="{{ $employee->id }}" {{ $employee->id == $holiday->employee_id ? 'selected' : null }}>
+														{{ $employee->firstname . ' ' . $employee->lastname }}
+													</option>
+
+												@endforeach
+
+											</select>
 										</div>
 									</div>
-								</div>
-								<!--<div class="row mt-1">
-									<div class="col-xl-6 col-12">
-										<div class="mb-1">
-											<label class="form-label mb-1" for="photo">
-												<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="Fotoğraf" width="60" height="60" class="avatar">
-											</label>
-											<input type="file" name="photo" accept="image/jpeg, image/png" class="form-control" id="photo">
-										</div>
-									</div>
-									<div class="col-xl-6 col-12 d-flex align-items-end">
-										<div class="mb-1">
-											<div class="form-check form-switch">
-												<input type="checkbox" name="status" checked class="form-check-input" id="status">
-												<label class="form-check-label" for="status">
-													Durum
-												</label>
+									<div class="col-12">
+										<div class="row">
+											<div class="col-xl-6 col-12">
+												<div class="mb-1">
+													<label class="form-label" for="date_start">
+														Başlangıç Tarihi
+													</label>
+													<input type="text" name="date_start" placeholder="Başlangıç Tarihi" class="form-control flatpickr-basic" id="date_start">
+												</div>
+											</div>
+											<div class="col-xl-6 col-12">
+												<div class="mb-1">
+													<label class="form-label" for="date_end">
+														Bitiş Tarihi
+													</label>
+													<input type="text" name="date_end" placeholder="Başlangıç Tarihi" class="form-control flatpickr-basic" id="date_end">
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>-->
+								</div>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary waves-effect waves-float waves-light">
-							Personeli Kaydet
+							Personel İznini Kaydet
 						</button>
 					</div>
 				</div>
@@ -134,10 +125,12 @@
 @endsection
 
 @section('scripts_vendor')
+	<script src="{{ asset_url('app/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
 @endsection
 
 @section('scripts_page')
 @endsection
 
 @section('scripts')
+	<script src="{{ asset_url('app/js/scripts/forms/pickers/form-pickers.js') }}"></script>
 @endsection
