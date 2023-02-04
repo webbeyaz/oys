@@ -77,7 +77,7 @@
 											</label>
 											<select name="employee_id" class="form-control" id="employee_id">
 
-												@foreach ($empyees as $employee)
+												@foreach ($employees as $employee)
 
 													<option value="{{ $employee->id }}" {{ $employee->id == $holiday->employee_id ? 'selected' : null }}>
 														{{ $employee->firstname . ' ' . $employee->lastname }}
