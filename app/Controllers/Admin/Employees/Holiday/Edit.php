@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin\Drivers;
+namespace App\Controllers\Admin\Employees\Holiday;
 
 use App\Controllers\Admin;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +12,7 @@ class Edit extends Admin
 	{
 		parent::__construct();
 
-		$this->vehicles();
+		$this->employees();
 	}
 
 	/**
@@ -23,16 +23,14 @@ class Edit extends Admin
 	public function index($id, Request $request): string
 	{
 		$message = [];
-		$driver = null;
+		$holiday = null;
 
 		$sql = "
 			SELECT
-			    firstname,
-			    lastname,
-			    email,
-			    phone,
-			    vehicle_id
-			FROM drivers
+			    employee_id,
+			    date_start,
+			    date_end
+			FROM holidays
 			WHERE id = '{$id}'
 		";
 
@@ -40,11 +38,11 @@ class Edit extends Admin
 
 		if ($query)
 		{
-			$driver = $query;
+			$holiday = $query;
 		}
 		else
 		{
-			header('Location: ' . site_url('admin/drivers/list'));
+			header('Location: ' . site_url('admin/employees/holiday'));
 			exit;
 		}
 
@@ -52,11 +50,9 @@ class Edit extends Admin
 		{
 			$rules = [
 				'required' => [
-					'firstname',
-					'lastname',
-					'email',
-					'phone',
-					'vehicle_id'
+					'employee_id',
+					'date_start',
+					'date_end'
 				]
 			];
 
@@ -66,20 +62,15 @@ class Edit extends Admin
 			{
 				$data = $this->validator->data();
 
-				$firstname = $data['firstname'];
-				$lastname = $data['lastname'];
-				$email = $data['email'];
-				$phone = $data['phone'];
-				$vehicle_id = $data['vehicle_id'];
-				// $status = $data['status']; TODO: İleride aktif edilebilir.
+				$employee_id = $data['employee_id'];
+				$date_start = $data['date_start'];
+				$date_end = $data['date_end'];
 
 				$sql = "
-					UPDATE employees SET
-					firstname = :firstname,
-					lastname = :lastname,
-					email = :email,
-					phone = :phone,
-					vehicle_id = :vehicle_id,
+					UPDATE holidays SET
+					employee_id = :employee_id,
+					date_start = :date_start,
+					date_end = :date_end,
 					updated_by = :updated_by,
 					updated_at = :updated_at
 					WHERE id = :id
@@ -88,11 +79,9 @@ class Edit extends Admin
 				$query = $this->db->prepare($sql);
 
 				$update = $query->execute([
-					'username' => $firstname,
-					'password' => $lastname,
-					'firstname' => $email,
-					'lastname' => $phone,
-					'vehicle_id' => $vehicle_id,
+					'employee_id' => $employee_id,
+					'date_start' => $date_start,
+					'date_end' => $date_end,
 					'updated_by' => $this->data['user']->id,
 					'updated_at' => date('Y-m-d H:i:s'),
 					'id' => $id
@@ -102,14 +91,14 @@ class Edit extends Admin
 				{
 					$message = [
 						'class' => 'success',
-						'text' => 'Şoför başarılı bir şekilde güncellendi.'
+						'text' => 'Personel izni başarılı bir şekilde güncellendi.'
 					];
 				}
 				else
 				{
 					$message = [
 						'class' => 'danger',
-						'text' => 'Sistemde bir hata oluştu ve şoför güncellenemedi.'
+						'text' => 'Sistemde bir hata oluştu ve personel izni güncellenemedi.'
 					];
 				}
 			}
@@ -122,35 +111,36 @@ class Edit extends Admin
 			}
 		}
 
-		$this->data['driver'] = $driver;
+		$this->data['holiday'] = $holiday;
 		$this->data['message'] = $message;
 
-		return $this->view('admin.pages.drivers.edit', $this->data);
+		return $this->view('admin.pages.employees.holiday.edit', $this->data);
 	}
 
 	/**
 	 * @return void
 	 */
-	public function vehicles(): void
+	public function employees(): void
 	{
-		$vehicles = [];
+		$employees = [];
 
 		$sql = "
 			SELECT
 			    id,
-			    plate
-			FROM vehicles
+			    firstname,
+			    lastname
+			FROM employees
 			WHERE deleted_at IS NULL
-			ORDER BY plate ASC
+			ORDER BY firstname ASC, lastname ASC
 		";
 
 		$query = $this->db->query($sql, PDO::FETCH_OBJ);
 
 		if ($query->rowCount())
 		{
-			$vehicles = $query;
+			$employees = $query;
 		}
 
-		$this->data['vehicles'] = $vehicles;
+		$this->data['employees'] = $employees;
 	}
 }
