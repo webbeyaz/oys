@@ -95,7 +95,7 @@
 													<label class="form-label" for="date_start">
 														Başlangıç Tarihi
 													</label>
-													<input type="text" name="date_start" placeholder="Başlangıç Tarihi" class="form-control flatpickr-basic" id="date_start">
+													<input type="text" name="date_start" placeholder="Başlangıç Tarihi" value="{{ $holiday->date_start }}" class="form-control flatpickr-basic" id="date_start">
 												</div>
 											</div>
 											<div class="col-xl-6 col-12">
@@ -103,7 +103,7 @@
 													<label class="form-label" for="date_end">
 														Bitiş Tarihi
 													</label>
-													<input type="text" name="date_end" placeholder="Bitiş Tarihi" class="form-control flatpickr-basic" id="date_end">
+													<input type="text" name="date_end" placeholder="Bitiş Tarihi" value="{{ $holiday->date_end }}" class="form-control flatpickr-basic" id="date_end">
 												</div>
 											</div>
 										</div>
