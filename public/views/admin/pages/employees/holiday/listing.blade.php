@@ -71,9 +71,12 @@
 										<th>
 											Ad Soyad
 										</th>
-										<!--<th>
-											Durum
-										</th>-->
+										<th>
+											Başlangıç Tarihi
+										</th>
+										<th>
+											Bitiş Tarihi
+										</th>
 										<th>
 											Oluşturulma Tarihi
 										</th>
@@ -93,6 +96,12 @@
 											</td>
 											<td>
 												{{ $holiday->firstname . ' ' . $holiday->lastname }}
+											</td>
+											<td>
+												{{ timeConvert($holiday->date_start, 'd/m/Y') }}
+											</td>
+											<td>
+												{{ timeConvert($holiday->date_end, 'd/m/Y') }}
 											</td>
 											<td>
 												{{ timeConvert($holiday->created_at, 'd F Y H:i') }}
