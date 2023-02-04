@@ -21,7 +21,9 @@
 
   // Default
   if (basicPickr.length) {
-    basicPickr.flatpickr();
+    basicPickr.flatpickr({
+		'locale': 'tr'
+	});
   }
 
   // Time

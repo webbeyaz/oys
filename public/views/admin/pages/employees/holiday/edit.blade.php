@@ -103,7 +103,7 @@
 													<label class="form-label" for="date_end">
 														Bitiş Tarihi
 													</label>
-													<input type="text" name="date_end" placeholder="Başlangıç Tarihi" class="form-control flatpickr-basic" id="date_end">
+													<input type="text" name="date_end" placeholder="Bitiş Tarihi" class="form-control flatpickr-basic" id="date_end">
 												</div>
 											</div>
 										</div>
@@ -126,6 +126,7 @@
 
 @section('scripts_vendor')
 	<script src="{{ asset_url('app/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
+	<script src="{{ asset_url('app/js/scripts/forms/pickers/tr.js') }}"></script>
 @endsection
 
 @section('scripts_page')
