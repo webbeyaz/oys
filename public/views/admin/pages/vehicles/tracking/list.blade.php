@@ -108,11 +108,23 @@
 
 													<div class="avatar-group">
 
+														@php
+															$i = 0;
+														@endphp
+
 														@foreach ($event['images'] as $image)
 
-															<div class="avatar pull-up" data-popup="tooltip-custom">
-																<img src="{{ upload_url('images/cache/events/40x40/' . $image->image) }}" alt="{{ $image->id }}" width="40" height="40">
-															</div>
+															@if ($i < 4)
+
+																<div class="avatar pull-up" data-popup="tooltip-custom">
+																	<img src="{{ upload_url('images/cache/events/40x40/' . $image->image) }}" alt="{{ $image->id }}" width="40" height="40">
+																</div>
+
+															@endif
+
+															@php
+																$i++;
+															@endphp
 
 														@endforeach
 
