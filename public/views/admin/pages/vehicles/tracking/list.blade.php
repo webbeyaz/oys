@@ -111,7 +111,7 @@
 														@foreach ($event['images'] as $image)
 
 															<div title="{{ $image->id }}" class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom">
-																<img src="{{ upload_url('images/cache/events/33x33/' . $image->image) }}" alt="{{ $image->id }}" width="33" height="33">
+																<img src="{{ upload_url('images/cache/events/40x40/' . $image->image) }}" alt="{{ $image->id }}" width="40" height="40">
 															</div>
 
 														@endforeach
