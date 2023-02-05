@@ -20,7 +20,6 @@ class Tracking extends Admin
 	public function list(): string
 	{
 		$events = [];
-		$images = [];
 
 		$sql = "
 			SELECT
@@ -37,37 +36,49 @@ class Tracking extends Admin
 			ORDER BY e.updated_at DESC, e.id DESC
 		";
 
-		$queryEvent = $this->db->query($sql, PDO::FETCH_OBJ);
+		$query = $this->db->query($sql, PDO::FETCH_OBJ);
 
-		if ($queryEvent->rowCount())
+		if ($query->rowCount())
 		{
-			$events = $queryEvent;
+			$i = 0;
 
-			foreach ($queryEvent as $rowEvent)
+			foreach ($query as $row)
 			{
-				$id = $rowEvent->id;
+				$id = $row->id;
+				$images = [];
 
 				$sql = "
-					SELECT
-					    image
+					SELECT image
 					FROM images
 					WHERE event_id = $id
 				";
 
-				$queryImage = $this->db->query($sql, PDO::FETCH_OBJ);
+				$query = $this->db->query($sql, PDO::FETCH_OBJ);
 
-				if ($queryImage->rowCount())
+				if ($query->rowCount())
 				{
-					foreach ($queryImage as $rowImage)
-					{
-						$images[$id][] = $rowImage->image;
-					}
+					$images = $query;
 				}
+
+				$events[$i] = [
+					'id '=> $id,
+					'firstname' => $row->firstname,
+					'lastname' => $row->lastname,
+					'plate' => $row->plate,
+					'text' => $row->text,
+					'images' => $images,
+					'created_at' => $row->created_at
+				];
+
+				$i++;
 			}
 		}
 
+		echo '<pre>';
+		print_r($events);
+		exit;
+
 		$this->data['events'] = $events;
-		$this->data['images'] = $images;
 
 		return $this->view('admin.pages.vehicles.tracking.list', $this->data);
 	}

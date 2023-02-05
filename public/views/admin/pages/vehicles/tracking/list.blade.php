@@ -94,13 +94,13 @@
 
 										<tr>
 											<td>
-												{{ $event->firstname . ' ' . $event->lastname }}
+												{{ $event['firstname'] . ' ' . $event['lastname'] }}
 											</td>
 											<td>
-												{{ $event->plate }}
+												{{ $event['plate'] }}
 											</td>
 											<td>
-												{{ $event->text }}
+												{{ $event['text'] }}
 											</td>
 											<td>
 
@@ -108,7 +108,7 @@
 
 													<div class="avatar-group">
 
-														@foreach ($images as $key => $value)
+														@foreach ($event['images'] as $image)
 
 															<div title="{{ $key + 1 }}" class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom">
 																<img src="{{ upload_url('images/cache/events/33x33/' . $value) }}" alt="{{ $key + 1 }}" width="33" height="33">
@@ -116,10 +116,10 @@
 
 														@endforeach
 
-														@if (count($images) > 4)
+														@if ($images->rowCount() > 4)
 
 															<h6 class="align-self-center cursor-pointer ms-50 mb-0">
-																+{{ count($images) - 4 }}
+																+{{ $images->rowCount() - 4 }}
 															</h6>
 
 														@endif
