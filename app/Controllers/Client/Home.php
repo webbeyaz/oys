@@ -52,7 +52,6 @@ class Home extends Client
 				    employee_id = '{$employee_id}'
 					AND
 				    end_time IS NULL
-				LIMIT 1
 			";
 
 			$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
@@ -72,7 +71,7 @@ class Home extends Client
 		{
 			$error = [
 				'class' => 'danger',
-				'text' => 'Personel çerezleri eşleştirilemedi.'
+				'text' => 'Personel ve çerez bilgileri eşleşmiyor.'
 			];
 		}
 

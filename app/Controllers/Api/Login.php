@@ -45,56 +45,19 @@ class Login extends Api
 
 				$sql = "
 					SELECT id
-					FROM codes
+					FROM actions
 					WHERE
-					    employee_id = '{$employee_id}'
+						employee_id = '{$employee_id}'
 						AND
-					    status = 1
-					ORDER BY id DESC
-					LIMIT 1
+						(start_time IS NOT NULL AND end_time IS NULL)
+						AND
+					    DATE(start_time) = CURDATE()
 				";
 
 				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
 				if ($query)
 				{
-					/*$sql = "
-						SELECT COUNT(a.id) AS total
-						FROM actions a
-						INNER JOIN codes c ON c.id = a.code_id
-						WHERE
-						    c.employee_id = '{$employee_id}'
-							AND
-						    DATE(a.time) = CURDATE()
-					";
-
-					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
-
-					if ($query->total >= 1) // Çıkış işlemi
-					{
-						// TODO: Düzeltilecek.
-						$sql = "
-							SELECT COUNT(id) AS total
-							FROM codes
-							WHERE
-							    employee_id = '{$employee_id}'
-								AND
-
-						";
-
-						$text = [
-							'status' => 201,
-							'message' => 'Çıkış işlemi bekleniyor.'
-						];
-					}
-					else
-					{
-						$text = [
-							'status' => 200,
-							'message' => 'Başarıyla giriş yapıldı.'
-						];
-					}*/
-
 					$text = [
 						'status' => 200,
 						'message' => 'Başarıyla giriş yapıldı.'
@@ -102,17 +65,40 @@ class Login extends Api
 				}
 				else
 				{
-					$text = [
-						'status' => 402,
-						'message' => 'Kullanıcı ve kod bilgileri eşleşmiyor.'
-					];
+					$sql = "
+						SELECT id
+						FROM actions
+						WHERE
+							employee_id = '{$employee_id}'
+							AND
+							(start_time IS NOT NULL AND end_time IS NOT NULL)
+							AND
+						    DATE(end_time) = CURDATE()
+					";
+
+					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+
+					if ($query)
+					{
+						$text = [
+							'status' => 200,
+							'message' => 'Başarıyla çıkış yapıldı.'
+						];
+					}
+					else
+					{
+						$text = [
+							'status' => 402,
+							'message' => 'Giriş ve çıkış zamanları uyuşmuyor.'
+						];
+					}
 				}
 			}
 			else
 			{
 				$text = [
 					'status' => 401,
-					'message' => 'Kullanıcı ve çerez bilgileri eşleşmiyor.'
+					'message' => 'Personel ve çerez bilgileri eşleşmiyor.'
 				];
 			}
 		}
