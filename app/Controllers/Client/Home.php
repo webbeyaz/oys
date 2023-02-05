@@ -25,14 +25,14 @@ class Home extends Client
 	 */
 	public function index(): string
 	{
+		$error = [];
+
 		$cookie = $_COOKIE['login'];
 		$qrCode = null;
 
 		$sql = "
-			SELECT
-				id
-			FROM
-			    employees
+			SELECT id
+			FROM employees
 			WHERE 
 			    cookie = '{$cookie}'
 			    AND
@@ -46,36 +46,37 @@ class Home extends Client
 			$employee_id = $query->id;
 
 			$sql = "
-				INSERT INTO codes SET
-				employee_id = ?,
-				value = ?
+				SELECT code
+				FROM actions
+				WHERE
+				    employee_id = '{$employee_id}'
+					AND
+				    end_time IS NULL
+				LIMIT 1
 			";
 
-			$query = $this->db->prepare($sql);
+			$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-			$value = hashid();
-
-			$insert = $query->execute([
-				$employee_id,
-				$value
-			]);
-
-			if ($insert)
+			if ($query)
 			{
-				$qrCode = site_url('login/' . $value);
+				$code = $query->code;
 			}
 			else
 			{
-				// Kod oluşturulamadı.
-				exit;
+				$code = hashid();
 			}
+
+			$qrCode = site_url('login/' . $code);
 		}
 		else
 		{
-			// Çerez hatası.
-			exit;
+			$error = [
+				'class' => 'danger',
+				'text' => 'Personel çerezleri eşleştirilemedi.'
+			];
 		}
 
+		$this->data['error'] = $error;
 		$this->data['qrCode'] = $this->qrCode($qrCode);
 
 		return $this->view('client.pages.home', $this->data);

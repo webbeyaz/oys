@@ -29,10 +29,10 @@ class Welcome extends Client
 
 		if ($request->getMethod() == 'POST')
 		{
-			$this->validator->rule(
-			'required',
-				['username', 'password']
-			);
+			$this->validator->rule('required', [
+				'username',
+				'password'
+			]);
 
 			if ($this->validator->validate())
 			{
