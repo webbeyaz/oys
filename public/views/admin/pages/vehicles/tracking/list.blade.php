@@ -104,7 +104,7 @@
 											</td>
 											<td>
 
-												@if ($images)
+												@if ($event['images'])
 
 													<div class="avatar-group">
 
@@ -116,10 +116,10 @@
 
 														@endforeach
 
-														@if ($images->rowCount() > 4)
+														@if ($event['images']->rowCount() > 4)
 
 															<h6 class="align-self-center cursor-pointer ms-50 mb-0">
-																+{{ $images->rowCount() - 4 }}
+																+{{ $event['images']->rowCount() - 4 }}
 															</h6>
 
 														@endif
