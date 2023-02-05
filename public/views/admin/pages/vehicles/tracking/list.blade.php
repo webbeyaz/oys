@@ -134,7 +134,7 @@
 
 											</td>
 											<td>
-												{{ timeConvert($event->created_at, 'd F Y H:i') }}
+												{{ timeConvert($event['created_at'], 'd F Y H:i') }}
 											</td>
 											<td>
 												<div class="dropdown">
@@ -142,11 +142,11 @@
 														<i data-feather="more-vertical"></i>
 													</button>
 													<div class="dropdown-menu dropdown-menu-end">
-														<a href="{{ site_url('admin/vehicles/tracking/edit/' . $event->id) }}" class="dropdown-item">
+														<a href="{{ site_url('admin/vehicles/tracking/edit/' . $event['id']) }}" class="dropdown-item">
 															<i data-feather="edit-2" class="me-50"></i>
 															<span>Düzenle</span>
 														</a>
-														<a href="{{ site_url('admin/vehicles/tracking/delete/' . $event->id) }}" class="dropdown-item">
+														<a href="{{ site_url('admin/vehicles/tracking/delete/' . $event['id']) }}" class="dropdown-item">
 															<i data-feather="trash" class="me-50"></i>
 															<span>Sil</span>
 														</a>
