@@ -81,6 +81,9 @@
 											Açıklama
 										</th>
 										<th>
+											Resim(ler)
+										</th>
+										<th>
 											Oluşturulma Tarihi
 										</th>
 										<th>
