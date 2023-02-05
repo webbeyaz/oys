@@ -48,7 +48,9 @@ class Tracking extends Admin
 				$images = [];
 
 				$sql = "
-					SELECT image
+					SELECT
+						id,
+					    image
 					FROM images
 					WHERE event_id = $id
 				";
@@ -73,10 +75,6 @@ class Tracking extends Admin
 				$i++;
 			}
 		}
-
-		echo '<pre>';
-		print_r($events);
-		exit;
 
 		$this->data['events'] = $events;
 
