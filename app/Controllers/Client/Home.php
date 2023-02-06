@@ -4,6 +4,7 @@ namespace App\Controllers\Client;
 
 use App\Controllers\Client;
 use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\QROptions;
 use PDO;
 
@@ -28,7 +29,7 @@ class Home extends Client
 		$error = [];
 
 		$cookie = $_COOKIE['login'];
-		$qrCode = null;
+		$qrCodeURL = null;
 
 		$sql = "
 			SELECT id
@@ -65,7 +66,7 @@ class Home extends Client
 				$code = hashid();
 			}
 
-			$qrCode = site_url('login/' . $code);
+			$qrCodeURL = site_url('login/' . $code);
 		}
 		else
 		{
@@ -75,8 +76,10 @@ class Home extends Client
 			];
 		}
 
+		$qrCode = $this->qrCode($qrCodeURL) ? $this->qrCode($qrCodeURL) : null;
+
 		$this->data['error'] = $error;
-		$this->data['qrCode'] = $this->qrCode($qrCode);
+		$this->data['qrCode'] = $qrCode;
 
 		return $this->view('client.pages.home', $this->data);
 	}
@@ -87,6 +90,8 @@ class Home extends Client
 	 */
 	public function qrCode($data): mixed
 	{
+		$render = null;
+
 		$options = new QROptions([
 			'version'    => 5,
 			'outputType' => QRCode::OUTPUT_MARKUP_SVG,
@@ -95,6 +100,18 @@ class Home extends Client
 
 		$qrCode = new QRCode($options);
 
-		return $qrCode->render($data);
+		try
+		{
+			$render = $qrCode->render($data);
+		}
+		catch (QRCodeException $e)
+		{
+			$this->data['error'] = [
+				'class' => 'warning',
+				'text' => 'QR kod oluşturulurken bir hata oluştu.'
+			];
+		}
+
+		return $render;
 	}
 }

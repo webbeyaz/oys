@@ -66,11 +66,24 @@
 						Lütfen giriş yapmak için aşağıdaki QR kodu telefonunuzun kamerasına okutunuz.
 					</p>
 
-					<!-- QR Code -->
-					<p class="text-center mt-4 mb-4">
-						<img src="{{ $qrCode }}" alt="QR Kod" width="350">
-					</p>
-					<!-- /QR Code -->
+					@if ($error)
+
+						<div class="alert alert-{{ $error['class'] }}" role="alert">
+							<div class="alert-body">
+								<strong>Hata!</strong>
+								{{ $error['text'] }}
+							</div>
+						</div>
+
+					@else
+
+						<!-- QR Code -->
+						<p class="text-center mt-4 mb-4">
+							<img src="{{ $qrCode }}" alt="QR Kod" width="350">
+						</p>
+						<!-- /QR Code -->
+
+					@endif
 
 					<p class="text-center mt-2">
 						<span>Personel değil misiniz?</span>
@@ -94,29 +107,33 @@
 	<script src="{{ asset_url('app/vendors/js/extensions/polyfill.min.js') }}"></script>
 	<!-- END: Page Vendor JS-->
 
-	<script type="text/javascript">
-		$(function () {
-			setInterval(function () {
-				$.getJSON(API_URL + '/login', function (response) {
-					if (response.status === 200) {
-						window.location.href = '{{ site_url('logged') }}';
-					}
+	@if (!$error)
 
-					if (response.status === 401) {
-						Swal.fire({
-							title: 'Hata!',
-							text: response.message,
-							icon: 'error',
-							customClass: {
-								confirmButton: 'btn btn-primary'
-							},
-							confirmButtonText: 'Tamam',
-							buttonsStyling: false
-						});
-					}
-				});
-			}, 2000);
-		});
-	</script>
+		<script type="text/javascript">
+			$(function () {
+				setInterval(function () {
+					$.getJSON(API_URL + '/login', function (response) {
+						if (response.status === 200) {
+							window.location.href = '{{ site_url('logged') }}';
+						}
+
+						if (response.status === 401) {
+							Swal.fire({
+								title: 'Hata!',
+								text: response.message,
+								icon: 'error',
+								customClass: {
+									confirmButton: 'btn btn-primary'
+								},
+								confirmButtonText: 'Tamam',
+								buttonsStyling: false
+							});
+						}
+					});
+				}, 2000);
+			});
+		</script>
+
+	@endif
 
 @endsection
