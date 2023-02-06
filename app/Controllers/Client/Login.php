@@ -62,16 +62,51 @@ class Login extends Client
 		else
 		{
 			// Giriş işlemi
-			$sql = "INSERT INTO actions SET
-			employee_id = ?,
-			code = ?";
+			$sql = "
+				SELECT employee_id
+				FROM codes
+				WHERE slug = '{$slug}'
+			";
 
-			$query = $this->db->prepare($sql);
+			$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-			$insert = $query->execute([
-				$employee_id,
-				$slug
-			]);
+			if ($query)
+			{
+				$employee_id = $query->employee_id;
+
+				$sql = "INSERT INTO actions SET
+				employee_id = ?,
+				code = ?";
+
+				$query = $this->db->prepare($sql);
+
+				$insert = $query->execute([
+					$employee_id,
+					$slug
+				]);
+
+				if ($insert)
+				{
+					$message = [
+						'class' => 'success',
+						'text' => 'Başarılı bir şekilde giriş yapıldı.'
+					];
+				}
+				else
+				{
+					$message = [
+						'class' => 'danger',
+						'text' => 'Sistemde bir hata oluştu ve giriş yapılamadı.'
+					];
+				}
+			}
+			else
+			{
+				$message = [
+					'class' => 'danger',
+					'text' => 'Sistemdeki QR kodlar eşleşmiyor.'
+				];
+			}
 		}
 
 		$this->data['message'] = $message;
