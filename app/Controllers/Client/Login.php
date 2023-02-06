@@ -69,7 +69,7 @@ class Login extends Client
 			$query = $this->db->prepare($sql);
 
 			$insert = $query->execute([
-				//$employee_id, TODO: Personel ID'yi düzelt.
+				$employee_id,
 				$slug
 			]);
 		}

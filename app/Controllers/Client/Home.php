@@ -60,13 +60,37 @@ class Home extends Client
 			if ($query)
 			{
 				$code = $query->code;
+				$qrCodeURL = site_url('login/' . $code);
 			}
 			else
 			{
 				$code = hashid();
-			}
 
-			$qrCodeURL = site_url('login/' . $code);
+				$sql = "
+					INSERT INTO codes SET
+					slug = ?,
+					employee_id = ?
+				";
+
+				$query = $this->db->prepare($sql);
+
+				$insert = $query->execute([
+					$code,
+					$employee_id
+				]);
+
+				if ($insert)
+				{
+					$qrCodeURL = site_url('login/' . $code);
+				}
+				else
+				{
+					$error = [
+						'class' => 'danger',
+						'text' => 'Sistemde bir hata oluştu ve QR kod eklenemedi.'
+					];
+				}
+			}
 		}
 		else
 		{
@@ -76,7 +100,7 @@ class Home extends Client
 			];
 		}
 
-		$qrCode = $this->qrCode($qrCodeURL) ? $this->qrCode($qrCodeURL) : null;
+		$qrCode = $qrCodeURL ? $this->qrCode($qrCodeURL) : null;
 
 		$this->data['error'] = $error;
 		$this->data['qrCode'] = $qrCode;
