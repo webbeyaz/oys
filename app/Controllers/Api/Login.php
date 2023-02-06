@@ -49,9 +49,9 @@ class Login extends Api
 					WHERE
 						employee_id = '{$employee_id}'
 						AND
-						(start_time IS NOT NULL AND end_time IS NULL)
+						end_time IS NOT NULL
 						AND
-					    DATE(start_time) = CURDATE()
+					    DATE(end_time) = CURDATE()
 				";
 
 				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
@@ -60,7 +60,7 @@ class Login extends Api
 				{
 					$text = [
 						'status' => 200,
-						'message' => 'Başarıyla giriş yapıldı.'
+						'message' => 'Başarıyla çıkış yapıldı.'
 					];
 				}
 				else
@@ -71,9 +71,7 @@ class Login extends Api
 						WHERE
 							employee_id = '{$employee_id}'
 							AND
-							(start_time IS NOT NULL AND end_time IS NOT NULL)
-							AND
-						    DATE(end_time) = CURDATE()
+						    DATE(start_time) = CURDATE()
 					";
 
 					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
@@ -82,7 +80,7 @@ class Login extends Api
 					{
 						$text = [
 							'status' => 200,
-							'message' => 'Başarıyla çıkış yapıldı.'
+							'message' => 'Başarıyla giriş yapıldı.'
 						];
 					}
 					else
