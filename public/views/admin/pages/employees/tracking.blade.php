@@ -104,7 +104,7 @@
 												{{ timeConvert($employee->start_time, 'H:i') }}
 											</td>
 											<td>
-												{{ timeConvert($employee->end_time, 'H:i') }}
+												{{ $employee->end_time ? timeConvert($employee->end_time, 'H:i') : '-' }}
 											</td>
 											<td>
 												{{ timeDiffHours($employee->start_time, $employee->end_time) }} saat
