@@ -135,7 +135,7 @@
 
 		<script type="text/javascript">
 			$(function () {
-				setInterval(function () {
+				const timer = setInterval(function () {
 					$.getJSON(API_URL + '/login', function (response) {
 						if (response.status === 200) {
 							window.location.href = '{{ site_url('logged') }}';
@@ -153,7 +153,7 @@
 								buttonsStyling: false
 							});
 
-							clearInterval(this);
+							clearInterval(timer);
 						}
 
 						if (response.status === 402) {
@@ -168,7 +168,7 @@
 								buttonsStyling: false
 							});
 
-							clearInterval(this);
+							clearInterval(timer);
 						}
 					});
 				}, 2000);
