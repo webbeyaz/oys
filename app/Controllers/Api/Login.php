@@ -63,33 +63,10 @@ class Login extends Api
 				}
 				else
 				{
-					$sql = "
-						SELECT id
-						FROM actions
-						WHERE
-							employee_id = '{$employee_id}'
-							AND
-							(start_time IS NOT NULL AND end_time IS NOT NULL)
-							AND
-						    DATE(end_time) = CURDATE()
-					";
-
-					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
-
-					if ($query)
-					{
-						$text = [
-							'status' => 201,
-							'message' => 'Başarıyla çıkış yapıldı.'
-						];
-					}
-					else
-					{
-						$text = [
-							'status' => 402,
-							'message' => 'Giriş ve çıkış zamanları uyuşmuyor.'
-						];
-					}
+					$text = [
+						'status' => 402,
+						'message' => 'Bir hata oluştu ve giriş yapılamadı.'
+					];
 				}
 			}
 			else
