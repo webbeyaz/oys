@@ -107,8 +107,12 @@
 												{{ $employee->end_time ? timeConvert($employee->end_time, 'H:i') : '-' }}
 											</td>
 											<td>
-												{{ timeDiffHours($employee->start_time, $employee->end_time) }} saat
-												({{ timeDiffMinutes($employee->start_time, $employee->end_time) }} dakika)
+												@if ($employee->end_time)
+													{{ timeDiffHours($employee->start_time, $employee->end_time) }} saat
+													({{ timeDiffMinutes($employee->start_time, $employee->end_time) }} dakika)
+												@else
+													-
+												@endif
 											</td>
 											<td>
 												{{ timeConvert($employee->start_time, 'd.m.Y') }}

@@ -17,6 +17,35 @@ class Dashboard extends Admin
 		return $this->view('admin.pages.dashboard', $this->data);
 	}
 
+	public function tracking()
+	{
+		$tracking = [];
+
+		$sql = "
+			SELECT
+			    a.id AS id,
+			    e.id AS employee_id,
+			    e.username AS username,
+			    e.firstname AS firstname,
+			    e.lastname AS lastname,
+			    a.start_time AS start_time,
+			    a.end_time AS end_time
+			FROM actions a
+			INNER JOIN employees e ON e.id = a.employee_id
+			ORDER BY a.id DESC
+			LIMIT 10
+		";
+
+		$query = $this->db->query($sql, PDO::FETCH_OBJ);
+
+		if ($query->rowCount())
+		{
+			$tracking = $query;
+		}
+
+		$this->data['tracking'] = $tracking;
+	}
+
 	/**
 	 * @return void
 	 */
