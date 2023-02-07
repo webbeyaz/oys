@@ -125,7 +125,7 @@
 	<script src="{{ asset_url('app/vendors/js/extensions/polyfill.min.js') }}"></script>
 	<!-- END: Page Vendor JS-->
 
-	@if (!$error)
+	@if (!$employee && !$error)
 
 		<script type="text/javascript">
 			$(function () {
