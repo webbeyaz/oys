@@ -55,15 +55,15 @@
 							<h4 class="card-title">
 								İstatistikler
 							</h4>
-							<div class="d-flex align-items-center">
+							<!--<div class="d-flex align-items-center">
 								<p class="card-text font-small-2 me-25 mb-0">
 									Az önce güncellendi
 								</p>
-							</div>
+							</div>-->
 						</div>
 						<div class="card-body statistics-body">
 							<div class="row">
-								<div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+								<div class="col-xl-2 col-sm-6 col-12 mb-2 mb-xl-0">
 									<div class="d-flex flex-row">
 										<div class="avatar bg-light-primary me-2">
 											<div class="avatar-content">
@@ -80,7 +80,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
+								<div class="col-xl-2 col-sm-6 col-12 mb-2 mb-sm-0">
 									<div class="d-flex flex-row">
 										<div class="avatar bg-light-warning me-2">
 											<div class="avatar-content">
@@ -97,7 +97,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+								<div class="col-xl-2 col-sm-6 col-12 mb-2 mb-xl-0">
 									<div class="d-flex flex-row">
 										<div class="avatar bg-light-info me-2">
 											<div class="avatar-content">
@@ -114,7 +114,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
+								<div class="col-xl-2 col-sm-6 col-12 mb-2 mb-sm-0">
 									<div class="d-flex flex-row">
 										<div class="avatar bg-light-danger me-2">
 											<div class="avatar-content">
@@ -131,7 +131,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
+								<div class="col-xl-2 col-sm-6 col-12 mb-2 mb-sm-0">
 									<div class="d-flex flex-row">
 										<div class="avatar bg-light-success me-2">
 											<div class="avatar-content">
