@@ -28,6 +28,7 @@ $app->router->error(function () {
 $app->router->get('/', 'Client.Home@index');
 $app->router->any('/welcome', 'Client.Welcome@index');
 $app->router->get('/login/:slug', 'Client.Login@index');
+$app->router->get('/logout/:slug', 'Client.Logout@index');
 $app->router->get('/logged', 'Client.Logged@index');
 
 /*

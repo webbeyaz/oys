@@ -30,38 +30,6 @@ class Login extends Client
 
 		if ($query)
 		{
-			// Çıkış işlemi
-			$id = $query->id;
-
-			$sql = "UPDATE actions SET
-			end_time = :end_time
-			WHERE id = :id";
-
-			$query = $this->db->prepare($sql);
-
-			$update = $query->execute(array(
-				'end_time' => date('Y-m-d H:i:s'),
-				'id' => $id
-			));
-
-			if ($update)
-			{
-				$message = [
-					'class' => 'success',
-					'text' => 'Başarılı bir şekilde çıkış yapıldı.'
-				];
-			}
-			else
-			{
-				$message = [
-					'class' => 'danger',
-					'text' => 'Sistemde bir hata oluştu ve çıkış yapılamadı.'
-				];
-			}
-		}
-		else
-		{
-			// Giriş işlemi
 			$sql = "
 				SELECT employee_id
 				FROM codes

@@ -62,26 +62,44 @@
 					<h2 class="card-title fw-bold mb-1">
 						Ofis Yönetim Sistemi
 					</h2>
-					<p class="card-text mb-2">
-						Lütfen giriş yapmak için aşağıdaki QR kodu telefonunuzun kamerasına okutunuz.
-					</p>
 
-					@if ($error)
+					@if ($employee)
 
-						<div class="alert alert-{{ $error['class'] }}" role="alert">
-							<div class="alert-body">
-								<strong>Hata!</strong>
-								{{ $error['text'] }}
-							</div>
-						</div>
+						<p class="card-text mb-2">
+							Merhaba {{ $employee->firstname . ' ' . $employee->lastname }}, tekrardan hoş geldiniz!
+							<br>
+							Giriş saati: {{ $employee->start_time }}
+						</p>
+						<p class="text-center">
+							<a href="{{ site_url('logout/' . $employee->code) }}" class="btn btn-danger waves-effect waves-float waves-light">
+								Çıkış Yap
+							</a>
+						</p>
 
 					@else
 
-						<!-- QR Code -->
-						<p class="text-center mt-4 mb-4">
-							<img src="{{ $qrCode }}" alt="QR Kod" width="350">
+						<p class="card-text mb-2">
+							Lütfen giriş yapmak için aşağıdaki QR kodu telefonunuzun kamerasına okutunuz.
 						</p>
-						<!-- /QR Code -->
+
+						@if ($error)
+
+							<div class="alert alert-{{ $error['class'] }}" role="alert">
+								<div class="alert-body">
+									<strong>Hata!</strong>
+									{{ $error['text'] }}
+								</div>
+							</div>
+
+						@else
+
+							<!-- QR Code -->
+							<p class="text-center mt-4 mb-4">
+								<img src="{{ $qrCode }}" alt="QR Kod" width="350">
+							</p>
+							<!-- /QR Code -->
+
+						@endif
 
 					@endif
 

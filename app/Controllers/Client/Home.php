@@ -27,9 +27,10 @@ class Home extends Client
 	public function index(): string
 	{
 		$error = [];
+		$qrCode = null;
+		$employee = [];
 
 		$cookie = $_COOKIE['login'];
-		$qrCodeURL = null;
 
 		$sql = "
 			SELECT id
@@ -47,23 +48,30 @@ class Home extends Client
 			$employee_id = $query->id;
 
 			$sql = "
-				SELECT code
-				FROM actions
+				SELECT
+					a.code AS code,
+					a.start_time AS start_time,
+					e.firstname AS firstname,
+					e.lastname AS lastname
+				    /* TODO: İleride eklenebilir. (e.photo) */
+				FROM actions a
+				INNER JOIN employees e ON e.id = a.employee_id
 				WHERE
-				    employee_id = '{$employee_id}'
+				    a.employee_id = '{$employee_id}'
 					AND
-				    end_time IS NULL
+				    a.end_time IS NULL
 			";
 
 			$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
 			if ($query)
 			{
-				$code = $query->code;
-				$qrCodeURL = site_url('login/' . $code);
+				// Çıkış işlemi
+				$employee = $query;
 			}
 			else
 			{
+				// Giriş işlemi
 				$code = hashid();
 
 				$sql = "
@@ -82,6 +90,7 @@ class Home extends Client
 				if ($insert)
 				{
 					$qrCodeURL = site_url('login/' . $code);
+					$qrCode = $this->qrCode($qrCodeURL);
 				}
 				else
 				{
@@ -100,10 +109,9 @@ class Home extends Client
 			];
 		}
 
-		$qrCode = $qrCodeURL ? $this->qrCode($qrCodeURL) : null;
-
 		$this->data['error'] = $error;
 		$this->data['qrCode'] = $qrCode;
+		$this->data['employee'] = $employee;
 
 		return $this->view('client.pages.home', $this->data);
 	}
