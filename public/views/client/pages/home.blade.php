@@ -66,11 +66,15 @@
 					@if ($employee)
 
 						<p class="card-text mb-2">
-							Merhaba
-							<strong>{{ $employee->firstname . ' ' . $employee->lastname }}</strong>, tekrardan hoş geldin!
-							<br>
-							<strong>Giriş saati:</strong>
-							{{ timeConvert($employee->start_time, 'H:i') }}
+							<p>
+								Merhaba
+								<strong class="text-primary">{{ $employee->firstname . ' ' . $employee->lastname }}</strong>,
+								tekrardan hoş geldin!
+							</p>
+							<p class="text-success">
+								<strong>Giriş saati:</strong>
+								{{ timeConvert($employee->start_time, 'H:i') }}
+							</p>
 						</p>
 						<p class="mt-4 mb-4">
 							<a href="{{ site_url('logout/' . $employee->code) }}" class="d-block btn btn-danger waves-effect waves-float waves-light">
