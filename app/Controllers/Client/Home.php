@@ -60,6 +60,7 @@ class Home extends Client
 				    a.employee_id = '{$employee_id}'
 					AND
 				    a.end_time IS NULL
+				ORDER BY a.id DESC
 			";
 
 			$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
@@ -71,33 +72,56 @@ class Home extends Client
 			}
 			else
 			{
-				// Giriş işlemi
-				$code = hashid();
-
 				$sql = "
-					INSERT INTO codes SET
-					slug = ?,
-					employee_id = ?
+					SELECT
+						id
+					FROM actions
+					WHERE
+					    employee_id = '{$employee_id}'
+						AND
+					   (start_time IS NOT NULL AND end_time IS NOT NULL)
+					ORDER BY id DESC
 				";
 
-				$query = $this->db->prepare($sql);
+				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-				$insert = $query->execute([
-					$code,
-					$employee_id
-				]);
-
-				if ($insert)
-				{
-					$qrCodeURL = site_url('login/' . $code);
-					$qrCode = $this->qrCode($qrCodeURL);
-				}
-				else
+				if ($query)
 				{
 					$error = [
 						'class' => 'danger',
-						'text' => 'Sistemde bir hata oluştu ve QR kod eklenemedi.'
+						'text' => 'Aynı gün içerisinde birden fazla giriş ve çıkış işlemi yapılamaz.'
 					];
+				}
+				else
+				{
+					// Giriş işlemi
+					$code = hashid();
+
+					$sql = "
+						INSERT INTO codes SET
+						slug = ?,
+						employee_id = ?
+					";
+
+					$query = $this->db->prepare($sql);
+
+					$insert = $query->execute([
+						$code,
+						$employee_id
+					]);
+
+					if ($insert)
+					{
+						$qrCodeURL = site_url('login/' . $code);
+						$qrCode = $this->qrCode($qrCodeURL);
+					}
+					else
+					{
+						$error = [
+							'class' => 'danger',
+							'text' => 'Sistemde bir hata oluştu ve QR kod eklenemedi.'
+						];
+					}
 				}
 			}
 		}
