@@ -83,10 +83,6 @@
 
 					@else
 
-						<p class="card-text mb-2">
-							Lütfen giriş yapmak için aşağıdaki QR kodu telefonunuzun kamerasına okutunuz.
-						</p>
-
 						@if ($error)
 
 							<div class="alert alert-{{ $error['class'] }}" role="alert">
@@ -97,6 +93,10 @@
 							</div>
 
 						@else
+
+							<p class="card-text mb-2">
+								Lütfen giriş yapmak için aşağıdaki QR kodu telefonunuzun kamerasına okutunuz.
+							</p>
 
 							<!-- QR Code -->
 							<p class="text-center mt-4 mb-4">
