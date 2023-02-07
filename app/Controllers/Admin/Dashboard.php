@@ -56,7 +56,8 @@ class Dashboard extends Admin
 			'employee' => 0,
 			'driver' => 0,
 			'vehicle' => 0,
-			'event' => 0
+			'event' => 0,
+			'action' => 0
 		];
 
 		$sql = "
@@ -113,6 +114,23 @@ class Dashboard extends Admin
 		if ($queryEvent)
 		{
 			$statistics['event'] = $queryEvent->total;
+		}
+
+		$sql = "
+			SELECT
+				COUNT(id) AS total
+			FROM actions
+			WHERE
+			    start_time IS NOT NULL
+				AND
+			    end_time IS NOT NULL
+		";
+
+		$queryAction = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+
+		if ($queryAction)
+		{
+			$statistics['action'] = $queryAction->total;
 		}
 
 		$this->data['statistics'] = $statistics;
