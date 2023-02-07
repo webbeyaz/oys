@@ -73,7 +73,7 @@
 							{{ timeConvert($employee->start_time, 'H:i') }}
 						</p>
 						<p class="mb-4">
-							<a href="{{ site_url('logout/' . $employee->code) }}" class="btn btn-danger waves-effect waves-float waves-light">
+							<a href="{{ site_url('logout/' . $employee->code) }}" class="d-block btn btn-danger waves-effect waves-float waves-light">
 								Çıkış Yap
 							</a>
 						</p>
