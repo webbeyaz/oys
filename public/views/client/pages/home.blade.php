@@ -70,7 +70,7 @@
 							<br>
 							Giriş saati: {{ $employee->start_time }}
 						</p>
-						<p class="mb-2">
+						<p class="mb-4">
 							<a href="{{ site_url('logout/' . $employee->code) }}" class="btn btn-danger waves-effect waves-float waves-light">
 								Çıkış Yap
 							</a>
