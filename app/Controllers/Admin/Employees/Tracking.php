@@ -16,71 +16,22 @@ class Tracking extends Admin
 
 		$sql = "
 			SELECT
-			    a.id AS action_id,
+			    a.id AS id,
 			    e.id AS employee_id,
 			    e.username AS username,
 			    e.firstname AS firstname,
 			    e.lastname AS lastname,
-			    a.time AS time
+			    a.start_time AS start_time,
+			    a.end_time AS end_time
 			FROM actions a
-			INNER JOIN codes c ON c.id = a.code_id
-			INNER JOIN employees e ON e.id = c.employee_id
+			INNER JOIN employees e ON e.id = a.employee_id
 		";
 
-		$queryIn = $this->db->query($sql, PDO::FETCH_OBJ);
+		$query = $this->db->query($sql, PDO::FETCH_OBJ);
 
-		$i = 0;
-
-		foreach ($queryIn as $rowIn)
+		if ($query->rowCount())
 		{
-			$action_id = $rowIn->action_id;
-			$employee_id = $rowIn->employee_id;
-
-			$timeIn = $rowIn->time;
-			$explode = explode(' ', $timeIn);
-
-			$date = $explode[0];
-			$time = $explode[1];
-
-			$tracking[$i] = [
-				'username' => $rowIn->username,
-				'firstname' => $rowIn->firstname,
-				'lastname' => $rowIn->lastname,
-				'time_in' => strtotime($time) < strtotime('17:30:00') ? $timeIn : null,
-				'time_out' => strtotime($time) < strtotime('17:30:00') ? null : $timeIn,
-				'date' => $date
-			];
-
-			$sql = "
-				SELECT
-				    a.time AS time
-				FROM actions a
-				INNER JOIN codes c ON c.id = a.code_id
-				INNER JOIN employees e ON e.id = c.employee_id
-				WHERE
-				    a.id != $action_id
-					AND
-				    e.id = $employee_id
-					AND
-				    DATE(a.time) = '$date'
-			";
-
-			$queryOut = $this->db->query($sql, PDO::FETCH_OBJ);
-
-			foreach ($queryOut as $rowOut)
-			{
-				$explode = explode(' ', $rowOut->time);
-				$time = $explode[1];
-
-				$tracking[$i]['time_out'] = strtotime($time) > strtotime('17:30:00') ? date('Y-m-d H:i:s', strtotime('17:30:00')) : $rowOut->time;
-
-				if ($rowOut->time < $timeIn)
-				{
-					unset($tracking[$i]);
-				}
-			}
-
-			$i++;
+			$tracking = $query;
 		}
 
 		$this->data['tracking'] = $tracking;

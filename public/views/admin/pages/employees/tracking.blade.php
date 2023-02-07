@@ -94,24 +94,24 @@
 
 										<tr>
 											<td>
-												<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee['username'] }}" width="20" height="20" class="me-75 avatar">
-												<span class="fw-bold">{{ $employee['username'] }}</span>
+												<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee->username }}" width="20" height="20" class="me-75 avatar">
+												<span class="fw-bold">{{ $employee->username }}</span>
 											</td>
 											<td>
-												{{ $employee['firstname'] . ' ' . $employee['lastname'] }}
+												{{ $employee->firstname . ' ' . $employee->lastname }}
 											</td>
 											<td>
-												{{ timeConvert($employee['time_in'], 'H:i') }}
+												{{ timeConvert($employee->start_time, 'H:i') }}
 											</td>
 											<td>
-												{{ timeConvert($employee['time_out'], 'H:i') }}
+												{{ timeConvert($employee->end_time, 'H:i') }}
 											</td>
 											<td>
-												{{ timeDiffHours($employee['time_in'], $employee['time_out']) }} saat
-												({{ timeDiffMinutes($employee['time_in'], $employee['time_out']) }} dakika)
+												{{ timeDiffHours($employee->start_time, $employee->end_time) }} saat
+												({{ timeDiffMinutes($employee->start_time, $employee->end_time) }} dakika)
 											</td>
 											<td>
-												{{ timeConvert($employee['date'], 'd.m.Y') }}
+												{{ timeConvert($employee->start_time, 'd.m.Y') }}
 											</td>
 										</tr>
 
