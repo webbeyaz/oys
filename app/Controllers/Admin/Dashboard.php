@@ -13,6 +13,7 @@ class Dashboard extends Admin
 	public function index(): string
 	{
 		$this->statistics();
+		$this->tracking();
 
 		return $this->view('admin.pages.dashboard', $this->data);
 	}
