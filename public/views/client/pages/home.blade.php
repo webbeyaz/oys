@@ -141,10 +141,6 @@
 							window.location.href = '{{ site_url('logged') }}';
 						}
 
-						if (response.status === 201) {
-							window.location.href = '{{ site_url('logout') }}';
-						}
-
 						if (response.status === 401) {
 							Swal.fire({
 								title: 'Hata!',
@@ -156,6 +152,8 @@
 								confirmButtonText: 'Tamam',
 								buttonsStyling: false
 							});
+
+							clearInterval(this);
 						}
 
 						if (response.status === 402) {
@@ -170,7 +168,7 @@
 								buttonsStyling: false
 							});
 
-							return false;
+							clearInterval(this);
 						}
 					});
 				}, 2000);
