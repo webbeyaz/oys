@@ -66,9 +66,11 @@
 					@if ($employee)
 
 						<p class="card-text mb-2">
-							Merhaba {{ $employee->firstname . ' ' . $employee->lastname }}, tekrardan hoş geldiniz!
+							Merhaba
+							<strong>{{ $employee->firstname . ' ' . $employee->lastname }}</strong>, tekrardan hoş geldin!
 							<br>
-							Giriş saati: {{ $employee->start_time }}
+							<strong>Giriş saati:</strong>
+							{{ timeConvert($employee->start_time, 'H:i') }}
 						</p>
 						<p class="mb-4">
 							<a href="{{ site_url('logout/' . $employee->code) }}" class="btn btn-danger waves-effect waves-float waves-light">
