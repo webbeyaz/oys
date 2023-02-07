@@ -68,14 +68,14 @@
 						<p class="card-text mb-2">
 							<p>
 								Merhaba
-								<strong class="text-info">{{ $employee->firstname . ' ' . $employee->lastname }}</strong>,
+								<strong class="text-primary">{{ $employee->firstname . ' ' . $employee->lastname }}</strong>,
 								tekrardan hoş geldin!
 							</p>
 							<p class="text-success">
 								<strong>Giriş saati: {{ timeConvert($employee->start_time, 'H:i') }}</strong>
 							</p>
 						</p>
-						<p class="mt-4 mb-4">
+						<p class="mt-2">
 							<a href="{{ site_url('logout/' . $employee->code) }}" class="d-block btn btn-danger waves-effect waves-float waves-light">
 								Çıkış Yap
 							</a>
@@ -106,14 +106,15 @@
 
 						@endif
 
+						<p class="text-center mt-2">
+							<span>Personel değil misiniz?</span>
+							<a href="{{ site_url('admin') }}">
+								<span>Yönetici girişi</span>
+							</a>
+						</p>
+
 					@endif
 
-					<p class="text-center mt-2">
-						<span>Personel değil misiniz?</span>
-						<a href="{{ site_url('admin') }}">
-							<span>Yönetici girişi</span>
-						</a>
-					</p>
 				</div>
 			</div>
 			<!-- /Login -->
