@@ -62,7 +62,7 @@
 							</div>-->
 						</div>
 						<div class="card-body statistics-body">
-							<div class="row">
+							<div class="row justify-content-between">
 								<div class="col-xl-2 col-sm-6 col-12 mb-2 mb-xl-0">
 									<div class="d-flex flex-row">
 										<div class="avatar bg-light-primary me-2">
@@ -92,7 +92,7 @@
 												{{ $statistics['action'] }}
 											</h4>
 											<p class="card-text font-small-3 mb-0">
-												Personel Takibi
+												Personel Giriş-Çıkış
 											</p>
 										</div>
 									</div>
@@ -165,7 +165,7 @@
 						<div class="card card-company-table">
 							<div class="card-header">
 								<h4 class="card-title">
-									Son 10 Personel Takibi
+									Son 10 Personel Giriş-Çıkış
 								</h4>
 								<div class="d-flex align-items-center">
 									<p class="card-text font-small-2 me-25 mb-0">
