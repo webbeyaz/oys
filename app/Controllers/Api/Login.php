@@ -49,6 +49,8 @@ class Login extends Api
 					WHERE
 						employee_id = '{$employee_id}'
 						AND
+					    (start_time IS NOT NULL AND end_time IS NULL)
+					    AND
 					    DATE(start_time) = CURDATE()
 				";
 
