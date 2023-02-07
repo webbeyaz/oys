@@ -68,12 +68,11 @@
 						<p class="card-text mb-2">
 							<p>
 								Merhaba
-								<strong class="text-primary">{{ $employee->firstname . ' ' . $employee->lastname }}</strong>,
+								<strong class="text-info">{{ $employee->firstname . ' ' . $employee->lastname }}</strong>,
 								tekrardan hoş geldin!
 							</p>
 							<p class="text-success">
-								<strong>Giriş saati:</strong>
-								{{ timeConvert($employee->start_time, 'H:i') }}
+								<strong>Giriş saati: {{ timeConvert($employee->start_time, 'H:i') }}</strong>
 							</p>
 						</p>
 						<p class="mt-4 mb-4">
