@@ -146,6 +146,16 @@
 					<!-- Company Table Card -->
 					<div class="col-12">
 						<div class="card card-company-table">
+							<div class="card-header">
+								<h4 class="card-title">
+									Son 10 Personel Takibi
+								</h4>
+								<div class="d-flex align-items-center">
+									<p class="card-text font-small-2 me-25 mb-0">
+										Az önce güncellendi
+									</p>
+								</div>
+							</div>
 							<div class="card-body p-0">
 								<div class="table-responsive">
 									<table class="table">
