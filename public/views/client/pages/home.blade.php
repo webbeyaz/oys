@@ -72,7 +72,7 @@
 							<strong>Giriş saati:</strong>
 							{{ timeConvert($employee->start_time, 'H:i') }}
 						</p>
-						<p class="mb-4">
+						<p class="mt-2 mb-4">
 							<a href="{{ site_url('logout/' . $employee->code) }}" class="d-block btn btn-danger waves-effect waves-float waves-light">
 								Çıkış Yap
 							</a>
