@@ -157,6 +157,21 @@
 								buttonsStyling: false
 							});
 						}
+
+						if (response.status === 402) {
+							Swal.fire({
+								title: 'Hata!',
+								text: response.message,
+								icon: 'error',
+								customClass: {
+									confirmButton: 'btn btn-primary'
+								},
+								confirmButtonText: 'Tamam',
+								buttonsStyling: false
+							});
+
+							return false;
+						}
 					});
 				}, 2000);
 			});

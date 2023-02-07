@@ -67,7 +67,7 @@ class Login extends Api
 				{
 					$text = [
 						'status' => 402,
-						'message' => 'Bir hata oluştu ve giriş yapılamadı.'
+						'message' => 'Bir günde birden fazla giriş ve çıkış işlemi yapamazsınız.'
 					];
 				}
 			}
