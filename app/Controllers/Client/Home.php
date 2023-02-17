@@ -26,6 +26,8 @@ class Home extends Client
 	 */
 	public function index(): string
 	{
+		opcache_reset();
+
 		$browser = get_browser($_SERVER['HTTP_USER_AGENT'], true);
 		print_r($browser);
 		exit;
