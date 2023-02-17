@@ -38,7 +38,7 @@ function timeDiffMinutes($start, $end): string
  */
 function timeDiffHours($start, $end): string
 {
-	return (Carbon::parse($start)->addMinutes(30)->diffInMinutes($end)) / 60;
+	return number_format((Carbon::parse($start)->addMinutes(30)->diffInMinutes($end)) / 60, 2, ',', '');
 }
 
 /**
