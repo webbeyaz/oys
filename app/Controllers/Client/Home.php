@@ -79,7 +79,9 @@ class Home extends Client
 					WHERE
 					    employee_id = '{$employee_id}'
 						AND
-					   (start_time IS NOT NULL AND end_time IS NOT NULL)
+						(start_time IS NOT NULL AND end_time IS NOT NULL)
+						AND
+					    (DATE(start_time) = CURDATE() AND DATE(end_time) = CURDATE())
 					ORDER BY id DESC
 				";
 
