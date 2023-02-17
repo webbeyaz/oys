@@ -220,7 +220,7 @@
 														<td>
 															@if ($employee->end_time)
 																{{ timeDiffHours($employee->start_time, $employee->end_time) }} saat
-																({{ timeDiffMinutes($employee->start_time, $employee->end_time) }} dakika)
+																(30 dakika mola)
 															@else
 																-
 															@endif

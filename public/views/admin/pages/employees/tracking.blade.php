@@ -109,7 +109,7 @@
 											<td>
 												@if ($employee->end_time)
 													{{ timeDiffHours($employee->start_time, $employee->end_time) }} saat
-													(30 dk mola)
+													(30 dakika mola)
 												@else
 													-
 												@endif
