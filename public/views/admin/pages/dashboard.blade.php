@@ -92,7 +92,7 @@
 												{{ $statistics['action'] }}
 											</h4>
 											<p class="card-text font-small-3 mb-0">
-												Personel Giriş-Çıkış
+												Personel Takibi
 											</p>
 										</div>
 									</div>
