@@ -79,12 +79,12 @@
 							<span class="menu-item text-truncate">Personel Takibi</span>
 						</a>
 					</li>
-					<li class="{{ segments(1) == 'employees' && segments(2) == 'holiday' ? 'active' : null }}">
+					<!--<li class="{{ segments(1) == 'employees' && segments(2) == 'holiday' ? 'active' : null }}">
 						<a href="{{ site_url('admin/employees/holiday') }}" class="d-flex align-items-center">
 							<i data-feather="coffee"></i>
 							<span class="menu-item text-truncate">Personel İzni</span>
 						</a>
-					</li>
+					</li>-->
 				</ul>
 			</li>
 			<li class="nav-item">

@@ -88,10 +88,10 @@ class Edit extends Admin
 				$query = $this->db->prepare($sql);
 
 				$update = $query->execute([
-					'username' => $firstname,
-					'password' => $lastname,
-					'firstname' => $email,
-					'lastname' => $phone,
+					'firstname' => $firstname,
+					'lastname' => $lastname,
+					'email' => $email,
+					'phone' => $phone,
 					'vehicle_id' => $vehicle_id,
 					'updated_by' => $this->data['user']->id,
 					'updated_at' => date('Y-m-d H:i:s'),

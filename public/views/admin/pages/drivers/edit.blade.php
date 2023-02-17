@@ -102,15 +102,25 @@
 											<label class="form-label" for="vehicle_id">
 												Araç
 											</label>
-											<select name="vehicle_id" class="form-control" id="vehicle_id">
+											<select name="vehicle_id" class="form-control" id="vehicle_id" {{ !$vehicles ? 'disabled' : null }}>
 
-												@foreach ($vehicles as $vehicle)
+												@if ($vehicles)
 
-													<option value="{{ $vehicle->id }}" {{ $driver->vehicle_id == $vehicle->id ? 'selected' : null }}>
-														{{ $vehicle->plate }}
+													@foreach ($vehicles as $vehicle)
+
+														<option value="{{ $vehicle->id }}" {{ $driver->vehicle_id == $vehicle->id ? 'selected' : null }}>
+															{{ $vehicle->plate }}
+														</option>
+
+													@endforeach
+
+												@else
+
+													<option value="" selected disabled>
+														Araç bulunamadı
 													</option>
 
-												@endforeach
+												@endif
 
 											</select>
 										</div>

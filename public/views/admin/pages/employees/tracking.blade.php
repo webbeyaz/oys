@@ -40,7 +40,9 @@
 								</a>
 							</li>
 							<li class="breadcrumb-item">
-								Personeller
+								<a href="{{ site_url('admin/employees/list') }}">
+									Personeller
+								</a>
 							</li>
 							<li class="breadcrumb-item active">
 								Personel Takibi
