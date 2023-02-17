@@ -3,7 +3,6 @@
 namespace App\Controllers\Client;
 
 use App\Controllers\Client;
-use Jenssegers\Agent\Agent;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\QROptions;
@@ -27,11 +26,6 @@ class Home extends Client
 	 */
 	public function index(): string
 	{
-		$agent = new Agent();
-
-		print_r($agent->browser() . ' - ' . $agent->platform());
-		exit;
-
 		$error = [];
 		$qrCode = null;
 		$employee = [];

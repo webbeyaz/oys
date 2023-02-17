@@ -3,6 +3,7 @@
 namespace App\Controllers\Client;
 
 use App\Controllers\Client;
+use Jenssegers\Agent\Agent;
 use PDO;
 
 class Login extends Client
@@ -18,8 +19,6 @@ class Login extends Client
 	 */
 	public function index($slug): string
 	{
-		$message = [];
-
 		$sql = "
 			SELECT employee_id
 			FROM codes
@@ -30,17 +29,25 @@ class Login extends Client
 
 		if ($query)
 		{
+			$agent = new Agent();
+			$browser = $agent->browser();
+			$platform = $agent->platform();
+			$version = $agent->version($platform);
+
+			$agent_start = $platform . ' ' . $version . ', ' . $browser;
 			$employee_id = $query->employee_id;
 
 			$sql = "INSERT INTO actions SET
 			employee_id = ?,
-			code = ?";
+			code = ?,
+			agent_start = ?";
 
 			$query = $this->db->prepare($sql);
 
 			$insert = $query->execute([
 				$employee_id,
-				$slug
+				$slug,
+				$agent_start
 			]);
 
 			if ($insert)

@@ -3,6 +3,7 @@
 namespace App\Controllers\Client;
 
 use App\Controllers\Client;
+use Jenssegers\Agent\Agent;
 use PDO;
 
 class Logout extends Client
@@ -24,8 +25,6 @@ class Logout extends Client
 	 */
 	public function index($slug): string
 	{
-		$message = [];
-
 		$cookie = $_COOKIE['login'];
 
 		$sql = "
@@ -43,13 +42,22 @@ class Logout extends Client
 		{
 			//$employee_id = $query->id;
 
+			$agent = new Agent();
+			$browser = $agent->browser();
+			$platform = $agent->platform();
+			$version = $agent->version($platform);
+
+			$agent_end = $platform . ' ' . $version . ', ' . $browser;
+
 			$sql = "UPDATE actions SET
+			agent_end = :agent_end,
 			end_time = :end_time
 			WHERE code = :code";
 
 			$query = $this->db->prepare($sql);
 
 			$update = $query->execute([
+				'agent_end' => $agent_end,
 				'end_time' => date('Y-m-d H:i:s'),
 				'code' => $slug
 			]);
