@@ -3,6 +3,7 @@
 namespace App\Controllers\Client;
 
 use App\Controllers\Client;
+use BrowscapPHP\Browscap;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\QROptions;
@@ -26,8 +27,10 @@ class Home extends Client
 	 */
 	public function index(): string
 	{
-		$browser = get_browser($_SERVER['HTTP_USER_AGENT'], true);
-		print_r($browser);
+		$bc = new Browscap();
+		$current_browser = $bc->getBrowser($_SERVER['HTTP_USER_AGENT']);
+
+		print_r($current_browser);
 		exit;
 
 		$error = [];

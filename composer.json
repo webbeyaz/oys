@@ -20,7 +20,8 @@
 		"ausi/slug-generator": "^1.1",
 		"ext-pdo": "*",
 		"ext-curl": "*",
-		"chillerlan/php-qrcode": "^4.3"
+		"chillerlan/php-qrcode": "^4.3",
+		"browscap/browscap-php": "^7.2"
 	},
 	"autoload": {
 		"psr-4": {
