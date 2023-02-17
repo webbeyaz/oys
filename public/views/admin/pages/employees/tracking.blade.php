@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/tables/datatable/buttons.bootstrap5.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/tables/datatable/rowGroup.bootstrap5.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/pickers/flatpickr/flatpickr.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/forms/select/select2.min.css') }}">
 @endsection
 
 @section('styles_page')
