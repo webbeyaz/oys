@@ -26,7 +26,7 @@ class Home extends Client
 	 */
 	public function index(): string
 	{
-		$browser = get_browser(null, true);
+		$browser = get_browser($_SERVER['HTTP_USER_AGENT'], true);
 		print_r($browser);
 		exit;
 
