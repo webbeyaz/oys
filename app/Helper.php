@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use Jenssegers\Agent\Agent;
 
 /**
  * @param $date
@@ -39,6 +40,27 @@ function timeDiffMinutes($start, $end): string
 function timeDiffHours($start, $end): string
 {
 	return number_format((Carbon::parse($start)->addMinutes(30)->diffInMinutes($end)) / 60, 2, ',', '');
+}
+
+function getDevice($ua)
+{
+	$agent = new Agent();
+	$agent->setUserAgent($ua);
+
+	if ($agent->isMobile())
+	{
+		$device = 'Mobil';
+	}
+	else if ($agent->isTablet())
+	{
+		$device = 'Tablet';
+	}
+	else
+	{
+		$device = 'Bilgisayar';
+	}
+
+	return $device;
 }
 
 /**

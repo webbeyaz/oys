@@ -3,7 +3,6 @@
 namespace App\Controllers\Client;
 
 use App\Controllers\Client;
-use Jenssegers\Agent\Agent;
 use PDO;
 
 class Login extends Client
