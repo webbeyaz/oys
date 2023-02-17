@@ -54,7 +54,23 @@
 		</div>
 		<div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
 			<div class="mb-1 breadcrumb-right">
-				selam
+				<div class="row">
+					<div class="col-9">
+						<label for="employee" class="form-label">
+							Personel
+						</label>
+						<select name="employee" class="select2 form-select" id="employee">
+							<option value="1">
+								Deneme
+							</option>
+						</select>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-primary btn-round btn-sm" id="report-monthly">
+							Aylık Rapor
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
