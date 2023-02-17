@@ -55,22 +55,15 @@
 		</div>
 		<div class="content-header-right col-md-3 col-12 d-md-block d-none">
 			<div class="mb-1 breadcrumb-right">
-				<div class="d-flex justify-content-end align-items-center">
-					<div>
-						<label for="employee" class="form-label">
-							Personel
-						</label>
-						<select name="employee" class="select2 form-select" id="employee">
-							<option value="1">
-								Deneme
-							</option>
-						</select>
-					</div>
-					<div>
-						<button type="button" class="btn btn-primary btn-round" id="report-monthly">
-							Aylık Rapor
-						</button>
-					</div>
+				<div class="d-flex gap-3 justify-content-end align-items-end">
+					<select name="employee" class="select2 form-select">
+						<option value="1">
+							Deneme
+						</option>
+					</select>
+					<button type="button" class="btn btn-primary btn-round" id="report-monthly">
+						Aylık Rapor
+					</button>
 				</div>
 			</div>
 		</div>
