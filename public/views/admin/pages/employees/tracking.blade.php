@@ -53,10 +53,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+		<div class="content-header-right col-md-3 col-12 d-md-block d-none">
 			<div class="mb-1 breadcrumb-right">
-				<div class="row">
-					<div class="col-9">
+				<div class="d-flex justify-content-end align-items-center">
+					<div>
 						<label for="employee" class="form-label">
 							Personel
 						</label>
@@ -66,8 +66,8 @@
 							</option>
 						</select>
 					</div>
-					<div class="col-3">
-						<button type="button" class="btn btn-primary btn-round btn-sm" id="report-monthly">
+					<div>
+						<button type="button" class="btn btn-primary btn-round" id="report-monthly">
 							Aylık Rapor
 						</button>
 					</div>
