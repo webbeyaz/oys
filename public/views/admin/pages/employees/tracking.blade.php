@@ -56,7 +56,7 @@
 		<div class="content-header-right col-md-5 col-12 d-md-block d-none">
 			<div class="mb-1 breadcrumb-right">
 				<div class="d-flex gap-1 justify-content-end align-items-end">
-					<select class="select2 form-select" id="report-employee">
+					<select class="select2 form-select w-25" id="report-employee">
 						<option value="" selected disabled>
 							Personel Seçiniz
 						</option>
