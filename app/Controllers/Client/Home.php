@@ -29,7 +29,7 @@ class Home extends Client
 	{
 		$agent = new Agent();
 
-		print_r($agent);
+		print_r($agent->browser());
 		exit;
 
 		$error = [];
