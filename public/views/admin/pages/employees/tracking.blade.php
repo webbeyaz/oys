@@ -27,7 +27,7 @@
 @section('content')
 
 	<div class="content-header row">
-		<div class="content-header-left col-md-9 col-12 mb-2">
+		<div class="content-header-left col-md-7 col-12 mb-2">
 			<div class="row breadcrumbs-top">
 				<div class="col-12">
 					<h2 class="content-header-title float-start mb-0">
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content-header-right col-md-3 col-12 d-md-block d-none">
+		<div class="content-header-right col-md-5 col-12 d-md-block d-none">
 			<div class="mb-1 breadcrumb-right">
 				<div class="d-flex gap-1 justify-content-end align-items-end">
 					<select class="select2 form-select" id="report-employee">
