@@ -213,9 +213,11 @@
 														</td>
 														<td>
 															{{ timeConvert($employee->start_time, 'H:i') }}
+															({{ getDevice($employee->agent_start) }})
 														</td>
 														<td>
 															{{ $employee->end_time ? timeConvert($employee->end_time, 'H:i') : '-' }}
+															{{ $employee->agent_end ? '(' . getDevice($employee->agent_end) . ')' : '-' }}
 														</td>
 														<td>
 															@if ($employee->end_time)

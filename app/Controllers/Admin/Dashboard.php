@@ -29,6 +29,8 @@ class Dashboard extends Admin
 			    e.username AS username,
 			    e.firstname AS firstname,
 			    e.lastname AS lastname,
+			    a.agent_start AS agent_start,
+			    a.agent_end AS agent_end,
 			    a.start_time AS start_time,
 			    a.end_time AS end_time
 			FROM actions a
