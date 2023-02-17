@@ -55,13 +55,22 @@
 		</div>
 		<div class="content-header-right col-md-3 col-12 d-md-block d-none">
 			<div class="mb-1 breadcrumb-right">
-				<div class="d-flex gap-2 justify-content-end align-items-end">
-					<select name="employee" class="select2 form-select">
-						<option value="1">
-							Deneme
+				<div class="d-flex gap-1 justify-content-end align-items-end">
+					<select class="select2 form-select" id="report-employee">
+						<option value="" selected disabled>
+							Personel Seçiniz
 						</option>
+
+						@foreach ($employees as $employee)
+
+							<option value="{{ $employee->id }}">
+								{{ $employee->firstname . ' ' . $employee->lastname }}
+							</option>
+
+						@endforeach
+
 					</select>
-					<button type="button" class="btn btn-primary btn-round" id="report-monthly">
+					<button type="button" class="btn btn-primary btn-round" id="report-button">
 						Aylık Rapor
 					</button>
 				</div>

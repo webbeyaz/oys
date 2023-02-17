@@ -7,6 +7,13 @@ use PDO;
 
 class Tracking extends Admin
 {
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->employees();
+	}
+
 	/**
 	 * @return string
 	 */
@@ -39,5 +46,32 @@ class Tracking extends Admin
 		$this->data['tracking'] = $tracking;
 
 		return $this->view('admin.pages.employees.tracking', $this->data);
+	}
+
+	/**
+	 * @return void
+	 */
+	public function employees(): void
+	{
+		$employees = [];
+
+		$sql = "
+			SELECT
+			    id,
+			    firstname,
+			    lastname
+			FROM employees
+			WHERE deleted_at IS NULL
+			ORDER BY updated_at DESC, id DESC
+		";
+
+		$query = $this->db->query($sql, PDO::FETCH_OBJ);
+
+		if ($query->rowCount())
+		{
+			$employees = $query;
+		}
+
+		$this->data['employees'] = $employees;
 	}
 }
