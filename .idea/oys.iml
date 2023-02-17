@@ -41,6 +41,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/arrilot/dotenv-php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/chillerlan/php-qrcode" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/chillerlan/php-settings-container" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mobiledetect/mobiledetectlib" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jenssegers/agent" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jaybizzle/crawler-detect" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -46,6 +46,9 @@
       <path value="$PROJECT_DIR$/vendor/arrilot/dotenv-php" />
       <path value="$PROJECT_DIR$/vendor/chillerlan/php-qrcode" />
       <path value="$PROJECT_DIR$/vendor/chillerlan/php-settings-container" />
+      <path value="$PROJECT_DIR$/vendor/mobiledetect/mobiledetectlib" />
+      <path value="$PROJECT_DIR$/vendor/jenssegers/agent" />
+      <path value="$PROJECT_DIR$/vendor/jaybizzle/crawler-detect" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
