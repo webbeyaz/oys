@@ -26,6 +26,10 @@ class Home extends Client
 	 */
 	public function index(): string
 	{
+		$browser = get_browser(null, true);
+		print_r($browser);
+		exit;
+
 		$error = [];
 		$qrCode = null;
 		$employee = [];
