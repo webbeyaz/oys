@@ -4,6 +4,7 @@ namespace App\Controllers\Admin\Employees;
 
 use App\Controllers\Admin;
 use PDO;
+use Symfony\Component\HttpFoundation\Request;
 
 class Tracking extends Admin
 {
@@ -46,6 +47,57 @@ class Tracking extends Admin
 		$this->data['tracking'] = $tracking;
 
 		return $this->view('admin.pages.employees.tracking', $this->data);
+	}
+
+	public function report(Request $request)
+	{
+		$report = [];
+
+		if ($request->getMethod() == 'POST')
+		{
+			$rules = [
+				'required' => [
+					'employee'
+				]
+			];
+
+			$this->validator->rules($rules);
+
+			if ($this->validator->validate())
+			{
+				$data = $this->validator->data();
+				$employee = $data['employee'];
+
+				$sql = "
+					SELECT
+					    a.id AS id,
+					    e.id AS employee_id,
+					    e.username AS username,
+					    e.firstname AS firstname,
+					    e.lastname AS lastname,
+					    a.agent_start AS agent_start,
+					    a.agent_end AS agent_end,
+					    a.start_time AS start_time,
+					    a.end_time AS end_time
+					FROM actions a
+					INNER JOIN employees e ON e.id = a.employee_id
+					WHERE a.employee_id = $employee
+				";
+
+				$query = $this->db->query($sql, PDO::FETCH_OBJ);
+
+				if ($query->rowCount())
+				{
+					$report = $query;
+				}
+
+				$this->data['report'] = $report;
+			}
+			else
+			{
+				// TODO
+			}
+		}
 	}
 
 	/**

@@ -56,23 +56,25 @@
 		<div class="content-header-right col-md-5 col-12 d-md-block d-none">
 			<div class="mb-1 breadcrumb-right">
 				<div class="d-flex gap-1 justify-content-end align-items-end">
-					<select class="select2 form-select w-25" id="report-employee">
-						<option value="" selected disabled>
-							Personel Seçiniz
-						</option>
-
-						@foreach ($employees as $employee)
-
-							<option value="{{ $employee->id }}">
-								{{ $employee->firstname . ' ' . $employee->lastname }}
+					<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
+						<select name="employee" class="select2 form-select w-25">
+							<option value="" selected disabled>
+								Personel Seçiniz
 							</option>
 
-						@endforeach
+							@foreach ($employees as $employee)
 
-					</select>
-					<button type="button" class="btn btn-primary btn-round" id="report-button">
-						Aylık Rapor
-					</button>
+								<option value="{{ $employee->id }}">
+									{{ $employee->firstname . ' ' . $employee->lastname }}
+								</option>
+
+							@endforeach
+
+						</select>
+						<button type="submit" class="btn btn-primary btn-round">
+							Aylık Rapor
+						</button>
+					</form>
 				</div>
 			</div>
 		</div>

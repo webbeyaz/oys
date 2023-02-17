@@ -53,10 +53,14 @@ $app->router->group('/admin', function ($router) {
 
 	$router->group('/employees', function ($router) {
 		$router->get('/list', 'Admin.Employees.Listing@index');
-		$router->get('/tracking', 'Admin.Employees.Tracking@index');
 		$router->any('/add', 'Admin.Employees.Add@index');
 		$router->any('/edit/:id', 'Admin.Employees.Edit@index');
 		$router->get('/delete/:id', 'Admin.Employees.Delete@index');
+
+		$router->group('/tracking', function ($router) {
+			$router->get('/', 'Admin.Employees.Tracking@index');
+			$router->any('/report', 'Admin.Employees.Tracking@report');
+		});
 
 		/*$router->group('/holiday', function ($router) {
 			$router->get('/', 'Admin.Employees.Holiday.Listing@index');
