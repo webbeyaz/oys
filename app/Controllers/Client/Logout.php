@@ -41,13 +41,7 @@ class Logout extends Client
 		if ($query)
 		{
 			//$employee_id = $query->id;
-
-			$agent = new Agent();
-			$browser = $agent->browser();
-			$platform = $agent->platform();
-			$version = $agent->version($platform);
-
-			$agent_end = $platform . ' ' . $version . ', ' . $browser;
+			$agent_end = $_SERVER['HTTP_USER_AGENT'];
 
 			$sql = "UPDATE actions SET
 			agent_end = :agent_end,

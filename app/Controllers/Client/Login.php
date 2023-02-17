@@ -29,13 +29,8 @@ class Login extends Client
 
 		if ($query)
 		{
-			$agent = new Agent();
-			$browser = $agent->browser();
-			$platform = $agent->platform();
-			$version = $agent->version($platform);
-
-			$agent_start = $platform . ' ' . $version . ', ' . $browser;
 			$employee_id = $query->employee_id;
+			$agent_start = $_SERVER['HTTP_USER_AGENT'];
 
 			$sql = "INSERT INTO actions SET
 			employee_id = ?,
