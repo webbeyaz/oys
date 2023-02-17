@@ -55,7 +55,7 @@
 		</div>
 		<div class="content-header-right col-md-3 col-12 d-md-block d-none">
 			<div class="mb-1 breadcrumb-right">
-				<div class="d-flex gap-3 justify-content-end align-items-end">
+				<div class="d-flex gap-2 justify-content-end align-items-end">
 					<select name="employee" class="select2 form-select">
 						<option value="1">
 							Deneme
