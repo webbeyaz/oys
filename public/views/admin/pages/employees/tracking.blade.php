@@ -55,8 +55,8 @@
 		</div>
 		<div class="content-header-right col-md-5 col-12 d-md-block d-none">
 			<div class="mb-1 breadcrumb-right">
-				<div class="d-flex gap-1 justify-content-end align-items-end">
-					<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
+				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
+					<div class="d-flex gap-1 justify-content-end align-items-end">
 						<select name="employee" class="select2 form-select w-25">
 							<option value="" selected disabled>
 								Personel Seçiniz
@@ -74,8 +74,8 @@
 						<button type="submit" class="btn btn-primary btn-round">
 							Aylık Rapor
 						</button>
-					</form>
-				</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
