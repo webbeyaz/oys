@@ -39,7 +39,14 @@ function timeDiffMinutes($start, $end): string
  */
 function timeDiffHours($start, $end): string
 {
-	return number_format((Carbon::parse($start)->addMinutes(30)->diffInMinutes($end)) / 60, 2, ',', '');
+	$different = Carbon::parse($start)->gt($end);
+
+	print_r($different);
+	exit;
+
+	$time = Carbon::parse($start)->addMinutes(30)->diffInMinutes($end);
+
+	return number_format($time/ 60, 2, ',', '');
 }
 
 function getDevice($ua)
