@@ -41,8 +41,7 @@ function timeDiffHours($start, $end): string
 {
 	$different = Carbon::parse($start)->gt($end);
 
-	print_r($different);
-	exit;
+	return $different;
 
 	$time = Carbon::parse($start)->addMinutes(30)->diffInMinutes($end);
 
