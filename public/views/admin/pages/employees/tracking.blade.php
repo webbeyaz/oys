@@ -71,7 +71,7 @@
 							@endforeach
 
 						</select>
-						<button type="submit" class="btn btn-primary btn-round">
+						<button type="submit" disabled class="btn btn-primary btn-round">
 							Aylık Rapor
 						</button>
 					</div>
