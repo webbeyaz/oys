@@ -39,13 +39,34 @@ function timeDiffMinutes($start, $end): string
  */
 function timeDiffHours($start, $end): string
 {
-	$different = Carbon::parse($start)->gt($end);
+	$start = Carbon::parse($start);
+	$end = Carbon::parse($end);
 
-	return $different;
+	$startTime = Carbon::createFromFormat('H:i:s', '08:30:00');
+	$startTime->year($start->year);
+	$startTime->month($start->month);
+	$startTime->day($start->day);
 
-	$time = Carbon::parse($start)->addMinutes(30)->diffInMinutes($end);
+	$endTime = Carbon::createFromFormat('H:i:s', '17:00:00');
+	$endTime->year($end->year);
+	$endTime->month($end->month);
+	$endTime->day($end->day);
 
-	return number_format($time/ 60, 2, ',', '');
+	if ($start->lt($startTime))
+	{
+		$start->hour('08');
+		$start->minute('30');
+	}
+
+	if ($end->gt($endTime))
+	{
+		$end->hour('17');
+		$end->minute('00');
+	}
+
+	$different = $start->addMinutes(30)->diffInMinutes($end);
+
+	return number_format($different / 60, 2, ',', '');
 }
 
 function getDevice($ua)
