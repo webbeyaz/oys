@@ -66,7 +66,7 @@ function timeDiffHours($start, $end): string
 
 	$different = ($start->addMinutes(30)->diffInMinutes($end)) / 60;
 
-	return $different == intval($different) ? number_format($different, 1, ',', '') : intval($different);
+	return floatval($different) == intval($different) ? number_format($different, 1, ',', '') : intval($different);
 }
 
 /**
