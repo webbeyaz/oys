@@ -99,13 +99,29 @@ class Tracking extends Admin
 				{
 					$reports = $query;
 
-					foreach ($reports as $report)
-					{
-						$diff = timeDiffHoursWithDecimal($report->start_time, $report->end_time);
-						$total += $diff;
-					}
+					$sql = "
+						SELECT
+						    start_time,
+						    end_time
+						FROM actions
+						WHERE
+						    employee_id = $employee
+						    AND
+						    (start_time BETWEEN (CURRENT_DATE() - INTERVAL 1 MONTH) AND CURRENT_DATE())
+					";
 
-					$total = number_format($total, 2, ',', '');
+					$query = $this->db->query($sql, PDO::FETCH_OBJ);
+
+					if ($query->rowCount())
+					{
+						foreach ($query as $row)
+						{
+							$diff = timeDiffHoursWithDecimal($row->start_time, $row->end_time);
+							$total += $diff;
+						}
+
+						$total = number_format($total, 2, ',', '');
+					}
 				}
 			}
 			else
