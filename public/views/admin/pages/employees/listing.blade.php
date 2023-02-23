@@ -164,21 +164,21 @@
 @endsection
 
 @section('scripts_page')
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+	<script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/datetime-moment.js"></script>
 @endsection
 
 @section('scripts')
 
 	<script type="text/javascript">
 		$(function () {
+			$.fn.dataTable.moment('D MMM YYYY HH:mm', 'tr');
+
 			$('.datatables-basic').DataTable({
 				language: {
 					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
 				},
-				order: [[2, 'desc']],
-				columnDefs: [{
-					targets: 2,
-					render: this.render.datetime('D MMM YYYY H:i'),
-				}]
+				order: [[2, 'desc']]
 			});
 		});
 	</script>
