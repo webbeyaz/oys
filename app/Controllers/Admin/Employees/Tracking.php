@@ -111,7 +111,7 @@ class Tracking extends Admin
 		}
 
 		$this->data['error'] = $error;
-		$this->data['report'] = $reports;
+		$this->data['reports'] = $reports;
 
 		return $this->view('admin.pages.employees.report', $this->data);
 	}
