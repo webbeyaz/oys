@@ -86,7 +86,12 @@ class Tracking extends Admin
 					    a.end_time AS end_time
 					FROM actions a
 					INNER JOIN employees e ON e.id = a.employee_id
-					WHERE a.employee_id = $employee
+					WHERE
+					    a.employee_id = $employee
+					    AND
+						YEAR(start_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+						AND
+					    MONTH(start_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
 				";
 
 				$query = $this->db->query($sql, PDO::FETCH_OBJ);
