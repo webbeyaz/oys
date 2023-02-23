@@ -62,6 +62,17 @@
 
 		@if ($reports)
 
+			<div class="row">
+				<div class="col-12">
+					<div class="alert alert-info" role="alert">
+						<div class="alert-body">
+							Seçilen personelin son <strong>30 güne</strong> ait toplam çalışma saati:
+							{{ $total }} saat
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<!-- Basic table -->
 			<section id="basic-datatable">
 				<div class="row">

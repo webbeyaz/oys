@@ -57,6 +57,7 @@ class Tracking extends Admin
 	{
 		$error = [];
 		$reports = [];
+		$total = 0;
 
 		if ($request->getMethod() == 'POST')
 		{
@@ -97,6 +98,12 @@ class Tracking extends Admin
 				if ($query->rowCount())
 				{
 					$reports = $query;
+
+					foreach ($query as $row)
+					{
+						$diff = timeDiffHours($row->start_time, $row->end_time);
+						$total += floatval($diff);
+					}
 				}
 			}
 			else
@@ -115,6 +122,7 @@ class Tracking extends Admin
 
 		$this->data['error'] = $error;
 		$this->data['reports'] = $reports;
+		$this->data['total'] = $total;
 
 		return $this->view('admin.pages.employees.report', $this->data);
 	}
