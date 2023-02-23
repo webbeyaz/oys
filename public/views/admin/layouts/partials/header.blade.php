@@ -98,10 +98,16 @@
 						<i class="me-50" data-feather="user"></i>
 						Profil
 					</a>-->
-					<a href="{{ site_url('admin/employees/tracking') }}" class="dropdown-item">
-						<i class="me-50" data-feather="user-check"></i>
-						Personel Takibi
-					</a>
+
+					@if ($user->role == 1)
+
+						<a href="{{ site_url('admin/employees/tracking') }}" class="dropdown-item">
+							<i class="me-50" data-feather="user-check"></i>
+							Personel Takibi
+						</a>
+
+					@endif
+
 					<a href="{{ site_url('admin/vehicles/tracking') }}" class="dropdown-item">
 						<i class="me-50" data-feather="truck"></i>
 						Araç Takibi
