@@ -55,38 +55,38 @@
 				<span>Uygulama</span>
 				<i data-feather="more-horizontal"></i>
 			</li>
-			<li class="nav-item">
-				<a href="#" class="d-flex align-items-center">
-					<i data-feather="user"></i>
-					<span class="menu-title text-truncate">Personeller</span>
-				</a>
-				<ul class="menu-content">
-					<li class="{{ segments(1) == 'employees' && segments(2) == 'add' ? 'active' : null }}">
-						<a href="{{ site_url('admin/employees/add') }}" class="d-flex align-items-center">
-							<i data-feather="plus-circle"></i>
-							<span class="menu-item text-truncate">Personel Ekle</span>
-						</a>
-					</li>
-					<li class="{{ segments(1) == 'employees' && segments(2) == 'list' ? 'active' : null }}">
-						<a href="{{ site_url('admin/employees/list') }}" class="d-flex align-items-center">
-							<i data-feather="list"></i>
-							<span class="menu-item text-truncate">Personel Listesi</span>
-						</a>
-					</li>
-					<li class="{{ segments(1) == 'employees' && segments(2) == 'tracking' ? 'active' : null }}">
-						<a href="{{ site_url('admin/employees/tracking') }}" class="d-flex align-items-center">
-							<i data-feather="user-check"></i>
-							<span class="menu-item text-truncate">Personel Takibi</span>
-						</a>
-					</li>
-					<!--<li class="{{ segments(1) == 'employees' && segments(2) == 'holiday' ? 'active' : null }}">
-						<a href="{{ site_url('admin/employees/holiday') }}" class="d-flex align-items-center">
-							<i data-feather="coffee"></i>
-							<span class="menu-item text-truncate">Personel İzni</span>
-						</a>
-					</li>-->
-				</ul>
-			</li>
+
+			@if ($user->role == 1)
+
+				<li class="nav-item">
+					<a href="#" class="d-flex align-items-center">
+						<i data-feather="user"></i>
+						<span class="menu-title text-truncate">Personeller</span>
+					</a>
+					<ul class="menu-content">
+						<li class="{{ segments(1) == 'employees' && segments(2) == 'add' ? 'active' : null }}">
+							<a href="{{ site_url('admin/employees/add') }}" class="d-flex align-items-center">
+								<i data-feather="plus-circle"></i>
+								<span class="menu-item text-truncate">Personel Ekle</span>
+							</a>
+						</li>
+						<li class="{{ segments(1) == 'employees' && segments(2) == 'list' ? 'active' : null }}">
+							<a href="{{ site_url('admin/employees/list') }}" class="d-flex align-items-center">
+								<i data-feather="list"></i>
+								<span class="menu-item text-truncate">Personel Listesi</span>
+							</a>
+						</li>
+						<li class="{{ segments(1) == 'employees' && segments(2) == 'tracking' ? 'active' : null }}">
+							<a href="{{ site_url('admin/employees/tracking') }}" class="d-flex align-items-center">
+								<i data-feather="user-check"></i>
+								<span class="menu-item text-truncate">Personel Takibi</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+
+			@endif
+
 			<li class="nav-item">
 				<a href="#" class="d-flex align-items-center">
 					<i data-feather="anchor"></i>
@@ -137,24 +137,38 @@
 				<span>Yönetim</span>
 				<i data-feather="more-horizontal"></i>
 			</li>
-			<!--<li class="nav-item {{ segments(1) == 'logs' ? 'active' : null }}">
-				<a href="{{ site_url('admin/logs') }}" class="d-flex align-items-center">
-					<i data-feather="git-merge"></i>
-					<span class="menu-title text-truncate">Kayıtlar</span>
-				</a>
-			</li>
-			<li class="nav-item {{ segments(1) == 'settimgs' ? 'active' : null }}">
-				<a href="{{ site_url('admin/settimgs') }}" class="d-flex align-items-center">
-					<i data-feather="settings"></i>
-					<span class="menu-title text-truncate">Ayarlar</span>
-				</a>
-			</li>
-			<li class="nav-item {{ segments(1) == 'faq' ? 'active' : null }}">
-				<a href="{{ site_url('admin/faq') }}" class="d-flex align-items-center">
-					<i data-feather="help-circle"></i>
-					<span class="menu-title text-truncate">SSS</span>
-				</a>
-			</li>-->
+
+			@if ($user->role == 1)
+
+				<li class="nav-item {{ segments(1) == 'logs' ? 'active' : null }}">
+					<a href="{{ site_url('admin/logs') }}" class="d-flex align-items-center">
+						<i data-feather="git-merge"></i>
+						<span class="menu-title text-truncate">Kayıtlar</span>
+					</a>
+				</li>
+				<li class="nav-item {{ segments(1) == 'users' ? 'active' : null }}">
+					<a href="{{ site_url('admin/settimgs') }}" class="d-flex align-items-center">
+						<i data-feather="settings"></i>
+						<span class="menu-title text-truncate">Yöneticiler</span>
+					</a>
+					<ul class="menu-content">
+						<li class="{{ segments(1) == 'users' && segments(2) == 'add' ? 'active' : null }}">
+							<a href="{{ site_url('admin/users/add') }}" class="d-flex align-items-center">
+								<i data-feather="plus-circle"></i>
+								<span class="menu-item text-truncate">Yönetici Ekle</span>
+							</a>
+						</li>
+						<li class="{{ segments(1) == 'users' && segments(2) == 'list' ? 'active' : null }}">
+							<a href="{{ site_url('admin/users/list') }}" class="d-flex align-items-center">
+								<i data-feather="list"></i>
+								<span class="menu-item text-truncate">Yönetici Listesi</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+
+			@endif
+
 			<li class="nav-item">
 				<a href="{{ site_url('admin/logout') }}" class="d-flex align-items-center">
 					<i data-feather="power"></i>

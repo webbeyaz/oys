@@ -36,7 +36,8 @@ class Login extends Admin
 
 				$sql = "
 					SELECT
-						id
+						id,
+						role
 					FROM users
 					WHERE
 						(status = 1 AND deleted_at IS NULL)
@@ -50,6 +51,7 @@ class Login extends Admin
 				{
 					session()->segment->set('admin_login', true);
 					session()->segment->set('user_id', $query->id);
+					session()->segment->set('user_role', $query->role);
 
 					header('Location: ' . site_url('admin/dashboard'));
 					exit;

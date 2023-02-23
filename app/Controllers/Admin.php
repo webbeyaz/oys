@@ -36,7 +36,8 @@ class Admin extends Controller
 				    firstname,
 				    lastname,
 				    email,
-				    phone
+				    phone,
+				    role
 				FROM users
 				WHERE
 				    (status = 1 AND deleted_at IS NULL)

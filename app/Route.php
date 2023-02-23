@@ -61,14 +61,7 @@ $app->router->group('/admin', function ($router) {
 			$router->get('/', 'Admin.Employees.Tracking@index');
 			$router->any('/report', 'Admin.Employees.Tracking@report');
 		});
-
-		/*$router->group('/holiday', function ($router) {
-			$router->get('/', 'Admin.Employees.Holiday.Listing@index');
-			$router->any('/add', 'Admin.Employees.Holiday.Add@index');
-			$router->any('/edit/:id', 'Admin.Employees.Holiday.Edit@index');
-			$router->get('/delete/:id', 'Admin.Employees.Holiday.Delete@index');
-		});*/
-	});
+	}, ['before' => 'SuperAdminCheck']);
 
 	$router->group('/drivers', function ($router) {
 		$router->get('/list', 'Admin.Drivers.Listing@index');
@@ -90,6 +83,22 @@ $app->router->group('/admin', function ($router) {
 			$router->any('/delete/:id', 'Admin.Vehicles.Tracking@delete');
 		});
 	});
+
+	$router->group('/vehicles', function ($router) {
+		$router->get('/list', 'Admin.Vehicles.Listing@index');
+		$router->any('/add', 'Admin.Vehicles.Add@index');
+		$router->any('/edit/:id', 'Admin.Vehicles.Edit@index');
+		$router->get('/delete/:id', 'Admin.Vehicles.Delete@index');
+	});
+
+	$router->group('/users', function ($router) {
+		$router->get('/list', 'Admin.Users.Listing@index');
+		$router->any('/add', 'Admin.Users.Add@index');
+		$router->any('/edit/:id', 'Admin.Users.Edit@index');
+		$router->get('/delete/:id', 'Admin.Users.Delete@index');
+	}, ['before' => 'SuperAdminCheck']);
+
+	$router->get('/logs', 'Admin.Logs@index', ['before' => 'SuperAdminCheck']);
 }, ['before' => 'AdminCheckAuth']);
 
 /*
