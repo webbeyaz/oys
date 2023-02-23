@@ -148,6 +148,9 @@
 @endsection
 
 @section('scripts_vendor')
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+	<script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/datetime-moment.js"></script>
+
 	<script src="{{ asset_url('app/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset_url('app/vendors/js/tables/datatable/dataTables.bootstrap5.min.js') }}"></script>
 	<script src="{{ asset_url('app/vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
@@ -164,8 +167,6 @@
 @endsection
 
 @section('scripts_page')
-	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
-	<script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/datetime-moment.js"></script>
 @endsection
 
 @section('scripts')
