@@ -57,7 +57,7 @@
 			<div class="mb-1 breadcrumb-right">
 				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
 					<div class="d-flex gap-1 justify-content-end align-items-end">
-						<select name="employee" class="select2 form-select w-25">
+						<select name="employee" class="select2 form-select w-25" id="report-select">
 							<option value="" selected disabled>
 								Personel Seçiniz
 							</option>
@@ -71,7 +71,7 @@
 							@endforeach
 
 						</select>
-						<button type="submit" disabled class="btn btn-primary btn-round">
+						<button type="submit" disabled class="btn btn-primary btn-round" id="report-button">
 							Aylık Rapor
 						</button>
 					</div>
@@ -201,6 +201,10 @@
 				language: {
 					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
 				}
+			});
+
+			$('#report-select').change(function () {
+				$('#report-button').prop('disabled', false);
 			});
 		});
 	</script>
