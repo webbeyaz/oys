@@ -57,7 +57,7 @@ class Tracking extends Admin
 	{
 		$error = [];
 		$reports = [];
-		$total = 0.00;
+		$total = 0;
 
 		if ($request->getMethod() == 'POST')
 		{
