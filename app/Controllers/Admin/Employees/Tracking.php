@@ -89,7 +89,11 @@ class Tracking extends Admin
 					WHERE
 					    a.employee_id = $employee
 					    AND
-						a.start_time > NOW() - INTERVAL 1 MONTH
+					    (
+							DATE(a.start_time) >= DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 2 MONTH)), INTERVAL 1 DAY) 
+							AND
+						    DATE(a.start_time) <= LAST_DAY(DATE_SUB(NOW(), INTERVAL 1 MONTH))
+						)
 				";
 
 				$query = $this->db->query($sql, PDO::FETCH_OBJ);
