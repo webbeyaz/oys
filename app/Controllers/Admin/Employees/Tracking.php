@@ -104,6 +104,8 @@ class Tracking extends Admin
 						$diff = timeDiffHoursWithDecimal($row->start_time, $row->end_time);
 						$total += $diff;
 					}
+
+					$total = number_format($total, 2, ',', '');
 				}
 			}
 			else
