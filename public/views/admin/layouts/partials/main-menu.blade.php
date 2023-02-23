@@ -147,8 +147,8 @@
 					</a>
 				</li>
 				<li class="nav-item {{ segments(1) == 'users' ? 'active' : null }}">
-					<a href="{{ site_url('admin/settimgs') }}" class="d-flex align-items-center">
-						<i data-feather="settings"></i>
+					<a href="#" class="d-flex align-items-center">
+						<i data-feather="award"></i>
 						<span class="menu-title text-truncate">Yöneticiler</span>
 					</a>
 					<ul class="menu-content">

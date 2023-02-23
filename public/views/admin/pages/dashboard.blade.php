@@ -165,7 +165,7 @@
 						<div class="card card-company-table">
 							<div class="card-header">
 								<h4 class="card-title">
-									Son 10 Personel Giriş-Çıkış
+									Son 10 Personel Giriş-Çıkış İşlemi
 								</h4>
 								<div class="d-flex align-items-center">
 									<p class="card-text font-small-2 me-25 mb-0">
