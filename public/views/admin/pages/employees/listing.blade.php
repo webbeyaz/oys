@@ -177,7 +177,7 @@
 				order: [[2, 'desc']],
 				columnDefs: [{
 					targets: 2,
-					render: DataTable.render.datetime('D MMM YYYY H:i'),
+					render: this.render.datetime('D MMM YYYY H:i'),
 				}]
 			});
 		});
