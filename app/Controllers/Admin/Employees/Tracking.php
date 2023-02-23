@@ -49,8 +49,13 @@ class Tracking extends Admin
 		return $this->view('admin.pages.employees.tracking', $this->data);
 	}
 
+	/**
+	 * @param Request $request
+	 * @return string|void
+	 */
 	public function report(Request $request)
 	{
+		$error = [];
 		$report = [];
 
 		if ($request->getMethod() == 'POST')
@@ -90,14 +95,25 @@ class Tracking extends Admin
 				{
 					$report = $query;
 				}
-
-				$this->data['report'] = $report;
 			}
 			else
 			{
-				// TODO
+				$error = [
+					'class' => 'danger',
+					'text' => 'Lütfen bir personel seçiniz.'
+				];
 			}
 		}
+		else
+		{
+			header('Location: ' . site_url('admin/employees/tracking'));
+			exit;
+		}
+
+		$this->data['error'] = $error;
+		$this->data['report'] = $report;
+
+		return $this->view('admin.pages.employees.report', $this->data);
 	}
 
 	/**
