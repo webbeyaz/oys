@@ -80,26 +80,26 @@
 						<div class="card">
 							<table class="datatables-basic table">
 								<thead>
-								<tr>
-									<th>
-										Personel
-									</th>
-									<th>
-										Ad Soyad
-									</th>
-									<th>
-										Giriş Saati
-									</th>
-									<th>
-										Çıkış Saati
-									</th>
-									<th>
-										Çalışma Süresi
-									</th>
-									<th>
-										Tarih
-									</th>
-								</tr>
+									<tr>
+										<th>
+											Personel
+										</th>
+										<th>
+											Ad Soyad
+										</th>
+										<th>
+											Giriş Saati
+										</th>
+										<th>
+											Çıkış Saati
+										</th>
+										<th>
+											Çalışma Süresi
+										</th>
+										<th>
+											Tarih
+										</th>
+									</tr>
 								</thead>
 								<tbody>
 
