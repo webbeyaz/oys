@@ -99,7 +99,13 @@ class Tracking extends Admin
 				{
 					$reports = $query;
 
-					
+					foreach ($reports as $report)
+					{
+						$diff = timeDiffHoursWithDecimal($report->start_time, $report->end_time);
+						$total += $diff;
+					}
+
+					$total = number_format($total, 2, ',', '');
 				}
 			}
 			else
