@@ -56,7 +56,7 @@ class Tracking extends Admin
 	public function report(Request $request)
 	{
 		$error = [];
-		$report = [];
+		$reports = [];
 
 		if ($request->getMethod() == 'POST')
 		{
@@ -93,7 +93,7 @@ class Tracking extends Admin
 
 				if ($query->rowCount())
 				{
-					$report = $query;
+					$reports = $query;
 				}
 			}
 			else
@@ -111,7 +111,7 @@ class Tracking extends Admin
 		}
 
 		$this->data['error'] = $error;
-		$this->data['report'] = $report;
+		$this->data['report'] = $reports;
 
 		return $this->view('admin.pages.employees.report', $this->data);
 	}

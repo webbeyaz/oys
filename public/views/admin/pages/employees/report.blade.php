@@ -92,34 +92,34 @@
 								</thead>
 								<tbody>
 
-									@foreach ($tracking as $employee)
+									@foreach ($reports as $report)
 
 										<tr>
 											<td>
-												<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="{{ $employee->username }}" width="20" height="20" class="me-75 avatar">
-												<span class="fw-bold">{{ $employee->username }}</span>
+												<img src="{{ asset_url('app/images/avatars/default.jpg') }}" alt="{{ $report->username }}" width="20" height="20" class="me-75 avatar">
+												<span class="fw-bold">{{ $report->username }}</span>
 											</td>
 											<td>
-												{{ $employee->firstname . ' ' . $employee->lastname }}
+												{{ $report->firstname . ' ' . $report->lastname }}
 											</td>
 											<td>
-												{{ timeConvert($employee->start_time, 'H:i') }}
-												({{ getDevice($employee->agent_start) }})
+												{{ timeConvert($report->start_time, 'H:i') }}
+												({{ getDevice($report->agent_start) }})
 											</td>
 											<td>
-												{{ $employee->end_time ? timeConvert($employee->end_time, 'H:i') : '-' }}
-												{{ $employee->agent_end ? '(' . getDevice($employee->agent_end) . ')' : '-' }}
+												{{ $report->end_time ? timeConvert($report->end_time, 'H:i') : '-' }}
+												{{ $report->agent_end ? '(' . getDevice($report->agent_end) . ')' : '-' }}
 											</td>
 											<td>
-												@if ($employee->end_time)
-													{{ timeDiffHours($employee->start_time, $employee->end_time) }} saat
+												@if ($report->end_time)
+													{{ timeDiffHours($report->start_time, $report->end_time) }} saat
 													(30 dakika mola)
 												@else
 													-
 												@endif
 											</td>
 											<td>
-												{{ timeConvert($employee->start_time, 'd.m.Y') }}
+												{{ timeConvert($report->start_time, 'd.m.Y') }}
 											</td>
 										</tr>
 
