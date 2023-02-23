@@ -139,7 +139,7 @@
 				<div class="col-12">
 					<div class="alert alert-info" role="alert">
 						<div class="alert-body">
-							Seçilen personelin giriş-çıkış kaydı bulunamadı.
+							Seçilen personelin son 30 güne ait giriş ve çıkış kaydı bulunamadı.
 						</div>
 					</div>
 				</div>
