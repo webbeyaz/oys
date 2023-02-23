@@ -90,9 +90,9 @@ class Tracking extends Admin
 					    a.employee_id = $employee
 					    AND
 					    (
-							DATE(a.start_time) >= DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 2 MONTH)), INTERVAL 1 DAY) 
+							YEAR(a.start_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
 							AND
-						    DATE(a.start_time) <= LAST_DAY(DATE_SUB(NOW(), INTERVAL 1 MONTH))
+					        MONTH(a.start_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
 						)
 				";
 
