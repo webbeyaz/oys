@@ -74,7 +74,7 @@ class Edit extends Admin
 				// $status = $data['status']; TODO: İleride aktif edilebilir.
 
 				$sql = "
-					UPDATE employees SET
+					UPDATE drivers SET
 					firstname = :firstname,
 					lastname = :lastname,
 					email = :email,
