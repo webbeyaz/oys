@@ -60,7 +60,7 @@
 	</div>
 	<div class="content-body">
 
-		@if ($employees)
+		@if ($reports)
 
 			<!-- Basic table -->
 			<section id="basic-datatable">
