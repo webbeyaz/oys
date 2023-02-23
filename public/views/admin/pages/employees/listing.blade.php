@@ -165,6 +165,7 @@
 
 @section('scripts_page')
 	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/tr.js"></script>
 	<script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/datetime-moment.js"></script>
 @endsection
 
@@ -172,6 +173,7 @@
 
 	<script type="text/javascript">
 		$(function () {
+			moment.locale('tr');
 			$.fn.dataTable.moment('DD MMMM YYYY HH:mm');
 
 			$('.datatables-basic').DataTable({
