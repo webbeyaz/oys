@@ -201,7 +201,7 @@
 				language: {
 					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
 				},
-				order: [[5, 'desc'], [2, 'desc']]
+				order: [[5, 'desc'], [2, 'desc'], [3, 'desc']]
 			});
 
 			$('#report-select').change(function () {
