@@ -101,10 +101,8 @@ class Tracking extends Admin
 
 					foreach ($query as $row)
 					{
-						$diff = timeDiffHours($row->start_time, $row->end_time);
-						$time = number_format(floatval($diff), 2, '.', '');
-
-						$total += floatval($time);
+						$diff = timeDiffHoursWithDecimal($row->start_time, $row->end_time);
+						$total += $diff;
 					}
 				}
 			}

@@ -69,6 +69,43 @@ function timeDiffHours($start, $end): string
 	return number_format($different / 60, 2, ',', '');
 }
 
+/**
+ * @param $start
+ * @param $end
+ * @return float
+ */
+function timeDiffHoursWithDecimal($start, $end): float
+{
+	$start = Carbon::parse($start);
+	$end = Carbon::parse($end);
+
+	$startTime = Carbon::createFromFormat('H:i:s', '08:30:00');
+	$startTime->year($start->year);
+	$startTime->month($start->month);
+	$startTime->day($start->day);
+
+	$endTime = Carbon::createFromFormat('H:i:s', '17:00:00');
+	$endTime->year($end->year);
+	$endTime->month($end->month);
+	$endTime->day($end->day);
+
+	if ($start->lt($startTime))
+	{
+		$start->hour('08');
+		$start->minute('30');
+	}
+
+	if ($end->gt($endTime))
+	{
+		$end->hour('17');
+		$end->minute('00');
+	}
+
+	$different = $start->addMinutes(30)->diffInMinutes($end);
+
+	return $different / 60;
+}
+
 function getDevice($ua)
 {
 	$agent = new Agent();
