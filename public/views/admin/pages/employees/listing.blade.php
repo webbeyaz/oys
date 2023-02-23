@@ -172,7 +172,7 @@
 
 	<script type="text/javascript">
 		$(function () {
-			$.fn.dataTable.moment('DD MMMM YYYY HH:mm', 'tr');
+			$.fn.dataTable.moment('DD MMMM YYYY HH:mm');
 
 			$('.datatables-basic').DataTable({
 				language: {
