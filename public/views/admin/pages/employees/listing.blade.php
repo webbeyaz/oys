@@ -173,7 +173,12 @@
 			$('.datatables-basic').DataTable({
 				language: {
 					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
-				}
+				},
+				order: [[2, 'desc']],
+				columnDefs: [{
+					targets: 2,
+					render: DataTable.render.datetime('D MMM YYYY H:i'),
+				}]
 			});
 		});
 	</script>
