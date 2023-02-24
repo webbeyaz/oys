@@ -206,8 +206,23 @@
 				'locale': 'tr'
 			});
 
+			let changedStart = false;
+			let changedSelect = false;
+
 			$('#report-start').change(function () {
-				$('#report-button').prop('disabled', false);
+				changedStart = true;
+
+				if (changedStart && changedSelect) {
+					$('#report-button').prop('disabled', false);
+				}
+			});
+
+			$('#report-select').change(function () {
+				changedSelect = true;
+
+				if (changedStart && changedSelect) {
+					$('#report-button').prop('disabled', false);
+				}
 			});
 		});
 	</script>
