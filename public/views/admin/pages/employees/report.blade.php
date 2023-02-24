@@ -158,15 +158,17 @@
 
 		@else
 
-			<div class="row">
-				<div class="col-12">
-					<div class="alert alert-info" role="alert">
-						<div class="alert-body">
-							Personelin seçilen tarihler arasında <strong>giriş ve çıkış</strong> kaydı bulunamadı.
+			@if (!$error)
+				<div class="row">
+					<div class="col-12">
+						<div class="alert alert-info" role="alert">
+							<div class="alert-body">
+								Personelin seçilen tarihler arasında <strong>giriş ve çıkış</strong> kaydı bulunamadı.
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			@endif
 
 		@endif
 
