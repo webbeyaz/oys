@@ -95,7 +95,7 @@ class Edit extends Admin
 						$query = $this->db->prepare($sql);
 
 						$update = $query->execute([
-							'vehicle_id' => $vehicle_id,
+							'vehicle_id' => NULL,
 							'id' => $driver_id
 						]);
 
