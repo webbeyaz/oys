@@ -60,25 +60,34 @@
 		<div class="content-header-right col-md-6 col-12">
 			<div class="mb-1 breadcrumb-right">
 				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
-					<div class="d-flex gap-1 justify-content-end align-items-end">
-						<input type="text" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic">
-						<select name="employee" class="select2 form-select" id="report-select">
-							<option value="" selected disabled>
-								Personel Seçiniz
-							</option>
-
-							@foreach ($employees as $employee)
-
-								<option value="{{ $employee->id }}">
-									{{ $employee->firstname . ' ' . $employee->lastname }}
+					<div class="row">
+						<div class="col-3">
+							<input type="text" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic">
+						</div>
+						<div class="col-3">
+							<input type="text" placeholder="Bitiş tarihi" class="form-control flatpickr-basic">
+						</div>
+						<div class="col-3">
+							<select name="employee" class="select2 form-select" id="report-select">
+								<option value="" selected disabled>
+									Personel Seçiniz
 								</option>
 
-							@endforeach
+								@foreach ($employees as $employee)
 
-						</select>
-						<button type="submit" disabled class="btn btn-primary btn-round" id="report-button">
-							Aylık Rapor
-						</button>
+									<option value="{{ $employee->id }}">
+										{{ $employee->firstname . ' ' . $employee->lastname }}
+									</option>
+
+								@endforeach
+
+							</select>
+						</div>
+						<div class="col-3">
+							<button type="submit" disabled class="btn btn-primary btn-round" id="report-button">
+								Aylık Rapor
+							</button>
+						</div>
 					</div>
 				</form>
 			</div>
