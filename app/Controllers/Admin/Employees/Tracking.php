@@ -132,7 +132,7 @@ class Tracking extends Admin
 			else
 			{
 				$error = [
-					'class' => 'danger',
+					'class' => 'warning',
 					'text' => 'Lütfen tüm alanları seçiniz.'
 				];
 			}

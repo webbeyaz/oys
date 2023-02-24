@@ -60,6 +60,18 @@
 	</div>
 	<div class="content-body">
 
+		@if ($error)
+			<div class="row">
+				<div class="col-12">
+					<div class="alert alert-{{ $error['class'] }}" role="alert">
+						<div class="alert-body">
+							{{ $error['text'] }}
+						</div>
+					</div>
+				</div>
+			</div>
+		@endif
+
 		@if ($reports)
 
 			<div class="row">
@@ -150,7 +162,7 @@
 				<div class="col-12">
 					<div class="alert alert-info" role="alert">
 						<div class="alert-body">
-							Seçilen personelin son <strong>bir aya</strong> ait giriş ve çıkış kaydı bulunamadı.
+							Personelin seçilen tarihler arasında <strong>giriş ve çıkış</strong> kaydı bulunamadı.
 						</div>
 					</div>
 				</div>
