@@ -77,6 +77,9 @@
 												Araç
 											</label>
 											<select type="text" name="vehicle_id" class="form-control" id="vehicle_id">
+												<option value="" selected disabled>
+													Lütfen seçin
+												</option>
 
 												@foreach ($vehicles as $vehicle)
 
