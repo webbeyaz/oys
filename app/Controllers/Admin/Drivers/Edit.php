@@ -55,8 +55,7 @@ class Edit extends Admin
 					'firstname',
 					'lastname',
 					'email',
-					'phone',
-					'vehicle_id'
+					'phone'
 				]
 			];
 
@@ -70,8 +69,42 @@ class Edit extends Admin
 				$lastname = $data['lastname'];
 				$email = $data['email'];
 				$phone = $data['phone'];
-				$vehicle_id = $data['vehicle_id'];
+				$vehicle_id = $data['vehicle_id'] ?: null;
 				// $status = $data['status']; TODO: İleride aktif edilebilir.
+
+				$sql = "
+					SELECT id
+					FROM drivers
+					WHERE vehicle_id = $vehicle_id
+				";
+
+				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+
+				if ($query)
+				{
+					$id = $query->id;
+
+					$sql = "
+						UPDATE drivers SET
+						vehicle_id = :vehicle_id
+						WHERE id = :id
+					";
+
+					$query = $this->db->prepare($sql);
+
+					$update = $query->execute([
+						'vehicle_id' => $vehicle_id,
+						'id' => $id
+					]);
+
+					if (!$update)
+					{
+						$message = [
+							'class' => 'danger',
+							'text' => 'Sistemde bir hata oluştu ve şoför araçları değiştirelemedi.'
+						];
+					}
+				}
 
 				$sql = "
 					UPDATE drivers SET
@@ -100,10 +133,13 @@ class Edit extends Admin
 
 				if ($update)
 				{
-					$message = [
-						'class' => 'success',
-						'text' => 'Şoför başarılı bir şekilde güncellendi.'
-					];
+					if (!$message)
+					{
+						$message = [
+							'class' => 'success',
+							'text' => 'Şoför başarılı bir şekilde güncellendi.'
+						];
+					}
 				}
 				else
 				{

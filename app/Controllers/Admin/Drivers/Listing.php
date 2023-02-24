@@ -24,7 +24,7 @@ class Listing extends Admin
 			    v.plate AS plate,
 			    d.created_at AS created_at
 			FROM drivers d
-			INNER JOIN vehicles v ON v.id = d.vehicle_id
+			LEFT JOIN vehicles v ON v.id = d.vehicle_id
 			WHERE d.deleted_at IS NULL
 			ORDER BY d.updated_at DESC, d.id DESC
 		";

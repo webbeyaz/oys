@@ -103,6 +103,9 @@
 												Araç
 											</label>
 											<select name="vehicle_id" class="form-control" id="vehicle_id">
+												<option value="" selected>
+													Plaka Seçiniz
+												</option>
 
 												@foreach ($vehicles as $vehicle)
 

@@ -103,6 +103,9 @@
 												Araç
 											</label>
 											<select name="vehicle_id" class="form-control" id="vehicle_id" {{ !$vehicles ? 'disabled' : null }}>
+												<option value="">
+													Plaka Seçiniz
+												</option>
 
 												@if ($vehicles)
 
@@ -113,12 +116,6 @@
 														</option>
 
 													@endforeach
-
-												@else
-
-													<option value="" selected disabled>
-														Araç bulunamadı
-													</option>
 
 												@endif
 
