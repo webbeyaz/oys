@@ -48,7 +48,7 @@
 							<input type="text" name="start" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic" id="report-start">
 						</div>
 						<div class="col-3">
-							<input type="text" name="end" placeholder="Bitiş tarihi" value="{{ date('Y-m-d', strtotime('+1 month', date('Y-m-d'))) }}" class="form-control flatpickr-basic">
+							<input type="text" name="end" placeholder="Bitiş tarihi" value="{{ date('Y-m-d', strtotime('+1 month', strtotime(date('Y-m-d')))) }}" class="form-control flatpickr-basic">
 						</div>
 						<div class="col-3">
 							<select name="employee" class="select2 form-select" id="report-select">
