@@ -82,7 +82,7 @@ class Edit extends Admin
 
 				if ($query)
 				{
-					$id = $query->id;
+					$driver_id = $query->id;
 
 					$sql = "
 						UPDATE drivers SET
@@ -94,7 +94,7 @@ class Edit extends Admin
 
 					$update = $query->execute([
 						'vehicle_id' => $vehicle_id,
-						'id' => $id
+						'id' => $driver_id
 					]);
 
 					if (!$update)
