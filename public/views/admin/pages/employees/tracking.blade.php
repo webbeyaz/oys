@@ -27,36 +27,19 @@
 @section('content')
 
 	<div class="content-header row">
-		<div class="content-header-left col-md-6 col-12 mb-2">
+		<div class="content-header-left col-md-3 col-12 mb-2">
 			<div class="row breadcrumbs-top">
 				<div class="col-12">
 					<h2 class="content-header-title float-start mb-0">
 						Personel Takibi
 					</h2>
-					<div class="breadcrumb-wrapper">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item">
-								<a href="{{ site_url('admin/dashboard') }}">
-									Anasayfa
-								</a>
-							</li>
-							<li class="breadcrumb-item">
-								<a href="{{ site_url('admin/employees/list') }}">
-									Personeller
-								</a>
-							</li>
-							<li class="breadcrumb-item active">
-								Personel Takibi
-							</li>
-						</ol>
-					</div>
 				</div>
 			</div>
 		</div>
-		<div class="content-header-right col-md-6 col-12">
-			<div class="mb-1 breadcrumb-right">
+		<div class="content-header-right col-md-9 col-12 mb-2">
+			<div class="breadcrumb-right">
 				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
-					<div class="row">
+					<div class="row m-0">
 						<div class="col-3">
 							<input type="text" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic">
 						</div>
