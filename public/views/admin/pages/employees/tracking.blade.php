@@ -206,7 +206,9 @@
 				order: [[5, 'desc'], [2, 'desc'], [3, 'desc']]
 			});
 
-			$('.flatpickr-basic').flatpickr();
+			$('.flatpickr-basic').flatpickr({
+				'locale': 'tr'
+			});
 
 			$('#report-select').change(function () {
 				$('#report-button').prop('disabled', false);
