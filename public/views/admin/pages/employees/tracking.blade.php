@@ -44,10 +44,10 @@
 			<div class="breadcrumb-right">
 				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
 					<div class="row justify-content-end m-0">
-						<div class="col-md-3 col-6">
+						<div class="col-md-3 col-6 mb-1">
 							<input type="text" name="start" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic" id="report-start">
 						</div>
-						<div class="col-md-3 col-6">
+						<div class="col-md-3 col-6 mb-1">
 							<input type="text" name="end" placeholder="Bitiş tarihi" value="{{ date('Y-m-d', strtotime('+1 month', strtotime(date('Y-m-d')))) }}" class="form-control flatpickr-basic">
 						</div>
 						<div class="col-md-3 col-6">
