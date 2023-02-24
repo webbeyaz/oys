@@ -72,37 +72,40 @@ class Edit extends Admin
 				$vehicle_id = $data['vehicle_id'] ?: null;
 				// $status = $data['status']; TODO: İleride aktif edilebilir.
 
-				$sql = "
-					SELECT id
-					FROM drivers
-					WHERE vehicle_id = $vehicle_id
-				";
-
-				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
-
-				if ($query)
+				if ($vehicle_id)
 				{
-					$driver_id = $query->id;
-
 					$sql = "
-						UPDATE drivers SET
-						vehicle_id = :vehicle_id
-						WHERE id = :id
+						SELECT id
+						FROM drivers
+						WHERE vehicle_id = $vehicle_id
 					";
 
-					$query = $this->db->prepare($sql);
+					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
 
-					$update = $query->execute([
-						'vehicle_id' => $vehicle_id,
-						'id' => $driver_id
-					]);
-
-					if (!$update)
+					if ($query)
 					{
-						$message = [
-							'class' => 'danger',
-							'text' => 'Sistemde bir hata oluştu ve şoför araçları değiştirelemedi.'
-						];
+						$driver_id = $query->id;
+
+						$sql = "
+							UPDATE drivers SET
+							vehicle_id = :vehicle_id
+							WHERE id = :id
+						";
+
+						$query = $this->db->prepare($sql);
+
+						$update = $query->execute([
+							'vehicle_id' => $vehicle_id,
+							'id' => $driver_id
+						]);
+
+						if (!$update)
+						{
+							$message = [
+								'class' => 'danger',
+								'text' => 'Sistemde bir hata oluştu ve şoför araçları değiştirelemedi.'
+							];
+						}
 					}
 				}
 
