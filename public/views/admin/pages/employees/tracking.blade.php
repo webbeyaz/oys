@@ -16,10 +16,14 @@
 @endsection
 
 @section('styles')
-	<style type="text/css">
+	<style>
 		.dataTables_wrapper .row:first-child,
 		.dataTables_wrapper .row:last-child {
 			margin: 0 auto;
+		}
+
+		html .content .content-wrapper .content-header-title {
+			border: none;
 		}
 	</style>
 @endsection
@@ -39,14 +43,14 @@
 		<div class="content-header-right col-md-9 col-12 mb-2">
 			<div class="breadcrumb-right">
 				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
-					<div class="row gap-1 justify-content-end m-0">
-						<div class="col-3 p-0">
+					<div class="row justify-content-end m-0">
+						<div class="col-3">
 							<input type="text" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic">
 						</div>
-						<div class="col-3 p-0">
+						<div class="col-3">
 							<input type="text" placeholder="Bitiş tarihi" class="form-control flatpickr-basic">
 						</div>
-						<div class="col-3 p-0">
+						<div class="col-3">
 							<select name="employee" class="select2 form-select" id="report-select">
 								<option value="" selected disabled>
 									Personel Seçiniz
@@ -62,7 +66,7 @@
 
 							</select>
 						</div>
-						<div class="col-3 p-0">
+						<div class="col-3">
 							<button type="submit" disabled class="btn btn-primary btn-round" id="report-button">
 								Aylık Rapor
 							</button>
