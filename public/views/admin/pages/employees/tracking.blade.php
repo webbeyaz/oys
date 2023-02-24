@@ -39,7 +39,7 @@
 		<div class="content-header-right col-md-9 col-12 mb-2">
 			<div class="breadcrumb-right">
 				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
-					<div class="row m-0">
+					<div class="row justify-content-between m-0">
 						<div class="col-3 p-0">
 							<input type="text" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic">
 						</div>
