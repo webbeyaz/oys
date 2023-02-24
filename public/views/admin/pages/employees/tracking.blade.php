@@ -21,6 +21,10 @@
 		.dataTables_wrapper .row:last-child {
 			margin: 0 auto;
 		}
+
+		.form-control {
+			width: auto;
+		}
 	</style>
 @endsection
 
