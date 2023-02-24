@@ -40,13 +40,13 @@
 			<div class="breadcrumb-right">
 				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
 					<div class="row m-0">
-						<div class="col-3">
+						<div class="col-3 p-0">
 							<input type="text" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic">
 						</div>
-						<div class="col-3">
+						<div class="col-3 p-0">
 							<input type="text" placeholder="Bitiş tarihi" class="form-control flatpickr-basic">
 						</div>
-						<div class="col-3">
+						<div class="col-3 p-0">
 							<select name="employee" class="select2 form-select" id="report-select">
 								<option value="" selected disabled>
 									Personel Seçiniz
@@ -62,7 +62,7 @@
 
 							</select>
 						</div>
-						<div class="col-3">
+						<div class="col-3 p-0">
 							<button type="submit" disabled class="btn btn-primary btn-round" id="report-button">
 								Aylık Rapor
 							</button>
