@@ -57,10 +57,7 @@
 			<div class="mb-1 breadcrumb-right">
 				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
 					<div class="d-flex gap-1 justify-content-end align-items-end">
-						<div>
-							<label class="form-label" for="fp-default">Default</label>
-							<input type="text" id="fp-default" class="form-control flatpickr-basic" placeholder="YYYY-MM-DD" />
-						</div>
+						<input type="text" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic">
 						<select name="employee" class="select2 form-select w-25" id="report-select">
 							<option value="" selected disabled>
 								Personel Seçiniz
