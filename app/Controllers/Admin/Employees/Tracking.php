@@ -125,7 +125,7 @@ class Tracking extends Admin
 							$total += $diff;
 						}
 
-						$total = number_format($total, 2, ',', '');
+						$total = floatval($total) != intval($total) ? number_format($total, 1, ',', '') : intval($total);
 					}
 				}
 			}
