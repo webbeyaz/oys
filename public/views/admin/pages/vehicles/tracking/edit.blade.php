@@ -82,15 +82,15 @@
 								<div class="row">
 									<div class="col-xl-6 col-12">
 										<div class="mb-1">
-											<label class="form-label" for="driver_id">
+											<label class="form-label" for="vehicle_id">
 												Şoför
 											</label>
-											<select type="text" name="driver_id" class="form-control" id="driver_id">
+											<select type="text" name="vehicle_id" class="form-control" id="vehicle_id">
 
-												@foreach ($drivers as $driver)
+												@foreach ($vehicles as $vehicle)
 
-													<option value="{{ $driver->id }}" {{ $driver->id == $event->driver_id ? 'selected' : null }}>
-														{{ $driver->firstname . ' ' . $driver->lastname }}
+													<option value="{{ $vehicle->id }}" {{ $vehicle->id == $event->vehicle_id ? 'selected' : null }}>
+														{{ $vehicle->plate }}
 													</option>
 
 												@endforeach

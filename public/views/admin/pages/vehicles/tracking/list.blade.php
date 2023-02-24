@@ -72,9 +72,6 @@
 								<thead>
 									<tr>
 										<th>
-											Şoför
-										</th>
-										<th>
 											Araç Plakası
 										</th>
 										<th>
@@ -96,9 +93,6 @@
 									@foreach ($events as $event)
 
 										<tr>
-											<td>
-												{{ $event['firstname'] . ' ' . $event['lastname'] }}
-											</td>
 											<td>
 												{{ $event['plate'] }}
 											</td>
@@ -215,16 +209,23 @@
 @endsection
 
 @section('scripts_page')
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/tr.js"></script>
+	<script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/datetime-moment.js"></script>
 @endsection
 
 @section('scripts')
 
 	<script type="text/javascript">
 		$(function () {
+			moment.locale('tr');
+			$.fn.dataTable.moment('DD MMMM YYYY HH:mm');
+
 			$('.datatables-basic').DataTable({
 				language: {
 					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
-				}
+				},
+				order: [[3, 'desc']]
 			});
 		});
 	</script>

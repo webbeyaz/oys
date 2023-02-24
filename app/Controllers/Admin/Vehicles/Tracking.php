@@ -24,14 +24,11 @@ class Tracking extends Admin
 		$sql = "
 			SELECT
 			    e.id AS id,
-			    d.firstname AS firstname,
-			    d.lastname AS lastname,
 			    v.plate AS plate,
 			    e.text AS text,
 			    e.created_at AS created_at
 			FROM events e
-			INNER JOIN drivers d ON d.id = e.driver_id
-			INNER JOIN vehicles v ON v.id = d.vehicle_id
+			INNER JOIN vehicles v ON v.id = e.vehicle_id
 			WHERE e.deleted_at IS NULL
 			ORDER BY e.updated_at DESC, e.id DESC
 		";
@@ -87,14 +84,14 @@ class Tracking extends Admin
 	 */
 	public function add(Request $request): string
 	{
-		$this->drivers();
+		$this->vehicles();
 
 		$message = [];
 
 		if ($request->getMethod() == 'POST') {
 			$rules = [
 				'required' => [
-					'driver_id',
+					'vehicle_id',
 					'text'
 				]
 			];
@@ -104,13 +101,13 @@ class Tracking extends Admin
 			$data = $this->validator->data();
 
 			if ($this->validator->validate()) {
-				$driver_id = $data['driver_id'];
+				$vehicle_id = $data['vehicle_id'];
 				$text = $data['text'];
 				// $status = $data['status']; TODO: İleride aktif edilebilir.
 
 				$sql = "
 					INSERT INTO events SET
-					driver_id = ?,
+					vehicle_id = ?,
 					text = ?,
 					created_by = ?,
 					updated_by = ?
@@ -119,7 +116,7 @@ class Tracking extends Admin
 				$query = $this->db->prepare($sql);
 
 				$insert = $query->execute([
-					$driver_id,
+					$vehicle_id,
 					$text,
 					$this->data['user']->id,
 					$this->data['user']->id
@@ -267,7 +264,7 @@ class Tracking extends Admin
 	 */
 	public function edit($id, Request $request): string
 	{
-		$this->drivers();
+		$this->vehicles();
 		$this->images($id);
 
 		$message = [];
@@ -275,7 +272,7 @@ class Tracking extends Admin
 
 		$sql = "
 			SELECT
-			    driver_id,
+			    vehicle_id,
 			    text,
 			    created_at
 			FROM events
@@ -298,7 +295,7 @@ class Tracking extends Admin
 		{
 			$rules = [
 				'required' => [
-					'driver_id',
+					'vehicle_id',
 					'text'
 				]
 			];
@@ -309,13 +306,13 @@ class Tracking extends Admin
 			{
 				$data = $this->validator->data();
 
-				$driver_id = $data['driver_id'];
+				$vehicle_id = $data['vehicle_id'];
 				$text = $data['text'];
 				// $status = $data['status']; TODO: İleride aktif edilebilir.
 
 				$sql = "
 					UPDATE events SET
-					driver_id = :driver_id,
+					vehicle_id = :vehicle_id,
 					text = :text,
 					updated_by = :updated_by,
 					updated_at = :updated_at
@@ -325,7 +322,7 @@ class Tracking extends Admin
 				$query = $this->db->prepare($sql);
 
 				$update = $query->execute([
-					'driver_id' => $driver_id,
+					'vehicle_id' => $vehicle_id,
 					'text' => $text,
 					'updated_by' => $this->data['user']->id,
 					'updated_at' => date('Y-m-d H:i:s'),
@@ -512,27 +509,26 @@ class Tracking extends Admin
 	/**
 	 * @return void
 	 */
-	public function drivers(): void
+	public function vehicles(): void
 	{
-		$drivers = [];
+		$vehicles = [];
 
 		$sql = "
 			SELECT
 			    id,
-			    firstname,
-			    lastname
-			FROM drivers
-			ORDER BY firstname ASC, lastname ASC
+			    plate
+			FROM vehicles
+			ORDER BY id DESC
 		";
 
 		$query = $this->db->query($sql, PDO::FETCH_OBJ);
 
 		if ($query->rowCount())
 		{
-			$drivers = $query;
+			$vehicles = $query;
 		}
 
-		$this->data['drivers'] = $drivers;
+		$this->data['vehicles'] = $vehicles;
 	}
 
 	/**
