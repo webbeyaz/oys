@@ -187,6 +187,7 @@
 	<script src="{{ asset_url('app/vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
 	<script src="{{ asset_url('app/vendors/js/tables/datatable/dataTables.rowGroup.min.js') }}"></script>
 	<script src="{{ asset_url('app/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
+	<script src="{{ asset_url('app/vendors/js/pickers/flatpickr/tr.js') }}"></script>
 	<script src="{{ asset_url('app/vendors/js/forms/select/select2.full.min.js') }}"></script>
 @endsection
 
