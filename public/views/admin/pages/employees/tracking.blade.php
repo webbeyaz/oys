@@ -45,10 +45,10 @@
 				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
 					<div class="row justify-content-end m-0">
 						<div class="col-3">
-							<input type="text" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic">
+							<input type="text" name="start" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic" id="report-start">
 						</div>
 						<div class="col-3">
-							<input type="text" placeholder="Bitiş tarihi" class="form-control flatpickr-basic">
+							<input type="text" name="end" placeholder="Bitiş tarihi" value="{{ date("Y-m-d", strtotime("+1 month", date('Y-m-d')) }}" class="form-control flatpickr-basic">
 						</div>
 						<div class="col-3">
 							<select name="employee" class="select2 form-select" id="report-select">
@@ -206,7 +206,7 @@
 				'locale': 'tr'
 			});
 
-			$('#report-select').change(function () {
+			$('#report-start').change(function () {
 				$('#report-button').prop('disabled', false);
 			});
 		});
