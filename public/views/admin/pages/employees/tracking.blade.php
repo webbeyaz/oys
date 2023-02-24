@@ -22,7 +22,7 @@
 			margin: 0 auto;
 		}
 
-		.form-control {
+		.form-control, .form-select {
 			width: auto;
 		}
 	</style>
@@ -62,7 +62,7 @@
 				<form action="{{ site_url('admin/employees/tracking/report') }}" method="post">
 					<div class="d-flex gap-1 justify-content-end align-items-end">
 						<input type="text" placeholder="Başlangıç tarihi" class="form-control flatpickr-basic">
-						<select name="employee" class="select2 form-select w-25" id="report-select">
+						<select name="employee" class="select2 form-select" id="report-select">
 							<option value="" selected disabled>
 								Personel Seçiniz
 							</option>
