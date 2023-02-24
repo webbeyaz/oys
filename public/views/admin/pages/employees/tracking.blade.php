@@ -68,7 +68,7 @@
 						</div>
 						<div class="col-3">
 							<button type="submit" disabled class="btn btn-primary btn-round w-100" id="report-button">
-								Aylık Rapor
+								Raporu Göster
 							</button>
 						</div>
 					</div>
