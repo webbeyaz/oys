@@ -126,7 +126,7 @@
 																				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
 																			</div>
 																			<div class="modal-body">
-																				<img src="{{ upload_url('images/cache/events/400x400/' . $image->image) }}" alt="{{ $image->id }}">
+																				<img src="{{ upload_url('images/original/events/' . $image->image) }}" alt="{{ $image->id }}" class="img-fluid">
 																			</div>
 																			<div class="modal-footer">
 																				<a href="{{ upload_url('images/original/events/' . $image->image) }}" download class="btn btn-primary">
