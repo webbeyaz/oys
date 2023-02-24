@@ -112,7 +112,7 @@ class Tracking extends Admin
 						WHERE
 						    employee_id = $employee
 						    AND
-						    (DATE(a.start_time) >= '{$start}' AND DATE(a.end_time) <= '{$end}')
+						    (DATE(start_time) >= '{$start}' AND DATE(end_time) <= '{$end}')
 					";
 
 					$query = $this->db->query($sql, PDO::FETCH_OBJ);
