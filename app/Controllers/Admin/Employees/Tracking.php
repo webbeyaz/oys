@@ -63,7 +63,9 @@ class Tracking extends Admin
 		{
 			$rules = [
 				'required' => [
-					'employee'
+					'employee',
+					'start',
+					'end'
 				]
 			];
 
@@ -72,7 +74,10 @@ class Tracking extends Admin
 			if ($this->validator->validate())
 			{
 				$data = $this->validator->data();
+
 				$employee = $data['employee'];
+				$start = $data['start'];
+				$end = $data['end'];
 
 				$sql = "
 					SELECT
@@ -90,7 +95,7 @@ class Tracking extends Admin
 					WHERE
 					    a.employee_id = $employee
 					    AND
-					    (a.start_time BETWEEN (CURRENT_DATE() - INTERVAL 1 MONTH) AND CURRENT_DATE())
+					    (a.start_time >= '{$start}' AND a.end_time <= '{$end}')
 				";
 
 				$query = $this->db->query($sql, PDO::FETCH_OBJ);
@@ -107,7 +112,7 @@ class Tracking extends Admin
 						WHERE
 						    employee_id = $employee
 						    AND
-						    (start_time BETWEEN (CURRENT_DATE() - INTERVAL 1 MONTH) AND CURRENT_DATE())
+						    (a.start_time >= '{$start}' AND a.end_time <= '{$end}')
 					";
 
 					$query = $this->db->query($sql, PDO::FETCH_OBJ);
@@ -128,7 +133,7 @@ class Tracking extends Admin
 			{
 				$error = [
 					'class' => 'danger',
-					'text' => 'Lütfen bir personel seçiniz.'
+					'text' => 'Lütfen tüm alanları seçiniz.'
 				];
 			}
 		}
