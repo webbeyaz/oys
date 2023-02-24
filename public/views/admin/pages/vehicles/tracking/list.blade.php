@@ -114,7 +114,30 @@
 															@if ($i < 4)
 
 																<div class="avatar pull-up" data-popup="tooltip-custom">
-																	<img src="{{ upload_url('images/cache/events/40x40/' . $image->image) }}" alt="{{ $image->id }}" width="40" height="40">
+																	<img src="{{ upload_url('images/cache/events/40x40/' . $image->image) }}" alt="{{ $image->id }}" width="40" height="40" data-bs-toggle="modal" data-bs-target="#imageModal{{ $image->id }}">
+																</div>
+																<div class="modal fade" id="imageModal{{ $image->id }}" tabindex="-1" aria-labelledby="{{ $image->image }}" aria-hidden="true">
+																	<div class="modal-dialog modal-dialog-centered">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<h5 class="modal-title" id="exampleModalCenterTitle">
+																					Resim
+																				</h5>
+																				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+																			</div>
+																			<div class="modal-body">
+																				<img src="{{ upload_url('images/cache/events/400x400/' . $image->image) }}" alt="{{ $image->id }}">
+																			</div>
+																			<div class="modal-footer">
+																				<a href="{{ upload_url('images/original/events/' . $image->image) }}" download class="btn btn-primary">
+																					İndir
+																				</a>
+																				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+																					Kapat
+																				</button>
+																			</div>
+																		</div>
+																	</div>
 																</div>
 
 															@endif
