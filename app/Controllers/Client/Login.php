@@ -3,6 +3,7 @@
 namespace App\Controllers\Client;
 
 use App\Controllers\Client;
+use Carbon\Carbon;
 use PDO;
 
 class Login extends Client
@@ -46,6 +47,49 @@ class Login extends Client
 
 			if ($insert)
 			{
+				$sql = "
+					SELECT
+						a.start_time AS start_time,
+						a.agent_start AS agent_start,
+						e.username AS username,
+						e.firstname AS firstname,
+						e.lastname AS lastname
+					FROM actions a
+					INNER JOIN employees e ON e.id = a.employee_id
+					WHERE a.code = '{$slug}'
+				";
+
+				$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+
+				if ($query)
+				{
+					$start_time = $query->start_time;
+					$agent_start = $query->agent_start;
+					$username = $query->username;
+					$firstname = $query->firstname;
+					$lastname = $query->lastname;
+
+					$agent = getDevice($agent_start);
+					$start = Carbon::parse($start_time);
+
+					$startTime = Carbon::createFromFormat('H:i:s', '08:30:59');
+					$startTime->year($start->year);
+					$startTime->month($start->month);
+					$startTime->day($start->day);
+
+					if ($start->gt($startTime))
+					{
+						$text = $firstname . ' ' . $lastname . ' (' . $username . ') personeli, 08:30\'dan sonra <strong>' . $agent . '</strong> ile giriş yaptı.';
+
+						$sql = "INSERT INTO logs SET
+                    	text = ?";
+
+						$query = $this->db->prepare($sql);
+
+						$insert = $query->execute([$text]);
+					}
+				}
+
 				$message = [
 					'class' => 'success',
 					'text' => 'Başarılı bir şekilde giriş yapıldı.'

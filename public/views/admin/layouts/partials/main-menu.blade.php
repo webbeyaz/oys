@@ -146,7 +146,7 @@
 						<span class="menu-title text-truncate">Kayıtlar</span>
 					</a>
 				</li>
-				<li class="nav-item {{ segments(1) == 'users' ? 'active' : null }}">
+				<!--<li class="nav-item {{ segments(1) == 'users' ? 'active' : null }}">
 					<a href="#" class="d-flex align-items-center">
 						<i data-feather="award"></i>
 						<span class="menu-title text-truncate">Yöneticiler</span>
@@ -165,7 +165,7 @@
 							</a>
 						</li>
 					</ul>
-				</li>
+				</li>-->
 
 			@endif
 

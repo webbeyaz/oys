@@ -98,7 +98,7 @@ $app->router->group('/admin', function ($router) {
 		$router->get('/delete/:id', 'Admin.Users.Delete@index');
 	}, ['before' => 'SuperAdminCheck']);
 
-	$router->get('/logs', 'Admin.Logs@index', ['before' => 'SuperAdminCheck']);
+	$router->get('/logs', 'Admin.Logs.Listing@index', ['before' => 'SuperAdminCheck']);
 }, ['before' => 'AdminCheckAuth']);
 
 /*

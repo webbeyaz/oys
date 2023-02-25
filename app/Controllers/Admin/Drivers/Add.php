@@ -50,9 +50,14 @@ class Add extends Admin
 				if ($vehicle_id)
 				{
 					$sql = "
-						SELECT id
-						FROM drivers
-						WHERE vehicle_id = $vehicle_id
+						SELECT
+							d.id AS id,
+							d.firstname AS firtname,
+							d.lastname AS lastname,
+							v.plate AS plate
+						FROM drivers d
+						INNER JOIN vehicles v ON v.id = d.vehicle_id
+						WHERE d.vehicle_id = $vehicle_id
 					";
 
 					$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
@@ -60,6 +65,9 @@ class Add extends Admin
 					if ($query)
 					{
 						$id = $query->id;
+						$oldFirstname = $query->firstname;
+						$oldLastname = $query->lastname;
+						$plate = $query->plate;
 
 						$sql = "
 							UPDATE drivers SET
@@ -74,7 +82,19 @@ class Add extends Admin
 							'id' => $id
 						]);
 
-						if (!$update)
+						if ($update)
+						{
+							// TODO: Sadece yönetici rolü ise yap!
+							$text = $oldFirstname . ' ' . $oldLastname . ' adlı şoföre ait  <strong>' . $plate . ' plakalı</strong> araç, ' . $firstname . ' ' . $lastname . ' adlı şoföre atandı.';
+
+							$sql = "INSERT INTO logs SET
+            				text = ?";
+
+							$query = $this->db->prepare($sql);
+
+							$insert = $query->execute([$text]);
+						}
+						else
 						{
 							$message = [
 								'class' => 'danger',
