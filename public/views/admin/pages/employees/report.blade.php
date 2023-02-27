@@ -130,7 +130,7 @@
 												({{ getDevice($report->agent_start) }})
 											</td>
 											<td>
-												{{ $report->end_time ? timeConvert($report->end_time, 'H:i') : '-' }}
+												{{ $employee->end_time ? timeForEnd($employee->start_time, $employee->end_time) : '-' }}
 												{{ $report->agent_end ? '(' . getDevice($report->agent_end) . ')' : '-' }}
 											</td>
 											<td>
