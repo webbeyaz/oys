@@ -130,9 +130,6 @@ class Home extends Client
 		else
 		{
 			unset($_COOKIE['login']);
-
-			header('Location: ' . site_url('welcome'));
-			exit;
 		}
 
 		$this->data['error'] = $error;
