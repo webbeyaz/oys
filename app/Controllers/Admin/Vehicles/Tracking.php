@@ -26,9 +26,12 @@ class Tracking extends Admin
 			    e.id AS id,
 			    v.plate AS plate,
 			    e.text AS text,
-			    e.created_at AS created_at
+			    e.created_at AS created_at,
+			    d.firstname AS firstname,
+			    d.lastname AS lastname
 			FROM events e
 			INNER JOIN vehicles v ON v.id = e.vehicle_id
+			LEFT JOIN drivers d ON d.vehicle_id = e.vehicle_id
 			WHERE e.deleted_at IS NULL
 			ORDER BY e.updated_at DESC, e.id DESC
 		";

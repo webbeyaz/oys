@@ -75,6 +75,9 @@
 											Araç Plakası
 										</th>
 										<th>
+											Mevcut Şoför
+										</th>
+										<th>
 											Açıklama
 										</th>
 										<th>
@@ -95,6 +98,9 @@
 										<tr>
 											<td>
 												{{ $event['plate'] }}
+											</td>
+											<td>
+												{{ $event['firstname'] ? $event['firstname'] . ' ' . $event['lastname'] : '-' }}
 											</td>
 											<td>
 												{{ $event['text'] }}
@@ -248,7 +254,7 @@
 				language: {
 					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
 				},
-				order: [[3, 'desc']]
+				order: [[4, 'desc']]
 			});
 		});
 	</script>
