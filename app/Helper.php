@@ -29,6 +29,8 @@ function timeConvert($date, $format): string
  */
 function timeForEnd($start, $end): string
 {
+	$note = null;
+
 	$start = Carbon::parse($start);
 	$end = Carbon::parse($end);
 
@@ -42,9 +44,13 @@ function timeForEnd($start, $end): string
 		$end->day($start->day);
 		$end->hour('17');
 		$end->minute('00');
+
+		$note = 'Sistem Tarafından';
 	}
 
-	return $end->translatedFormat('H:i');
+	$result = $end->translatedFormat('H:i');
+
+	return $note ? $result . ' - ' . $note : $result;
 }
 
 /**
