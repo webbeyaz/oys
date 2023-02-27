@@ -163,7 +163,7 @@
 					<div class="col-12">
 						<div class="alert alert-info" role="alert">
 							<div class="alert-body">
-								Personelin seçilen tarihler arasında <strong>giriş ve çıkış</strong> kaydı bulunamadı.
+								Personelin <strong>{{ timeConvert($dateStart, 'd.m.Y') }} - {{ timeConvert($dateEnd, 'd.m.Y') }}</strong> tarihleri arasında <strong>giriş ve çıkış</strong> kaydı bulunamadı.
 							</div>
 						</div>
 					</div>
