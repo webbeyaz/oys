@@ -70,6 +70,9 @@
 											Şase (Şasi)
 										</th>
 										<th>
+											Şoför
+										</th>
+										<th>
 											Oluşturulma Tarihi
 										</th>
 										<th>
@@ -87,6 +90,9 @@
 											</td>
 											<td>
 												{{ $vehicle->chassis }}
+											</td>
+											<td>
+												{{ $vehicle->firstname ? $vehicle->firstname . ' ' . $vehicle->lastname : '-' }}
 											</td>
 											<td>
 												{{ timeConvert($vehicle->created_at, 'd F Y H:i') }}
@@ -171,7 +177,7 @@
 				language: {
 					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
 				},
-				order: [[2, 'desc']]
+				order: [[3, 'desc']]
 			});
 		});
 	</script>

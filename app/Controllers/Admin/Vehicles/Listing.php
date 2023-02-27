@@ -16,11 +16,14 @@ class Listing extends Admin
 
 		$sql = "
 			SELECT
-			    id,
-				plate,
-				chassis,
-				created_at
-			FROM vehicles
+			    v.id AS id,
+				v.plate AS plate,
+				v.chassis AS chassis,
+				v.created_at AS created_at,
+				d.firstname AS firstname,
+				d.lastname AS lastname
+			FROM vehicles v
+			LEFT JOIN drivers d ON d.vehicle_id = v.id
 			WHERE deleted_at IS NULL
 			ORDER BY updated_at DESC, id DESC
 		";
