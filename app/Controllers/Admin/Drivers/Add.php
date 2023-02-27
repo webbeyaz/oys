@@ -89,8 +89,7 @@ class Add extends Admin
             				text = ?";
 
 							$query = $this->db->prepare($sql);
-
-							$insert = $query->execute([$text]);
+							$query->execute([$text]);
 						}
 						else
 						{
