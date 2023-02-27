@@ -65,7 +65,7 @@ function timeDiffHours($start, $end): string
 	}
 
 	$startDate = $start->translatedFormat('Y-m-d');
-	$endDate = $start->translatedFormat('Y-m-d');
+	$endDate = $end->translatedFormat('Y-m-d');
 
 	if ($startDate != $endDate)
 	{
