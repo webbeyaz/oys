@@ -21,13 +21,17 @@ class Edit extends Admin
 	public function index($id, Request $request): string
 	{
 		$message = [];
-		$vehicle = null;
 
 		$sql = "
 			SELECT
-			    plate,
-			    chassis
-			FROM vehicles
+			    username,
+			    password,
+				firstname,
+				lastname,
+				email,
+				phone,
+				role
+			FROM users
 			WHERE id = '{$id}'
 		";
 
@@ -35,11 +39,11 @@ class Edit extends Admin
 
 		if ($query)
 		{
-			$vehicle = $query;
+			$user = $query;
 		}
 		else
 		{
-			header('Location: ' . site_url('admin/vehicles/list'));
+			header('Location: ' . site_url('admin/users/list'));
 			exit;
 		}
 
@@ -47,8 +51,10 @@ class Edit extends Admin
 		{
 			$rules = [
 				'required' => [
-					'plate',
-					'chassis'
+					'username',
+					'firstname',
+					'lastname',
+					'email'
 				]
 			];
 
@@ -58,15 +64,21 @@ class Edit extends Admin
 			{
 				$data = $this->validator->data();
 
-				$plate = $data['plate'];
-				$chassis = $data['chassis'];
-				// $status = $data['status']; TODO: İleride aktif edilebilir.
+				$username = $data['username'];
+				$password = $data['password'] ? md5($data['password']) : $user->password;
+				$firstname = $data['firstname'];
+				$lastname = $data['lastname'];
+				$email = $data['email'];
+				$phone = $data['phone'];
 
 				$sql = "
-					UPDATE vehicles SET
-					plate = :plate,
-					chassis = :chassis,
-					updated_by = :updated_by,
+					UPDATE users SET
+					username = :username,
+					password = :password,
+					firstname = :firstname,
+					lastname = :lastname,
+					email = :email,
+					phone = :phone,
 					updated_at = :updated_at
 					WHERE id = :id
 				";
@@ -74,9 +86,12 @@ class Edit extends Admin
 				$query = $this->db->prepare($sql);
 
 				$update = $query->execute([
-					'plate' => $plate,
-					'chassis' => $chassis,
-					'updated_by' => $this->data['user']->id,
+					'username' => $username,
+					'password' => $password,
+					'firstname' => $firstname,
+					'lastname' => $lastname,
+					'email' => $email,
+					'phone' => $phone,
 					'updated_at' => date('Y-m-d H:i:s'),
 					'id' => $id
 				]);
@@ -85,14 +100,14 @@ class Edit extends Admin
 				{
 					$message = [
 						'class' => 'success',
-						'text' => 'Araç başarılı bir şekilde güncellendi.'
+						'text' => 'Kullanıcı başarılı bir şekilde güncellendi.'
 					];
 				}
 				else
 				{
 					$message = [
 						'class' => 'danger',
-						'text' => 'Sistemde bir hata oluştu ve araç güncellenemedi.'
+						'text' => 'Sistemde bir hata oluştu ve kullanıcı güncellenemedi.'
 					];
 				}
 			}
@@ -105,9 +120,9 @@ class Edit extends Admin
 			}
 		}
 
-		$this->data['vehicle'] = $vehicle;
+		$this->data['item'] = $user;
 		$this->data['message'] = $message;
 
-		return $this->view('admin.pages.vehicles.edit', $this->data);
+		return $this->view('admin.pages.users.edit', $this->data);
 	}
 }
