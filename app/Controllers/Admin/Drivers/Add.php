@@ -83,7 +83,7 @@ class Add extends Admin
 						if ($update)
 						{
 							// TODO: Sadece yönetici rolü ise yap!
-							$text = $oldFirstname . ' ' . $oldLastname . ' adlı şoföre ait  <strong>' . $plate . ' plakalı</strong> araç, ' . $firstname . ' ' . $lastname . ' adlı şoföre atandı.';
+							$text = $oldFirstname . ' ' . $oldLastname . ' adlı şoföre ait  <strong>' . $plate . '</strong> plakalı araç, ' . $firstname . ' ' . $lastname . ' adlı şoföre atandı.';
 
 							$sql = "INSERT INTO logs SET
             				text = ?";
