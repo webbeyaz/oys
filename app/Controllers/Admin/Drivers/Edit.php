@@ -53,9 +53,7 @@ class Edit extends Admin
 			$rules = [
 				'required' => [
 					'firstname',
-					'lastname',
-					'email',
-					'phone'
+					'lastname'
 				]
 			];
 

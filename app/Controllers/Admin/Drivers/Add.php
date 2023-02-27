@@ -28,9 +28,7 @@ class Add extends Admin
 			$rules = [
 				'required' => [
 					'firstname',
-					'lastname',
-					'email',
-					'phone'
+					'lastname'
 				]
 			];
 

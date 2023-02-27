@@ -74,13 +74,13 @@
 											<label class="form-label" for="firstname">
 												Ad
 											</label>
-											<input type="text" name="firstname" placeholder="Ad" class="form-control" id="firstname">
+											<input type="text" name="firstname" placeholder="Ad" required class="form-control" id="firstname">
 										</div>
 										<div class="mb-1">
 											<label class="form-label" for="lastname">
 												Soyad
 											</label>
-											<input type="text" name="lastname" placeholder="Soyad" class="form-control" id="lastname">
+											<input type="text" name="lastname" placeholder="Soyad" required class="form-control" id="lastname">
 										</div>
 									</div>
 									<div class="col-xl-6 col-12">
