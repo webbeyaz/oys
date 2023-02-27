@@ -12,10 +12,8 @@ class Delete extends Admin
 	 */
 	public function index($id): string
 	{
-		$message = [];
-
 		$sql = "
-			UPDATE vehicles SET
+			UPDATE users SET
 			deleted_by = :deleted_by,
 			deleted_at = :deleted_at
 			WHERE id = :id
@@ -31,44 +29,21 @@ class Delete extends Admin
 
 		if ($update)
 		{
-			$sql = "
-				UPDATE drivers SET
-				vehicle_id = :vehicle_id
-				WHERE vehicle_id = :id
-			";
-
-			$query = $this->db->prepare($sql);
-
-			$update = $query->execute([
-				'vehicle_id' => NULL,
-				'id' => $id
-			]);
-
-			if ($update)
-			{
-				$message = [
-					'class' => 'success',
-					'text' => 'Araç silme işlemi başarılı ile gerçekleşti.'
-				];
-			}
-			else
-			{
-				$message = [
-					'class' => 'danger',
-					'text' => 'Sistemde bir hata oluştu ve araç mevcut şoförden silenemedi.'
-				];
-			}
+			$message = [
+				'class' => 'success',
+				'text' => 'Kullanıcı silme işlemi başarılı ile gerçekleşti.'
+			];
 		}
 		else
 		{
 			$message = [
 				'class' => 'danger',
-				'text' => 'Sistemde bir hata oluştu ve araç silinemedi.'
+				'text' => 'Sistemde bir hata oluştu ve kullanıcı silinemedi.'
 			];
 		}
 
 		$this->data['message'] = $message;
 
-		return $this->view('admin.pages.vehicles.delete', $this->data);
+		return $this->view('admin.pages.users.delete', $this->data);
 	}
 }

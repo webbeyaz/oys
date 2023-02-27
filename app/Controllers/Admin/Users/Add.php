@@ -4,7 +4,6 @@ namespace App\Controllers\Admin\Users;
 
 use App\Controllers\Admin;
 use Symfony\Component\HttpFoundation\Request;
-use PDO;
 
 class Add extends Admin
 {
@@ -25,8 +24,11 @@ class Add extends Admin
 		{
 			$rules = [
 				'required' => [
-					'plate',
-					'chassis'
+					'username',
+					'password',
+					'firstname',
+					'lastname',
+					'email'
 				]
 			];
 
@@ -36,14 +38,21 @@ class Add extends Admin
 			{
 				$data = $this->validator->data();
 
-				$plate = $data['plate'];
-				$chassis = $data['chassis'];
-				// $status = $data['status']; TODO: İleride aktif edilebilir.
+				$username = $data['username'];
+				$password = md5($data['password']);
+				$firstname = $data['firstname'];
+				$lastname = $data['lastname'];
+				$email = $data['email'];
+				$phone = $data['phone'];
 
 				$sql = "
-					INSERT INTO vehicles SET
-					plate = ?,
-					chassis = ?,
+					INSERT INTO users SET
+					username = ?,
+					password = ?,
+					firstname = ?,
+					lastname = ?,
+					email = ?,
+					phone = ?,
 					created_by = ?,
 					updated_by = ?
 				";
@@ -51,8 +60,12 @@ class Add extends Admin
 				$query = $this->db->prepare($sql);
 
 				$insert = $query->execute([
-					$plate,
-					$chassis,
+					$username,
+					$password,
+					$firstname,
+					$lastname,
+					$email,
+					$phone,
 					$this->data['user']->id,
 					$this->data['user']->id
 				]);
@@ -61,14 +74,14 @@ class Add extends Admin
 				{
 					$message = [
 						'class' => 'success',
-						'text' => 'Araç başarılı bir şekilde eklendi.'
+						'text' => 'Kullanıcı başarılı bir şekilde eklendi.'
 					];
 				}
 				else
 				{
 					$message = [
 						'class' => 'danger',
-						'text' => 'Sistemde bir hata oluştu ve araç eklenemedi.'
+						'text' => 'Sistemde bir hata oluştu ve kullanıcı eklenemedi.'
 					];
 				}
 			}
@@ -83,6 +96,6 @@ class Add extends Admin
 
 		$this->data['message'] = $message;
 
-		return $this->view('admin.pages.vehicles.add', $this->data);
+		return $this->view('admin.pages.users.add', $this->data);
 	}
 }
