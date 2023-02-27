@@ -24,8 +24,8 @@ class Listing extends Admin
 				d.lastname AS lastname
 			FROM vehicles v
 			LEFT JOIN drivers d ON d.vehicle_id = v.id
-			WHERE deleted_at IS NULL
-			ORDER BY updated_at DESC, id DESC
+			WHERE v.deleted_at IS NULL
+			ORDER BY v.updated_at DESC, v.id DESC
 		";
 
 		$query = $this->db->query($sql, PDO::FETCH_OBJ);
