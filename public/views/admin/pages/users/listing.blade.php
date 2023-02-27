@@ -30,7 +30,7 @@
 			<div class="row breadcrumbs-top">
 				<div class="col-12">
 					<h2 class="content-header-title float-start mb-0">
-						Araç Listesi
+						Kullanıcı Listesi
 					</h2>
 					<div class="breadcrumb-wrapper">
 						<ol class="breadcrumb">
@@ -40,10 +40,10 @@
 								</a>
 							</li>
 							<li class="breadcrumb-item">
-								Araçlar
+								Kullanıcılar
 							</li>
 							<li class="breadcrumb-item active">
-								Araç Listesi
+								Kullanıcı Listesi
 							</li>
 						</ol>
 					</div>
@@ -53,7 +53,7 @@
 	</div>
 	<div class="content-body">
 
-		@if ($vehicles)
+		@if ($users)
 
 			<!-- Basic table -->
 			<section id="basic-datatable">
@@ -64,13 +64,19 @@
 								<thead>
 									<tr>
 										<th>
-											Plaka
+											Kullanıcı Adı
 										</th>
 										<th>
-											Şase (Şasi)
+											Ad Soyad
 										</th>
 										<th>
-											Şoför
+											E-posta
+										</th>
+										<th>
+											Telefon
+										</th>
+										<th>
+											Rol
 										</th>
 										<th>
 											Oluşturulma Tarihi
@@ -82,20 +88,26 @@
 								</thead>
 								<tbody>
 
-									@foreach ($vehicles as $vehicle)
+									@foreach ($users as $item)
 
 										<tr>
 											<td>
-												{{ $vehicle->plate }}
+												{{ $item->username }}
 											</td>
 											<td>
-												{{ $vehicle->chassis }}
+												{{ $item->firstname . ' ' . $item->lastname }}
 											</td>
 											<td>
-												{{ $vehicle->firstname ? $vehicle->firstname . ' ' . $vehicle->lastname : '-' }}
+												{{ $item->email }}
 											</td>
 											<td>
-												{{ timeConvert($vehicle->created_at, 'd F Y H:i') }}
+												{{ $item->phone }}
+											</td>
+											<td>
+												{{ $item->role == 1 ? '<span class="badge badge-light-danger">Süper Yönetici</span>' : '<span class="badge badge-light-primary">Yönetici</span>' }}
+											</td>
+											<td>
+												{{ timeConvert($item->created_at, 'd F Y H:i') }}
 											</td>
 											<td>
 												<div class="dropdown">
@@ -103,14 +115,18 @@
 														<i data-feather="more-vertical"></i>
 													</button>
 													<div class="dropdown-menu dropdown-menu-end">
-														<a href="{{ site_url('admin/vehicles/edit/' . $vehicle->id) }}" class="dropdown-item">
+														<a href="{{ site_url('admin/users/edit/' . $item->id) }}" class="dropdown-item">
 															<i data-feather="edit-2" class="me-50"></i>
 															<span>Düzenle</span>
 														</a>
-														<a href="{{ site_url('admin/vehicles/delete/' . $vehicle->id) }}" class="dropdown-item">
-															<i data-feather="trash" class="me-50"></i>
-															<span>Sil</span>
-														</a>
+
+														@if ($user->id != $item->id)
+															<a href="{{ site_url('admin/users/delete/' . $item->id) }}" class="dropdown-item">
+																<i data-feather="trash" class="me-50"></i>
+																<span>Sil</span>
+															</a>
+														@endif
+
 													</div>
 												</div>
 											</td>
@@ -132,7 +148,7 @@
 				<div class="col-12">
 					<div class="alert alert-info" role="alert">
 						<div class="alert-body">
-							Sistemde kayıtlı araç bulunamadı.
+							Sistemde kayıtlı kullanıcı bulunamadı.
 						</div>
 					</div>
 				</div>
@@ -177,7 +193,7 @@
 				language: {
 					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
 				},
-				order: [[3, 'desc']]
+				order: [[5, 'desc']]
 			});
 		});
 	</script>

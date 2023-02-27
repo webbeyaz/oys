@@ -12,31 +12,32 @@ class Listing extends Admin
 	 */
 	public function index(): string
 	{
-		$vehicles = [];
+		$users = [];
 
 		$sql = "
 			SELECT
-			    v.id AS id,
-				v.plate AS plate,
-				v.chassis AS chassis,
-				v.created_at AS created_at,
-				d.firstname AS firstname,
-				d.lastname AS lastname
-			FROM vehicles v
-			LEFT JOIN drivers d ON d.vehicle_id = v.id
-			WHERE v.deleted_at IS NULL
-			ORDER BY v.updated_at DESC, v.id DESC
+			    id,
+				username,
+				firstname,
+				lastname,
+				email,
+				phone,
+				role,
+				created_at
+			FROM users
+			WHERE deleted_at IS NULL
+			ORDER BY updated_at DESC, id DESC
 		";
 
 		$query = $this->db->query($sql, PDO::FETCH_OBJ);
 
 		if ($query->rowCount())
 		{
-			$vehicles = $query;
+			$users = $query;
 		}
 
-		$this->data['vehicles'] = $vehicles;
+		$this->data['users'] = $users;
 
-		return $this->view('admin.pages.vehicles.listing', $this->data);
+		return $this->view('admin.pages.users.listing', $this->data);
 	}
 }
