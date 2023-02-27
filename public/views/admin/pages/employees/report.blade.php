@@ -204,7 +204,7 @@
 					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
 				},
 				order: [[5, 'desc'], [2, 'desc'], [3, 'desc']],
-				dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-end"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+				dom: '<"card-header border-bottom p-1"<"dt-action-buttons text-end"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
 				buttons: [
 					{
 						extend: 'collection',
