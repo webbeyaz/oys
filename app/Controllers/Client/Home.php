@@ -129,40 +129,10 @@ class Home extends Client
 		}
 		else
 		{
-			$sql = "
-				SELECT
-					username,
-					firstname,
-					lastname
-				FROM employees
-				WHERE cookie = '{$cookie}'
-			";
+			unset($_COOKIE['login']);
 
-			$query = $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
-
-			if ($query)
-			{
-				$username = $query->username;
-				$firstname = $query->firstname;
-				$lastname = $query->lastname;
-
-				$text = $firstname . ' ' . $lastname . ' (' . $username . ') personeli, farklı bir tarayıcı üzerinden giriş yapmaya çalıştı.';
-
-				$sql = "INSERT INTO logs SET
-            	text = ?";
-
-				$query = $this->db->prepare($sql);
-
-				$insert = $query->execute([$text]);
-
-				if ($insert)
-				{
-					unset($_COOKIE['login']);
-
-					header('Location: ' . site_url('welcome'));
-					exit;
-				}
-			}
+			header('Location: ' . site_url('welcome'));
+			exit;
 		}
 
 		$this->data['error'] = $error;
