@@ -131,7 +131,7 @@ class Home extends Client
 		{
 			setcookie(
 				'login',
-				null,
+				'',
 				time() + (10 * 365 * 24 * 60 * 60)
 			);
 
