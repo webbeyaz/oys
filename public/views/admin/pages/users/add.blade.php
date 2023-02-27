@@ -18,7 +18,7 @@
 			<div class="row breadcrumbs-top">
 				<div class="col-12">
 					<h2 class="content-header-title float-start mb-0">
-						Araç Ekle
+						Kullanıcı Ekle
 					</h2>
 					<div class="breadcrumb-wrapper">
 						<ol class="breadcrumb">
@@ -28,12 +28,12 @@
 								</a>
 							</li>
 							<li class="breadcrumb-item">
-								<a href="{{ site_url('admin/vehicles/list') }}">
-									Araçlar
+								<a href="{{ site_url('admin/users/list') }}">
+									Kullanıcılar
 								</a>
 							</li>
 							<li class="breadcrumb-item active">
-								Araç Ekle
+								Kullanıcı Ekle
 							</li>
 						</ol>
 					</div>
@@ -64,32 +64,68 @@
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title">
-									Araç Ekle
+									Kullanıcı Ekle
 								</h4>
 							</div>
 							<div class="card-body">
 								<div class="row">
 									<div class="col-xl-6 col-12">
 										<div class="mb-1">
-											<label class="form-label" for="plate">
-												Plaka
+											<label class="form-label" for="username">
+												Kullanıcı Adı
 											</label>
-											<input type="text" name="plate" placeholder="Plaka" class="form-control" id="plate">
+											<input type="text" name="username" placeholder="Kullanıcı Adı" required class="form-control" id="username">
 										</div>
 									</div>
 									<div class="col-xl-6 col-12">
 										<div class="mb-1">
-											<label class="form-label" for="chassis">
-												Şase (Şasi)
+											<label class="form-label" for="password">
+												Şifre
 											</label>
-											<input type="text" name="chassis" placeholder="Şase (Şasi)" class="form-control" id="chassis">
+											<input type="password" name="password" placeholder="Şifre" required class="form-control" id="password">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-6 col-12">
+										<div class="mb-1">
+											<label class="form-label" for="firstname">
+												Ad
+											</label>
+											<input type="text" name="firstname" placeholder="Ad" required class="form-control" id="firstname">
+										</div>
+									</div>
+									<div class="col-xl-6 col-12">
+										<div class="mb-1">
+											<label class="form-label" for="lastname">
+												Soyad
+											</label>
+											<input type="text" name="lastname" placeholder="Soyad" required class="form-control" id="lastname">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-6 col-12">
+										<div class="mb-1">
+											<label class="form-label" for="email">
+												E-posta
+											</label>
+											<input type="email" name="email" placeholder="E-posta" required class="form-control" id="email">
+										</div>
+									</div>
+									<div class="col-xl-6 col-12">
+										<div class="mb-1">
+											<label class="form-label" for="phone">
+												Telefon
+											</label>
+											<input type="text" name="phone" placeholder="Telefon" class="form-control" id="phone">
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary waves-effect waves-float waves-light">
-							Araç Ekle
+							Kullanıcıyı Kaydet
 						</button>
 					</div>
 				</div>

@@ -82,7 +82,7 @@
 											<label class="form-label" for="password">
 												Şifre
 											</label>
-											<input type="password" name="password" placeholder="Şifre" value="" class="form-control" id="password">
+											<input type="password" name="password" placeholder="Şifre" class="form-control" id="password">
 										</div>
 									</div>
 								</div>
