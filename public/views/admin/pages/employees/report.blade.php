@@ -8,8 +8,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/tables/datatable/buttons.bootstrap5.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/tables/datatable/rowGroup.bootstrap5.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset_url('app/vendors/css/pickers/flatpickr/flatpickr.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/2.3.4/css/buttons.dataTables.min.css">
 @endsection
 
 @section('styles_page')
@@ -206,9 +204,36 @@
 					url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json'
 				},
 				order: [[5, 'desc'], [2, 'desc'], [3, 'desc']],
-				dom: 'Bfrtip',
+				dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-end"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+				displayLength: 7,
+				lengthMenu: [7, 10, 25, 50, 75, 100],
 				buttons: [
-					'pdf', 'print'
+					{
+						extend: 'collection',
+						className: 'btn btn-outline-secondary dropdown-toggle me-2',
+						text: feather.icons['share'].toSvg({ class: 'font-small-4 me-50' }) + 'Export',
+						buttons: [
+							{
+								extend: 'print',
+								text: feather.icons['printer'].toSvg({ class: 'font-small-4 me-50' }) + 'Print',
+								className: 'dropdown-item',
+								exportOptions: { columns: [3, 4, 5, 6, 7] }
+							},
+							{
+								extend: 'pdf',
+								text: feather.icons['clipboard'].toSvg({ class: 'font-small-4 me-50' }) + 'Pdf',
+								className: 'dropdown-item',
+								exportOptions: { columns: [3, 4, 5, 6, 7] }
+							}
+						],
+						init: function (api, node, config) {
+							$(node).removeClass('btn-secondary');
+							$(node).parent().removeClass('btn-group');
+							setTimeout(function () {
+								$(node).closest('.dt-buttons').removeClass('btn-group').addClass('d-inline-flex');
+							}, 50);
+						}
+					}
 				]
 			});
 		});
