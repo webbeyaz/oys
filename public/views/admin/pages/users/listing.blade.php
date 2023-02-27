@@ -104,7 +104,7 @@
 												{{ $item->phone }}
 											</td>
 											<td>
-												{{ $item->role == 1 ? '<span class="badge badge-light-danger">Süper Yönetici</span>' : '<span class="badge badge-light-primary">Yönetici</span>' }}
+												{!! $item->role == 1 ? '<span class="badge badge-light-danger">Süper Yönetici</span>' : '<span class="badge badge-light-primary">Yönetici</span>' !!}
 											</td>
 											<td>
 												{{ timeConvert($item->created_at, 'd F Y H:i') }}
