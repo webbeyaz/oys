@@ -65,6 +65,8 @@ class Tracking extends Admin
 				$events[$i] = [
 					'id' => $id,
 					'plate' => $row->plate,
+					'firstname' => $row->firstname,
+					'lastname' => $row->lastname,
 					'text' => $row->text,
 					'images' => $images,
 					'created_at' => $row->created_at
