@@ -82,6 +82,9 @@ class Tracking extends Admin
 				$start = $data['start'];
 				$end = $data['end'];
 
+				$dateStart = $start;
+				$dateEnd = $end;
+
 				$sql = "
 					SELECT
 					    a.id AS id,
@@ -130,9 +133,6 @@ class Tracking extends Admin
 
 						$total = floatval($total) != intval($total) ? number_format($total, 1, ',', '') : intval($total);
 					}
-
-					$dateStart = $start;
-					$dateEnd = $end;
 				}
 			}
 			else
