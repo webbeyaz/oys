@@ -78,7 +78,7 @@
 				<div class="col-12">
 					<div class="alert alert-info" role="alert">
 						<div class="alert-body">
-							Personelin <strong>{{ $dateStart }} - {{ $dateEnd }}</strong> tarihleri arasındaki toplam çalışma süresi:
+							Personelin <strong>{{ timeConvert($dateStart, 'd.m.Y') }} - {{ timeConvert($dateEnd, 'd.m.Y') }}</strong> tarihleri arasındaki toplam çalışma süresi:
 							<span class="text-success fw-bold">{{ $total }} saat</span>
 						</div>
 					</div>
