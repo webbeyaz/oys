@@ -73,8 +73,6 @@ class Login extends Api
 			}
 			else
 			{
-				unset($_COOKIE['login']);
-
 				$text = [
 					'status' => 401,
 					'message' => 'Personel ve çerez bilgileri eşleşmiyor.'
