@@ -129,8 +129,14 @@ class Home extends Client
 		}
 		else
 		{
-			unset($_COOKIE['login']);
-			header('Location: ' . site_url());
+			setcookie(
+				'login',
+				null,
+				time() + (10 * 365 * 24 * 60 * 60)
+			);
+
+			header('Location: ' . site_url('welcome'));
+			exit;
 
 			/*$error = [
 				'class' => 'danger',
