@@ -72,6 +72,8 @@ function timeDiffHours($start, $end): string
 		$end->year($start->year);
 		$end->month($start->month);
 		$end->day($start->day);
+		$end->hour('17');
+		$end->minute('00');
 	}
 
 	$different = ($start->addMinutes(30)->diffInMinutes($end)) / 60;
