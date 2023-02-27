@@ -215,13 +215,13 @@
 								extend: 'print',
 								text: feather.icons['printer'].toSvg({ class: 'font-small-4 me-50' }) + 'Yazdır',
 								className: 'dropdown-item',
-								exportOptions: { columns: [3, 4, 5, 5, 7, 3] }
+								exportOptions: { columns: [0, 1, 2, 3, 4, 5] }
 							},
 							{
 								extend: 'pdf',
 								text: feather.icons['clipboard'].toSvg({ class: 'font-small-4 me-50' }) + 'PDF İndir',
 								className: 'dropdown-item',
-								exportOptions: { columns: [3, 4, 5, 5, 7, 3] }
+								exportOptions: { columns: [0, 1, 2, 3, 4, 5] }
 							}
 						],
 						init: function (api, node, config) {
