@@ -205,23 +205,21 @@
 				},
 				order: [[5, 'desc'], [2, 'desc'], [3, 'desc']],
 				dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-end"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-				displayLength: 7,
-				lengthMenu: [7, 10, 25, 50, 75, 100],
 				buttons: [
 					{
 						extend: 'collection',
 						className: 'btn btn-outline-secondary dropdown-toggle me-2',
-						text: feather.icons['share'].toSvg({ class: 'font-small-4 me-50' }) + 'Export',
+						text: feather.icons['share'].toSvg({ class: 'font-small-4 me-50' }) + 'Dışarı Aktar',
 						buttons: [
 							{
 								extend: 'print',
-								text: feather.icons['printer'].toSvg({ class: 'font-small-4 me-50' }) + 'Print',
+								text: feather.icons['printer'].toSvg({ class: 'font-small-4 me-50' }) + 'Yazdır',
 								className: 'dropdown-item',
 								exportOptions: { columns: [3, 4, 5, 6, 7] }
 							},
 							{
 								extend: 'pdf',
-								text: feather.icons['clipboard'].toSvg({ class: 'font-small-4 me-50' }) + 'Pdf',
+								text: feather.icons['clipboard'].toSvg({ class: 'font-small-4 me-50' }) + 'PDF İndir',
 								className: 'dropdown-item',
 								exportOptions: { columns: [3, 4, 5, 6, 7] }
 							}
