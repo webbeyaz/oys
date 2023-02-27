@@ -84,14 +84,14 @@
 								</span>
 							</div>
 						</div>
-						<div class="mb-1">
+						<!--<div class="mb-1">
 							<div class="form-check">
 								<input class="form-check-input" type="checkbox" id="remember-me" tabindex="3">
 								<label class="form-check-label" for="remember-me">
 									Beni hatırla
 								</label>
 							</div>
-						</div>
+						</div>-->
 						<button type="submit" class="btn btn-primary w-100" tabindex="4">
 							Giriş Yap
 						</button>

@@ -521,6 +521,7 @@ class Tracking extends Admin
 			    id,
 			    plate
 			FROM vehicles
+			WHERE deleted_at IS NULL
 			ORDER BY id DESC
 		";
 

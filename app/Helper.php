@@ -64,6 +64,16 @@ function timeDiffHours($start, $end): string
 		$end->minute('00');
 	}
 
+	$startDate = $start->format('Y-m-d');
+	$endDate = $start->format('Y-m-d');
+
+	if ($endDate > $startDate)
+	{
+		$end->year($start->year);
+		$end->month($start->month);
+		$end->day($start->day);
+	}
+
 	$different = ($start->addMinutes(30)->diffInMinutes($end)) / 60;
 
 	return floatval($different) != intval($different) ? number_format($different, 1, ',', '') : intval($different);
