@@ -50,7 +50,7 @@ class Add extends Admin
 					$sql = "
 						SELECT
 							d.id AS id,
-							d.firstname AS firtname,
+							d.firstname AS firstname,
 							d.lastname AS lastname,
 							v.plate AS plate
 						FROM drivers d
