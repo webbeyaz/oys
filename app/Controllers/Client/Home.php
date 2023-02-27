@@ -129,7 +129,10 @@ class Home extends Client
 		}
 		else
 		{
-			unset($_COOKIE['login']);
+			$error = [
+				'class' => 'danger',
+				'text' => 'Personel ve çerez bilgileri eşleşmiyor.'
+			];
 		}
 
 		$this->data['error'] = $error;
