@@ -64,10 +64,9 @@ function timeDiffHours($start, $end): string
 		$end->minute('00');
 	}
 
-	$startDate = $start->format('Y-m-d');
 	$endDate = $start->format('Y-m-d');
 
-	if ($endDate > $startDate)
+	if ($start->lt($endDate))
 	{
 		$end->year($start->year);
 		$end->month($start->month);
