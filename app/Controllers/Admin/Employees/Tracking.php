@@ -59,6 +59,9 @@ class Tracking extends Admin
 		$reports = [];
 		$total = 0;
 
+		$dateStart = null;
+		$dateEnd = null;
+
 		if ($request->getMethod() == 'POST')
 		{
 			$rules = [
@@ -127,6 +130,9 @@ class Tracking extends Admin
 
 						$total = floatval($total) != intval($total) ? number_format($total, 1, ',', '') : intval($total);
 					}
+
+					$dateStart = $start;
+					$dateEnd = $end;
 				}
 			}
 			else
@@ -146,6 +152,8 @@ class Tracking extends Admin
 		$this->data['error'] = $error;
 		$this->data['reports'] = $reports;
 		$this->data['total'] = $total;
+		$this->data['dateStart'] = $dateStart;
+		$this->data['dateEnd'] = $dateEnd;
 
 		return $this->view('admin.pages.employees.report', $this->data);
 	}
