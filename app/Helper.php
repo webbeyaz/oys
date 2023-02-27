@@ -22,8 +22,16 @@ function timeConvert($date, $format): string
 	return Carbon::parse($date)->translatedFormat($format);
 }
 
-function timeCheckForEnd($start, $end)
+/**
+ * @param $start
+ * @param $end
+ * @return string
+ */
+function timeForEnd($start, $end): string
 {
+	$start = Carbon::parse($start);
+	$end = Carbon::parse($end);
+
 	$startDate = $start->translatedFormat('Y-m-d');
 	$endDate = $end->translatedFormat('Y-m-d');
 
@@ -36,7 +44,7 @@ function timeCheckForEnd($start, $end)
 		$end->minute('00');
 	}
 
-	return $end;
+	return $end->translatedFormat('H:i');
 }
 
 /**
