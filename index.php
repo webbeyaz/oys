@@ -7,7 +7,7 @@ use Core\Bootstrap;
 
 require __DIR__ . '/vendor/autoload.php';
 
-date_default_timezone_set(config('TIMEZONE', 'Europe/Berlin'));
+date_default_timezone_set('Europe/Berlin');
 
 $app = new Bootstrap();
 
