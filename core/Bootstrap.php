@@ -49,7 +49,6 @@ class Bootstrap
 
 		$this->db = new PDO('mysql:host=' . config('DB_HOST', 'localhost') . ';dbname=' . config('DB_NAME'), config('DB_USER'), config('DB_PASSWORD'));
 		$this->db->query('SET CHARACTER SET utf8');
-		$this->db->exec("SET time_zone = 'Europe/Berlin'");
 
 		$this->router = new Router([
 			'base_folder' => config('BASE_FOLDER', ''),
