@@ -4,6 +4,7 @@ use Core\Bootstrap;
 
 //error_reporting(E_ALL);
 //ini_set('display_errors', 1);
+ini_set('date.timezone','Europe/Berlin');
 
 require __DIR__ . '/vendor/autoload.php';
 
